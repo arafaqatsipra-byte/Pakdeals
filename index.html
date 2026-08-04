@@ -57,7 +57,7 @@
     </div>
   </section>
 
-  <!-- ALL CATEGORY FILTERS -->
+  <!-- CATEGORY FILTERS -->
   <section class="max-w-7xl mx-auto px-4 mt-6 w-full">
     <div class="flex gap-2 overflow-x-auto pb-3 scrollbar-none justify-start md:justify-center">
       <button onclick="filterDeals('all')" class="cat-btn bg-brand text-white px-4 py-1.5 rounded-full text-xs font-semibold">
@@ -69,11 +69,9 @@
       <button onclick="filterDeals('electronics')" class="cat-btn bg-blue-50 text-blue-700 border border-blue-200 px-4 py-1.5 rounded-full text-xs font-semibold">
         ⚡ Electronics
       </button>
-      <!-- Nayi Category 1 -->
       <button onclick="filterDeals('mobile-acc')" class="cat-btn bg-indigo-50 text-indigo-700 border border-indigo-200 px-4 py-1.5 rounded-full text-xs font-semibold">
         📱 Mobile Accessories
       </button>
-      <!-- Nayi Category 2 -->
       <button onclick="filterDeals('men-fashion')" class="cat-btn bg-stone-100 text-stone-800 border border-stone-300 px-4 py-1.5 rounded-full text-xs font-semibold">
         👔 Men Fashion
       </button>
@@ -100,34 +98,34 @@
     <h2 class="text-xl font-bold mb-6 text-gray-800">Featured Collections</h2>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-<!-- Amazon Product: IHAO Bone Conduction Swimming Headphones -->
-<div class="product-card electronics mobile-acc bg-white rounded-xl shadow-md overflow-hidden flex flex-col transition hover:shadow-lg border border-gray-100">
-  <div class="relative">
-    <!-- YOUR POSTIMG IMAGE LINK APPLIED AND FIXED -->
-    <img src="https://i.postimg.cc/ydNB6skz/file-0000000036e8820a882d6eb7bcc43bbb.png" alt="IHAO Bone Conduction Headphones" class="w-full h-48 object-cover">
-    <span class="absolute top-3 left-3 bg-amber-100 text-amber-800 text-xs font-bold px-2 py-1 rounded shadow-sm">Amazon</span>
-  </div>
-  <div class="p-4 flex flex-col flex-grow">
-    <span class="inline-block bg-indigo-50 text-indigo-700 text-xs px-2 py-1 rounded w-max mb-2 font-semibold">Mobile Accessories</span>
-    <h3 class="font-bold text-gray-800 text-base mb-1 line-clamp-2">IHAO Bone Conduction Swimming Headphones</h3>
-    <p class="text-gray-500 text-xs mb-3">IPX8 Waterproof, Bluetooth 5.3, 8 Hours Playtime & Open-Ear Design.</p>
-    <div class="mt-auto flex items-center justify-between">
-      <span class="text-lg font-black text-amber-600">SAR 399.00</span>
-      <a href="https://www.amazon.sa/dp/B0CNNKYNVT?aref=IgdYcbhD8F&pd_rd_i=B0CNNKYNVT&pf_rd_p=0f2a84f2-5baa-4056-b360-23831112da13&pd_rd_wg=w6vqM&pf_rd_r=13HX840BAEQKDH2J64MY&pd_rd_w=HvycF&pd_rd_r=80e292f9-2990-4c95-b250-2d097af55196&th=1&linkCode=ll2&tag=sipra786-21&linkId=22f60f66474f13e46dedb13cc42e5811&ref_=as_li_ss_tl" target="_blank" rel="noopener noreferrer" class="bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold px-3 py-2 rounded-lg transition">
-        <i class="fa-brands fa-amazon mr-1"></i> Buy on Amazon
-      </a>
-    </div>
-  </div>
-</div>
-      </a>
-    </div>
-  </div>
-</div>
-      </a>
-    </div>
-  </div>
-</div>
-      <!-- 1. SAUDI ABAYA -->
+
+      <!-- 1. AMAZON PRODUCT (With Auto Instalment Calculation) -->
+      <div class="product-card amazon-sa electronics mobile-acc bg-white rounded-xl shadow-md overflow-hidden flex flex-col transition hover:shadow-lg border border-gray-100" data-price="399.00">
+        <div class="relative">
+          <img src="https://i.postimg.cc/ydNB6skz/file-0000000036e8820a882d6eb7bcc43bbb.png" alt="IHAO Bone Conduction Headphones" class="w-full h-48 object-cover">
+          <span class="absolute top-3 left-3 bg-amber-100 text-amber-800 text-xs font-bold px-2 py-1 rounded shadow-sm">Amazon SA</span>
+        </div>
+        <div class="p-4 flex flex-col flex-grow">
+          <span class="inline-block bg-indigo-50 text-indigo-700 text-xs px-2 py-1 rounded w-max mb-2 font-semibold">Mobile Accessories</span>
+          <h3 class="font-bold text-gray-800 text-base mb-1 line-clamp-2">IHAO Bone Conduction Swimming Headphones</h3>
+          <p class="text-gray-500 text-xs mb-3">IPX8 Waterproof, Bluetooth 5.3, 8 Hours Playtime & Open-Ear Design.</p>
+
+          <!-- AUTOMATIC INSTALMENT BOX PLACEHOLDER -->
+          <div class="instalment-container"></div>
+
+          <div class="mt-auto flex items-center justify-between border-t pt-3">
+            <div>
+              <span class="text-lg font-black text-amber-600 block leading-tight">SAR 399.00</span>
+              <span class="text-[10px] text-gray-400">VAT Included</span>
+            </div>
+            <a href="https://www.amazon.sa/dp/B0CNNKYNVT?aref=IgdYcbhD8F&pd_rd_i=B0CNNKYNVT&pf_rd_p=0f2a84f2-5baa-4056-b360-23831112da13&pd_rd_wg=w6vqM&pf_rd_r=13HX840BAEQKDH2J64MY&pd_rd_w=HvycF&pd_rd_r=80e292f9-2990-4c95-b250-2d097af55196&th=1&linkCode=ll2&tag=sipra786-21&linkId=22f60f66474f13e46dedb13cc42e5811&ref_=as_li_ss_tl" target="_blank" rel="noopener noreferrer" class="bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold px-3 py-2 rounded-lg transition shadow">
+              <i class="fa-brands fa-amazon mr-1"></i> Buy on Amazon
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. SAUDI ABAYA -->
       <div class="product-card abaya fashion bg-white rounded-xl shadow-md overflow-hidden flex flex-col transition hover:shadow-lg border border-gray-100">
         <div class="relative">
           <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80" alt="Saudi Abaya" class="w-full h-48 object-cover">
@@ -136,118 +134,35 @@
         <div class="p-4 flex flex-col flex-grow">
           <h3 class="font-bold text-gray-800 text-lg mb-1">Luxury Black Saudi Nidha Abaya</h3>
           <p class="text-gray-500 text-xs mb-3">Premium Nidha fabric with fine embroidery.</p>
-          <div class="mt-auto flex items-center justify-between">
-            <span class="text-lg font-black text-emerald-600">$45.00</span>
-            <a href="YOUR_SHOPIFY_OR_AFFILIATE_LINK" target="_blank" class="bg-gray-900 hover:bg-gray-800 text-white text-xs font-bold px-3 py-2 rounded-lg transition">
+          <div class="mt-auto flex items-center justify-between border-t pt-3">
+            <span class="text-lg font-black text-emerald-600">SAR 168.00</span>
+            <a href="#" target="_blank" class="bg-gray-900 hover:bg-gray-800 text-white text-xs font-bold px-3 py-2 rounded-lg transition">
               <i class="fa-solid fa-cart-shopping mr-1"></i> Buy Abaya Now
             </a>
           </div>
         </div>
       </div>
 
-      <!-- 2. ELECTRONICS -->
-      <div class="product-card electronics bg-white rounded-xl shadow-md overflow-hidden flex flex-col transition hover:shadow-lg border border-gray-100">
+      <!-- 3. ANOTHER AMAZON PRODUCT EXAMPLE -->
+      <div class="product-card amazon-sa electronics bg-white rounded-xl shadow-md overflow-hidden flex flex-col transition hover:shadow-lg border border-gray-100" data-price="240.00">
         <div class="relative">
           <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80" alt="Electronics" class="w-full h-48 object-cover">
-          <span class="absolute top-3 left-3 bg-amber-100 text-amber-800 text-xs font-bold px-2 py-1 rounded shadow-sm">Amazon</span>
+          <span class="absolute top-3 left-3 bg-amber-100 text-amber-800 text-xs font-bold px-2 py-1 rounded shadow-sm">Amazon SA</span>
         </div>
         <div class="p-4 flex flex-col flex-grow">
           <h3 class="font-bold text-gray-800 text-lg mb-1">Wireless Noise Canceling Headphones</h3>
           <p class="text-gray-500 text-xs mb-3">High bass, 40-hour long battery life.</p>
-          <div class="mt-auto flex items-center justify-between">
-            <span class="text-lg font-black text-amber-600">$89.99</span>
-            <a href="YOUR_AMAZON_AFFILIATE_LINK" target="_blank" class="bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold px-3 py-2 rounded-lg transition">
+
+          <!-- AUTOMATIC INSTALMENT BOX PLACEHOLDER -->
+          <div class="instalment-container"></div>
+
+          <div class="mt-auto flex items-center justify-between border-t pt-3">
+            <div>
+              <span class="text-lg font-black text-amber-600 block leading-tight">SAR 240.00</span>
+              <span class="text-[10px] text-gray-400">VAT Included</span>
+            </div>
+            <a href="#" target="_blank" class="bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold px-3 py-2 rounded-lg transition">
               <i class="fa-brands fa-amazon mr-1"></i> Buy on Amazon
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3. KITCHEN -->
-      <div class="product-card kitchen bg-white rounded-xl shadow-md overflow-hidden flex flex-col transition hover:shadow-lg border border-gray-100">
-        <div class="relative">
-          <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80" alt="Kitchen Blender" class="w-full h-48 object-cover">
-          <span class="absolute top-3 left-3 bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded shadow-sm">AliExpress</span>
-        </div>
-        <div class="p-4 flex flex-col flex-grow">
-          <h3 class="font-bold text-gray-800 text-lg mb-1">Portable Electric Juicer & Blender</h3>
-          <p class="text-gray-500 text-xs mb-3">USB rechargeable blender for smoothies.</p>
-          <div class="mt-auto flex items-center justify-between">
-            <span class="text-lg font-black text-red-600">$18.50</span>
-            <a href="YOUR_ALIEXPRESS_AFFILIATE_LINK" target="_blank" class="bg-red-500 hover:bg-red-600 text-white text-xs font-bold px-3 py-2 rounded-lg transition">
-              <i class="fa-solid fa-bolt mr-1"></i> Deal on AliExpress
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 4. UNIQUE ITEMS -->
-      <div class="product-card unique bg-white rounded-xl shadow-md overflow-hidden flex flex-col transition hover:shadow-lg border border-gray-100">
-        <div class="relative">
-          <img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=600&q=80" alt="Unique Lamp" class="w-full h-48 object-cover">
-          <span class="absolute top-3 left-3 bg-lime-100 text-lime-800 text-xs font-bold px-2 py-1 rounded shadow-sm">Shopify</span>
-        </div>
-        <div class="p-4 flex flex-col flex-grow">
-          <h3 class="font-bold text-gray-800 text-lg mb-1">3D Moon Desk Night Lamp</h3>
-          <p class="text-gray-500 text-xs mb-3">Touch control 16 RGB color night light.</p>
-          <div class="mt-auto flex items-center justify-between">
-            <span class="text-lg font-black text-lime-600">$24.00</span>
-            <a href="YOUR_SHOPIFY_PRODUCT_LINK" target="_blank" class="bg-lime-600 hover:bg-lime-700 text-white text-xs font-bold px-3 py-2 rounded-lg transition">
-              <i class="fa-solid fa-shop mr-1"></i> Buy from Store
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 5. DAILY USE -->
-      <div class="product-card daily bg-white rounded-xl shadow-md overflow-hidden flex flex-col transition hover:shadow-lg border border-gray-100">
-        <div class="relative">
-          <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&q=80" alt="Water Bottle" class="w-full h-48 object-cover">
-          <span class="absolute top-3 left-3 bg-amber-100 text-amber-800 text-xs font-bold px-2 py-1 rounded shadow-sm">Amazon</span>
-        </div>
-        <div class="p-4 flex flex-col flex-grow">
-          <h3 class="font-bold text-gray-800 text-lg mb-1">Stainless Steel Vacuum Water Bottle</h3>
-          <p class="text-gray-500 text-xs mb-3">Keeps drinks cold for 24 hours.</p>
-          <div class="mt-auto flex items-center justify-between">
-            <span class="text-lg font-black text-amber-600">$14.99</span>
-            <a href="YOUR_AMAZON_AFFILIATE_LINK" target="_blank" class="bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold px-3 py-2 rounded-lg transition">
-              <i class="fa-brands fa-amazon mr-1"></i> Buy on Amazon
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 6. GROCERY -->
-      <div class="product-card grocery bg-white rounded-xl shadow-md overflow-hidden flex flex-col transition hover:shadow-lg border border-gray-100">
-        <div class="relative">
-          <img src="https://images.unsplash.com/photo-1587049352847-4a222e784d38?auto=format&fit=crop&w=600&q=80" alt="Organic Honey" class="w-full h-48 object-cover">
-          <span class="absolute top-3 left-3 bg-gray-100 text-gray-800 text-xs font-bold px-2 py-1 rounded shadow-sm">Grocery</span>
-        </div>
-        <div class="p-4 flex flex-col flex-grow">
-          <h3 class="font-bold text-gray-800 text-lg mb-1">Pure Organic Natural Honey (500g)</h3>
-          <p class="text-gray-500 text-xs mb-3">100% natural raw mountain honey.</p>
-          <div class="mt-auto flex items-center justify-between">
-            <span class="text-lg font-black text-emerald-600">$12.50</span>
-            <a href="YOUR_SHOPIFY_OR_GROCERY_LINK" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3 py-2 rounded-lg transition">
-              <i class="fa-solid fa-basket-shopping mr-1"></i> Order Grocery
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 7. FASHION / MEN FASHION SAMPLE -->
-      <div class="product-card fashion men-fashion bg-white rounded-xl shadow-md overflow-hidden flex flex-col transition hover:shadow-lg border border-gray-100">
-        <div class="relative">
-          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80" alt="Shoes" class="w-full h-48 object-cover">
-          <span class="absolute top-3 left-3 bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded shadow-sm">AliExpress</span>
-        </div>
-        <div class="p-4 flex flex-col flex-grow">
-          <h3 class="font-bold text-gray-800 text-lg mb-1">Casual Breathable Running Shoes</h3>
-          <p class="text-gray-500 text-xs mb-3">Lightweight sports sneakers for daily use.</p>
-          <div class="mt-auto flex items-center justify-between">
-            <span class="text-lg font-black text-red-600">$29.99</span>
-            <a href="YOUR_ALIEXPRESS_AFFILIATE_LINK" target="_blank" class="bg-red-500 hover:bg-red-600 text-white text-xs font-bold px-3 py-2 rounded-lg transition">
-              <i class="fa-solid fa-bolt mr-1"></i> View AliExpress Deal
             </a>
           </div>
         </div>
@@ -267,8 +182,39 @@
     </div>
   </footer>
 
-  <!-- JAVASCRIPT FOR FILTERS & SEARCH -->
+  <!-- JAVASCRIPT FOR FILTERS, SEARCH & AUTOMATIC INSTALMENTS -->
   <script>
+    // 1. AUTOMATIC INSTALMENT CALCULATOR FOR AMAZON PRODUCTS
+    document.addEventListener("DOMContentLoaded", function () {
+      const amazonCards = document.querySelectorAll(".product-card.amazon-sa");
+
+      amazonCards.forEach(card => {
+        const priceAttr = card.getAttribute("data-price");
+        if (priceAttr) {
+          const totalPrice = parseFloat(priceAttr);
+          const monthlyInstallment = (totalPrice / 4).toFixed(2);
+
+          const instalmentBox = card.querySelector(".instalment-container");
+          if (instalmentBox) {
+            instalmentBox.innerHTML = `
+              <div class="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-lg p-2 mb-3 flex flex-col gap-1">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-bold text-emerald-900 flex items-center gap-1">
+                    <i class="fa-solid fa-credit-card text-emerald-600"></i> Pay in 4 Instalments
+                  </span>
+                  <span class="text-[9px] bg-emerald-200 text-emerald-800 px-1.5 py-0.5 rounded font-bold">Tabby / Tamara</span>
+                </div>
+                <div class="text-[10px] text-emerald-700 font-medium">
+                  Or <strong>SAR ${monthlyInstallment}/mo</strong> with 0% interest.
+                </div>
+              </div>
+            `;
+          }
+        }
+      });
+    });
+
+    // 2. CATEGORY FILTERS
     function filterDeals(category) {
       const cards = document.querySelectorAll('.product-card');
       cards.forEach(card => {
@@ -280,6 +226,7 @@
       });
     }
 
+    // 3. SEARCH BAR FUNCTION
     function searchProducts() {
       let input = document.getElementById('searchInput').value.toLowerCase();
       let cards = document.querySelectorAll('.product-card');
