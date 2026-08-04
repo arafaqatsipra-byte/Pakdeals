@@ -1,359 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PakDeals - Top Deals & Coupons</title>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PakDeals - Best Affiliate & Shopping Deals</title>
+  <!-- Tailwind CSS CDN for modern styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#16a34a',
+            amazon: '#ff9900',
+            aliexpress: '#ff4747',
+            shopify: '#95bf47'
+          }
         }
-
-        :root {
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --primary-dark: #0f3822; /* Dark Green Header */
-            --primary-accent: #166534;
-            --arrow-gold: #f59e0b; /* Amazon Yellow Arrow */
-            --text-color: #1e293b;
-            --text-muted: #64748b;
-            --border-color: #e2e8f0;
-            
-            /* Affiliate Store Badges */
-            --amazon-color: #ff9900;
-            --aliexpress-color: #ff4747;
-            --shopify-color: #95bf47;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* Top Header */
-        header {
-            background-color: #ffffff;
-            padding: 1.2rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        /* Amazon Style Logo */
-        .logo-container {
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-        }
-
-        .logo-text {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary-dark);
-            letter-spacing: -0.5px;
-        }
-
-        .amazon-smile {
-            width: 100%;
-            height: 12px;
-            margin-top: -6px;
-        }
-
-        .search-bar {
-            position: relative;
-            width: 45%;
-            max-width: 500px;
-        }
-
-        .search-bar input {
-            width: 100%;
-            padding: 10px 15px 10px 40px;
-            border-radius: 25px;
-            border: 2px solid var(--border-color);
-            background-color: #f1f5f9;
-            color: var(--text-color);
-            outline: none;
-        }
-
-        /* Navigation Category Bar */
-        .category-bar {
-            background-color: var(--primary-dark);
-            padding: 0.8rem 2rem;
-            display: flex;
-            gap: 12px;
-            overflow-x: auto;
-            align-items: center;
-        }
-
-        .cat-btn {
-            background: transparent;
-            color: #e2e8f0;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 8px 18px;
-            border-radius: 20px;
-            cursor: pointer;
-            white-space: nowrap;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.95rem;
-        }
-
-        .cat-btn:hover, .cat-btn.active {
-            background-color: #ffffff;
-            color: var(--primary-dark);
-            font-weight: 700;
-            border-color: #ffffff;
-        }
-
-        .badge-hot {
-            background-color: #ef4444;
-            color: #fff;
-            font-size: 0.65rem;
-            padding: 2px 6px;
-            border-radius: 8px;
-            font-weight: bold;
-        }
-
-        /* Deals Grid */
-        .main-content {
-            padding: 2rem;
-            max-width: 1300px;
-            margin: 0 auto;
-            width: 100%;
-            flex-grow: 1;
-        }
-
-        .deals-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-            gap: 22px;
-        }
-
-        /* Cards Design */
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(15, 56, 34, 0.12);
-        }
-
-        .card-img {
-            width: 100%;
-            height: 180px;
-            background-color: #f1f5f9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-dark);
-            font-size: 3rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .card-body {
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        /* Affiliate Store Tag */
-        .store-tag {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            padding: 4px 8px;
-            border-radius: 6px;
-            color: #fff;
-        }
-
-        .tag-amazon { background-color: var(--amazon-color); color: #000; }
-        .tag-aliexpress { background-color: var(--aliexpress-color); }
-        .tag-shopify { background-color: var(--shopify-color); }
-
-        .card-badge {
-            align-self: flex-start;
-            background-color: #e6f4ea;
-            color: var(--primary-dark);
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .card-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--text-color);
-        }
-
-        .card-desc {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 18px;
-            flex-grow: 1;
-            line-height: 1.4;
-        }
-
-        /* Buy / Affiliate Link Button */
-        .btn-buy {
-            background-color: var(--primary-dark);
-            color: #ffffff;
-            border: none;
-            padding: 10px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            transition: background 0.3s;
-            text-align: center;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .btn-buy:hover {
-            background-color: var(--primary-accent);
-        }
-
-        footer {
-            background-color: var(--primary-dark);
-            color: #e2e8f0;
-            text-align: center;
-            padding: 1.5rem;
-            margin-top: auto;
-        }
-    </style>
+      }
+    }
+  </script>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
 
-    <!-- Header -->
-    <header>
-        <a href="#" class="logo-container">
-            <span class="logo-text">PakDeals</span>
-            <svg class="amazon-smile" viewBox="0 0 100 20" fill="none">
-                <path d="M 10,5 Q 50,22 90,5" stroke="#f59e0b" stroke-width="4" stroke-linecap="round" fill="transparent"/>
-                <path d="M 85,2 L 92,6 L 87,11" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" fill="transparent"/>
-            </svg>
+  <!-- TOP NOTICE BAR -->
+  <div class="bg-gray-900 text-white text-xs py-2 text-center px-4">
+    🔥 Exclusive Saudi Abayas, Amazon Deals & AliExpress Best Sellers in One Place!
+  </div>
+
+  <!-- NAVIGATION BAR -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+      <!-- Logo -->
+      <a href="#" class="text-2xl font-black text-brand flex items-center gap-2">
+        <i class="fa-solid fa-bag-shopping"></i> PakDeals
+      </a>
+
+      <!-- Desktop Nav Categories -->
+      <nav class="hidden md:flex gap-6 font-medium text-gray-600">
+        <a href="#all" class="hover:text-brand transition">All Deals</a>
+        <a href="#abaya" class="hover:text-brand text-emerald-700 font-bold transition flex items-center gap-1">
+          <i class="fa-solid fa-gem"></i> Saudi Abaya
         </a>
+        <a href="#amazon" class="hover:text-amazon transition">Amazon Picks</a>
+        <a href="#aliexpress" class="hover:text-aliexpress transition">AliExpress</a>
+        <a href="#shopify" class="hover:text-shopify transition">Shopify Store</a>
+      </nav>
 
-        <div class="search-bar">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Search Amazon, AliExpress & Shopify Deals...">
-        </div>
-    </header>
-
-    <!-- Navigation Bar with SAUDI ABAYA Category -->
-    <div class="category-bar">
-        <button class="cat-btn active" onclick="filterCategory('all', event)"><i class="fa-solid fa-border-all"></i> All Deals</button>
-        
-        <!-- NEW SAUDI ABAYA CATEGORY -->
-        <button class="cat-btn" onclick="filterCategory('abaya', event)"><i class="fa-solid fa-user-ninja"></i> Saudi Abaya <span class="badge-hot">HOT</span></button>
-        
-        <button class="cat-btn" onclick="filterCategory('unique', event)"><i class="fa-solid fa-wand-magic-sparkles"></i> Unique Items</button>
-        <button class="cat-btn" onclick="filterCategory('electronics', event)"><i class="fa-solid fa-laptop"></i> Electronics</button>
-        <button class="cat-btn" onclick="filterCategory('fashion', event)"><i class="fa-solid fa-shirt"></i> Fashion</button>
-        <button class="cat-btn" onclick="filterCategory('portfolio', event)"><i class="fa-solid fa-briefcase"></i> Portfolio</button>
+      <!-- Search Bar -->
+      <div class="relative w-48 sm:w-64">
+        <input type="text" placeholder="Search deals & abayas..." class="w-full pl-9 pr-4 py-1.5 rounded-full border border-gray-300 text-sm focus:outline-none focus:border-brand" />
+        <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-gray-400 text-xs"></i>
+      </div>
     </div>
+  </header>
 
-    <!-- Main Content Grid -->
-    <main class="main-content">
-        <div class="deals-grid" id="dealsGrid">
-            
-            <!-- SAUDI ABAYA ITEM (Shopify / Dropshipping Example) -->
-            <div class="card" data-category="abaya">
-                <span class="store-tag tag-shopify">Shopify</span>
-                <div class="card-img"><i class="fa-solid fa-person-dress"></i></div>
-                <div class="card-body">
-                    <span class="card-badge">Saudi Abaya</span>
-                    <h3 class="card-title">Luxury Black Silk Abaya</h3>
-                    <p class="card-desc">Authentic Saudi style design, breathable high quality fabric.</p>
-                    <a href="YOUR_SHOPIFY_AFFILIATE_LINK" target="_blank" class="btn-buy">
-                        Buy on Shopify <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
+  <!-- HERO BANNER -->
+  <section class="bg-gradient-to-r from-emerald-800 to-teal-900 text-white py-12 px-4 text-center">
+    <div class="max-w-4xl mx-auto">
+      <span class="bg-yellow-400 text-gray-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">New Arrival</span>
+      <h1 class="text-3xl sm:text-5xl font-extrabold mt-3 mb-4">Premium Saudi Abayas & Trending Global Deals</h1>
+      <p class="text-emerald-100 text-sm sm:text-base max-w-2xl mx-auto mb-6">
+        Discover handpicked Saudi Abayas, top-rated Amazon products, AliExpress offers, and Shopify exclusives.
+      </p>
+      <div class="flex justify-center gap-3 flex-wrap">
+        <a href="#abaya" class="bg-white text-emerald-900 font-bold px-6 py-2.5 rounded-lg shadow hover:bg-emerald-50 transition">
+          Browse Saudi Abayas
+        </a>
+        <a href="#all" class="bg-brand text-white font-bold px-6 py-2.5 rounded-lg shadow hover:bg-emerald-700 transition">
+          Explore All Deals
+        </a>
+      </div>
+    </div>
+  </section>
 
-            <!-- UNIQUE ITEM (AliExpress Affiliate Example) -->
-            <div class="card" data-category="unique">
-                <span class="store-tag tag-aliexpress">AliExpress</span>
-                <div class="card-img"><i class="fa-solid fa-gem"></i></div>
-                <div class="card-body">
-                    <span class="card-badge">Unique Items</span>
-                    <h3 class="card-title">Custom Neon LED Light</h3>
-                    <p class="card-desc">Trending room decor item available on AliExpress with fast shipping.</p>
-                    <a href="YOUR_ALIEXPRESS_AFFILIATE_LINK" target="_blank" class="btn-buy">
-                        Buy on AliExpress <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
+  <!-- CATEGORY FILTER BUTTONS -->
+  <section class="max-w-7xl mx-auto px-4 mt-8 w-full">
+    <div class="flex gap-3 overflow-x-auto pb-2 scrollbar-none justify-start md:justify-center">
+      <button onclick="filterDeals('all')" class="bg-brand text-white px-5 py-2 rounded-full text-sm font-semibold whitespace-nowrap shadow-sm hover:opacity-90">
+        All Items
+      </button>
+      <button onclick="filterDeals('abaya')" class="bg-emerald-100 text-emerald-800 border border-emerald-300 px-5 py-2 rounded-full text-sm font-semibold whitespace-nowrap hover:bg-emerald-200">
+        👑 Saudi Abaya Collection
+      </button>
+      <button onclick="filterDeals('amazon')" class="bg-amber-50 text-amber-800 border border-amber-300 px-5 py-2 rounded-full text-sm font-semibold whitespace-nowrap hover:bg-amber-100">
+        <i class="fa-brands fa-amazon"></i> Amazon Deals
+      </button>
+      <button onclick="filterDeals('aliexpress')" class="bg-red-50 text-red-800 border border-red-300 px-5 py-2 rounded-full text-sm font-semibold whitespace-nowrap hover:bg-red-100">
+        <i class="fa-solid fa-plane"></i> AliExpress
+      </button>
+      <button onclick="filterDeals('shopify')" class="bg-lime-50 text-lime-800 border border-lime-300 px-5 py-2 rounded-full text-sm font-semibold whitespace-nowrap hover:bg-lime-100">
+        <i class="fa-solid fa-store"></i> Shopify Products
+      </button>
+    </div>
+  </section>
 
-            <!-- ELECTRONICS ITEM (Amazon Affiliate Example) -->
-            <div class="card" data-category="electronics">
-                <span class="store-tag tag-amazon">Amazon</span>
-                <div class="card-img"><i class="fa-solid fa-headphones"></i></div>
-                <div class="card-body">
-                    <span class="card-badge">Electronics</span>
-                    <h3 class="card-title">Wireless Bluetooth Earbuds</h3>
-                    <p class="card-desc">Noise-canceling earphones with long battery backup on Amazon.</p>
-                    <a href="YOUR_AMAZON_AFFILIATE_LINK" target="_blank" class="btn-buy">
-                        Buy on Amazon <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
+  <!-- PRODUCTS GRID -->
+  <main class="max-w-7xl mx-auto px-4 my-10 flex-grow w-full">
+    <h2 class="text-2xl font-bold mb-6 text-gray-800 flex items-center gap-2">
+      <span>Featured Products & Deals</span>
+    </h2>
 
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="products-grid">
+
+      <!-- PRODUCT 1: SAUDI ABAYA -->
+      <div class="product-card abaya bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition flex flex-col">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80" alt="Saudi Abaya" class="w-full h-64 object-cover" />
+          <span class="absolute top-3 left-3 bg-emerald-700 text-white text-xs font-bold px-2.5 py-1 rounded">Saudi Abaya</span>
         </div>
-    </main>
+        <div class="p-4 flex flex-col flex-grow">
+          <h3 class="font-bold text-gray-800 text-base mb-1">Luxury Black Saudi Nidha Abaya</h3>
+          <p class="text-gray-500 text-xs mb-3">Premium Nidha fabric with elegant hand-embroidery.</p>
+          <div class="mt-auto">
+            <div class="flex items-baseline gap-2 mb-3">
+              <span class="text-lg font-black text-emerald-700">$45.00</span>
+              <span class="text-xs text-gray-400 line-through">$75.00</span>
+            </div>
+            <!-- BUY LINK (Shopify/Direct/AliExpress) -->
+            <a href="YOUR_SHOPIFY_OR_AFFILIATE_LINK" target="_blank" class="w-full bg-emerald-800 text-white font-semibold py-2 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-emerald-900 text-sm transition">
+              <i class="fa-solid fa-cart-shopping"></i> Buy Abaya Now
+            </a>
+          </div>
+        </div>
+      </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 PakDeals Affiliate Hub. Powered by Amazon, AliExpress & Shopify.</p>
-    </footer>
+      <!-- PRODUCT 2: AMAZON AFFILIATE -->
+      <div class="product-card amazon bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition flex flex-col">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80" alt="Headphones" class="w-full h-64 object-cover" />
+          <span class="absolute top-3 left-3 bg-amazon text-white text-xs font-bold px-2.5 py-1 rounded">Amazon Pick</span>
+        </div>
+        <div class="p-4 flex flex-col flex-grow">
+          <h3 class="font-bold text-gray-800 text-base mb-1">Wireless Noise Canceling Headphones</h3>
+          <p class="text-gray-500 text-xs mb-3">40-hour battery life, premium bass sound.</p>
+          <div class="mt-auto">
+            <div class="flex items-baseline gap-2 mb-3">
+              <span class="text-lg font-black text-gray-900">$89.99</span>
+              <span class="text-xs text-gray-400 line-through">$129.99</span>
+            </div>
+            <!-- AMAZON AFFILIATE LINK -->
+            <a href="YOUR_AMAZON_AFFILIATE_LINK" target="_blank" class="w-full bg-amazon text-white font-semibold py-2 px-4 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 text-sm transition">
+              <i class="fa-brands fa-amazon"></i> View on Amazon
+            </a>
+          </div>
+        </div>
+      </div>
 
-    <!-- Filter JS Script -->
-    <script>
-        function filterCategory(categoryName, event) {
-            const buttons = document.querySelectorAll('.cat-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.currentTarget.classList.add('active');
+      <!-- PRODUCT 3: ALIEXPRESS -->
+      <div class="product-card aliexpress bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition flex flex-col">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" alt="Smart Watch" class="w-full h-64 object-cover" />
+          <span class="absolute top-3 left-3 bg-aliexpress text-white text-xs font-bold px-2.5 py-1 rounded">AliExpress Deal</span>
+        </div>
+        <div class="p-4 flex flex-col flex-grow">
+          <h3 class="font-bold text-gray-800 text-base mb-1">Smart Fitness Watch Series 8</h3>
+          <p class="text-gray-500 text-xs mb-3">Heart rate monitor, waterproof IP68.</p>
+          <div class="mt-auto">
+            <div class="flex items-baseline gap-2 mb-3">
+              <span class="text-lg font-black text-aliexpress">$19.50</span>
+              <span class="text-xs text-gray-400 line-through">$49.00</span>
+            </div>
+            <!-- ALIEXPRESS AFFILIATE LINK -->
+            <a href="YOUR_ALIEXPRESS_AFFILIATE_LINK" target="_blank" class="w-full bg-aliexpress text-white font-semibold py-2 px-4 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 text-sm transition">
+              <i class="fa-solid fa-bolt"></i> Get Deal on AliExpress
+            </a>
+          </div>
+        </div>
+      </div>
 
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                if (categoryName === 'all' || card.getAttribute('data-category') === categoryName) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+      <!-- PRODUCT 4: SHOPIFY STORE -->
+      <div class="product-card shopify bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition flex flex-col">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80" alt="Sneakers" class="w-full h-64 object-cover" />
+          <span class="absolute top-3 left-3 bg-shopify text-white text-xs font-bold px-2.5 py-1 rounded">Shopify Exclusive</span>
+        </div>
+        <div class="p-4 flex flex-col flex-grow">
+          <h3 class="font-bold text-gray-800 text-base mb-1">Unisex Sports Running Shoes</h3>
+          <p class="text-gray-500 text-xs mb-3">Lightweight breathable sneakers for daily wear.</p>
+          <div class="mt-auto">
+            <div class="flex items-baseline gap-2 mb-3">
+              <span class="text-lg font-black text-gray-900">$34.99</span>
+            </div>
+            <!-- SHOPIFY LINK -->
+            <a href="YOUR_SHOPIFY_PRODUCT_LINK" target="_blank" class="w-full bg-shopify text-white font-semibold py-2 px-4 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 text-sm transition">
+              <i class="fa-solid fa-bag-shopping"></i> Buy from Store
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-gray-400 py-8 px-4 mt-auto">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-sm gap-4">
+      <p>&copy; 2026 PakDeals. All rights reserved.</p>
+      <div class="flex gap-4 text-xs">
+        <a href="#" class="hover:text-white">Privacy Policy</a>
+        <a href="#" class="hover:text-white">Affiliate Disclosure</a>
+        <a href="#" class="hover:text-white">Contact Us</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SIMPLE FILTER JAVASCRIPT -->
+  <script>
+    function filterDeals(category) {
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.classList.contains(category)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
         }
-    </script>
+      });
+    }
+  </script>
 </body>
 </html>
