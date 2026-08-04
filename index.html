@@ -1,309 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KSA Deal Finder - Best Amazon.sa Offers</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --amazon-dark: #131921;
-            --amazon-light: #232f3e;
-            --amazon-accent: #ff9900;
-            --amazon-yellow: #ffd814;
-            --amazon-yellow-hover: #f7ca00;
-            --bg-gray: #f3f3f3;
-        }
+<nav class="main-nav">
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    <!-- Kitchen Category Dropdown -->
+    <li class="nav-item dropdown">
+      <a href="#" class="nav-link">Kitchen ▾</a>
+      <div class="dropdown-menu">
+        <a href="#">Kitchen Appliances</a>
+        <a href="#">Cookware & Utensils</a>
+        <a href="#">Storage & Containers</a>
+        <a href="#">Dining & Cutlery</a>
+      </div>
+    </li>
 
-        body {
-            background-color: var(--bg-gray);
-            color: #0F1111;
-        }
+    <!-- Electronics Category Dropdown -->
+    <li class="nav-item dropdown">
+      <a href="#" class="nav-link">Electronics ▾</a>
+      <div class="dropdown-menu">
+        <a href="#">Mobile Accessories</a>
+        <a href="#">Smartwatches</a>
+        <a href="#">Headphones & Speakers</a>
+        <a href="#">Home Automation</a>
+      </div>
+    </li>
 
-        /* Top Bar & Header */
-        header {
-            background-color: var(--amazon-dark);
-            color: white;
-            padding: 15px 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .logo span {
-            color: var(--amazon-accent);
-        }
-
-        /* Search Box */
-        .search-box {
-            flex: 1;
-            max-width: 500px;
-            display: flex;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px 0 0 4px;
-            outline: none;
-            font-size: 15px;
-        }
-
-        .search-box button {
-            background: var(--amazon-accent);
-            border: none;
-            padding: 10px 18px;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-            color: var(--amazon-dark);
-            font-size: 16px;
-        }
-
-        /* Hero Banner */
-        .hero {
-            background: linear-gradient(135deg, var(--amazon-light), var(--amazon-dark));
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .hero h1 {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            color: #cccccc;
-            font-size: 16px;
-        }
-
-        /* Main Content */
-        .main-container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        /* Grid Layout */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 20px;
-        }
-
-        /* Product Card */
-        .card {
-            background: white;
-            border-radius: 8px;
-            border: 1px solid #e7e7e7;
-            padding: 15px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-
-        .badge {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: #CC0C39;
-            color: white;
-            font-weight: bold;
-            font-size: 12px;
-            padding: 4px 8px;
-            border-radius: 4px;
-        }
-
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: contain;
-            margin: 15px 0;
-        }
-
-        .card-title {
-            font-size: 15px;
-            font-weight: 600;
-            line-height: 1.3;
-            height: 40px;
-            overflow: hidden;
-            margin-bottom: 10px;
-        }
-
-        .price-box {
-            margin-bottom: 15px;
-        }
-
-        .current-price {
-            font-size: 20px;
-            font-weight: bold;
-            color: #B12704;
-        }
-
-        .original-price {
-            font-size: 13px;
-            color: #565959;
-            text-decoration: line-through;
-            margin-left: 6px;
-        }
-
-        .btn-amazon {
-            background: var(--amazon-yellow);
-            border: 1px solid #FCD200;
-            color: #0F1111;
-            text-decoration: none;
-            text-align: center;
-            padding: 10px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: 0.2s;
-        }
-
-        .btn-amazon:hover {
-            background: var(--amazon-yellow-hover);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--amazon-dark);
-            color: #848688;
-            text-align: center;
-            padding: 20px;
-            margin-top: 50px;
-            font-size: 14px;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Header -->
-    <header>
-        <div class="header-container">
-            <a href="#" class="logo">
-                <i class="fa-brands fa-amazon"></i> KSA<span>DealFinder</span>
-            </a>
-            <div class="search-box">
-                <input type="text" placeholder="Search Amazon KSA Deals...">
-                <button><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Best Amazon.sa Deals & Discount Offers</h1>
-        <p>Handpicked daily deals on Electronics, Fashion, Home & More in Saudi Arabia.</p>
-    </section>
-
-    <!-- Products Grid -->
-    <div class="main-container">
-        <div class="product-grid">
-
-            <!-- Product 1 -->
-            <div class="card">
-                <span class="badge">25% OFF</span>
-                <img src="https://m.media-amazon.com/images/I/61y49M8S0KL._AC_SL1500_.jpg" alt="Product">
-                <div class="card-title">Wireless Bluetooth Earbuds with Noise Cancellation</div>
-                <div class="price-box">
-                    <span class="current-price">SAR 149.00</span>
-                    <span class="original-price">SAR 199.00</span>
-                </div>
-                <!-- Apne Amazon Affiliate Link se URL Replace Karein -->
-                <a href="https://www.amazon.sa" target="_blank" class="btn-amazon">
-                    <i class="fa-brands fa-amazon"></i> View Deal on Amazon
-                </a>
-            </div>
-
-            <!-- Product 2 -->
-            <div class="card">
-                <span class="badge">15% OFF</span>
-                <img src="https://m.media-amazon.com/images/I/71TPda7cwUL._AC_SL1500_.jpg" alt="Product">
-                <div class="card-title">Smartwatch Fitness Tracker with Heart Rate Monitor</div>
-                <div class="price-box">
-                    <span class="current-price">SAR 219.00</span>
-                    <span class="original-price">SAR 259.00</span>
-                </div>
-                <a href="https://www.amazon.sa" target="_blank" class="btn-amazon">
-                    <i class="fa-brands fa-amazon"></i> View Deal on Amazon
-                </a>
-            </div>
-
-            <!-- Product 3 -->
-            <div class="card">
-                <span class="badge">40% OFF</span>
-                <img src="https://m.media-amazon.com/images/I/61N4j4vHIsL._AC_SL1500_.jpg" alt="Product">
-                <div class="card-title">Fast Charging Power Bank 20000mAh Dual Output</div>
-                <div class="price-box">
-                    <span class="current-price">SAR 89.00</span>
-                    <span class="original-price">SAR 149.00</span>
-                </div>
-                <a href="https://www.amazon.sa" target="_blank" class="btn-amazon">
-                    <i class="fa-brands fa-amazon"></i> View Deal on Amazon
-                </a>
-            </div>
-
-            <!-- Product 4 -->
-            <div class="card">
-                <span class="badge">30% OFF</span>
-                <img src="https://m.media-amazon.com/images/I/71c5W9NxN5L._AC_SL1500_.jpg" alt="Product">
-                <div class="card-title">Portable Air Fryer 4.5L Digital Touchscreen</div>
-                <div class="price-box">
-                    <span class="current-price">SAR 299.00</span>
-                    <span class="original-price">SAR 429.00</span>
-                </div>
-                <a href="https://www.amazon.sa" target="_blank" class="btn-amazon">
-                    <i class="fa-brands fa-amazon"></i> View Deal on Amazon
-                </a>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 KSA Deal Finder. Participant in the Amazon Services LLC Associates Program.</p>
-    </footer>
-
-</body>
-</html>
+    <!-- Daily Use Category Dropdown -->
+    <li class="nav-item dropdown">
+      <a href="#" class="nav-link">Daily Use ▾</a>
+      <div class="dropdown-menu">
+        <a href="#">Personal Care</a>
+        <a href="#">Cleaning Essentials</a>
+        <a href="#">Home Organizers</a>
+      </div>
+    </li>
+  </ul>
+</nav>
