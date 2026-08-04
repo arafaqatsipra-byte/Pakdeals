@@ -1,243 +1,383 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PakDeals - Best Amazon Deals</title>
-  <style>
-    /* General Styles */
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PakDeals - Best Deals, Coupons & Unique Items in Pakistan</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Reset & Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    /* Navigation Bar */
-    .main-nav {
-      background-color: #1a1a1a;
-    }
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --primary-dark: #0f3822; /* Dark Green Header & Buttons */
+            --primary-accent: #166534; /* Hover Green */
+            --arrow-gold: #f59e0b; /* Amazon Style Arrow Color */
+            --text-color: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
 
-    .nav-links {
-      display: flex;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      flex-wrap: wrap;
-    }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-    .nav-item {
-      position: relative;
-    }
+        /* Top Header */
+        header {
+            background-color: #ffffff;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-    .nav-link, .nav-links > li > a {
-      display: block;
-      padding: 15px 22px;
-      color: #ffffff !important;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 15px;
-    }
+        /* Amazon Style Logo */
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            position: relative;
+        }
 
-    .nav-link:hover, .nav-links > li > a:hover {
-      background-color: #007bff;
-    }
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            letter-spacing: -0.5px;
+        }
 
-    /* Dropdown Menu */
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background-color: #ffffff;
-      min-width: 220px;
-      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-      border-radius: 0 0 6px 6px;
-      z-index: 9999;
-    }
+        /* Curved Smile Arrow under logo */
+        .amazon-smile {
+            width: 100%;
+            height: 12px;
+            margin-top: -6px;
+        }
 
-    .dropdown-menu a {
-      display: block;
-      padding: 12px 18px;
-      color: #333333 !important;
-      text-decoration: none;
-      font-size: 14px;
-      border-bottom: 1px solid #f0f0f0;
-    }
+        .search-bar {
+            position: relative;
+            width: 45%;
+            max-width: 500px;
+        }
 
-    .dropdown-menu a:hover {
-      background-color: #f8f9fa;
-      color: #007bff !important;
-    }
+        .search-bar input {
+            width: 100%;
+            padding: 10px 15px 10px 40px;
+            border-radius: 25px;
+            border: 2px solid var(--border-color);
+            background-color: #f1f5f9;
+            color: var(--text-color);
+            outline: none;
+            transition: border-color 0.3s;
+        }
 
-    .dropdown:hover .dropdown-menu {
-      display: block;
-    }
+        .search-bar input:focus {
+            border-color: var(--primary-dark);
+        }
 
-    /* Banner Section */
-    .hero-banner {
-      background: linear-gradient(135deg, #007bff, #0056b3);
-      color: white;
-      text-align: center;
-      padding: 40px 20px;
-    }
+        .search-bar i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
 
-    .hero-banner h1 {
-      margin: 0 0 10px 0;
-      font-size: 28px;
-    }
+        /* Dark Green Navigation Category Bar */
+        .category-bar {
+            background-color: var(--primary-dark);
+            padding: 0.8rem 2rem;
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            align-items: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
 
-    /* Container & Product Grid */
-    .container {
-      max-width: 1100px;
-      margin: 20px auto;
-      padding: 0 15px;
-    }
+        .cat-btn {
+            background: transparent;
+            color: #e2e8f0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
 
-    .section-title {
-      font-size: 22px;
-      margin-bottom: 20px;
-      color: #333;
-    }
+        .cat-btn:hover, .cat-btn.active {
+            background-color: #ffffff;
+            color: var(--primary-dark);
+            font-weight: 700;
+            border-color: #ffffff;
+        }
 
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
+        /* Badge for Special Categories */
+        .badge-new {
+            background-color: var(--arrow-gold);
+            color: #000;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-left: 3px;
+        }
 
-    .product-card {
-      background: white;
-      border-radius: 8px;
-      padding: 15px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      text-align: center;
-    }
+        /* Deals Grid Main Body */
+        .main-content {
+            padding: 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+            width: 100%;
+            flex-grow: 1;
+        }
 
-    .product-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 6px;
-    }
+        .deals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 22px;
+        }
 
-    .product-title {
-      font-size: 16px;
-      margin: 10px 0;
-      color: #222;
-    }
+        /* Cards Design */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
 
-    .price {
-      font-size: 18px;
-      color: #e47911;
-      font-weight: bold;
-      margin-bottom: 12px;
-    }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(15, 56, 34, 0.12);
+        }
 
-    .buy-btn {
-      display: inline-block;
-      background-color: #ffd814;
-      color: #111;
-      border: 1px solid #fcd200;
-      padding: 10px 15px;
-      border-radius: 20px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 14px;
-      width: 80%;
-    }
+        .card-img {
+            width: 100%;
+            height: 180px;
+            background-color: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-dark);
+            font-size: 3rem;
+            border-bottom: 1px solid var(--border-color);
+        }
 
-    .buy-btn:hover {
-      background-color: #f7ca00;
-    }
-  </style>
+        .card-body {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-badge {
+            align-self: flex-start;
+            background-color: #e6f4ea;
+            color: var(--primary-dark);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+            flex-grow: 1;
+            line-height: 1.4;
+        }
+
+        .btn-get {
+            background-color: var(--primary-dark);
+            color: #ffffff;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-get:hover {
+            background-color: var(--primary-accent);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: #e2e8f0;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: auto;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
 
-  <!-- NAVBAR WITH DROPDOWNS -->
-  <nav class="main-nav">
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
+    <!-- White Top Header -->
+    <header>
+        <a href="#" class="logo-container">
+            <span class="logo-text">PakDeals</span>
+            <!-- Amazon Style Smile Arrow SVG -->
+            <svg class="amazon-smile" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 10,5 Q 50,22 90,5" stroke="#f59e0b" stroke-width="4" stroke-linecap="round" fill="transparent"/>
+                <path d="M 85,2 L 92,6 L 87,11" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" fill="transparent"/>
+            </svg>
+        </a>
 
-      <!-- Fashion (Abayas) -->
-      <li class="nav-item dropdown">
-        <a href="#" class="nav-link">Fashion ▾</a>
-        <div class="dropdown-menu">
-          <a href="#">Abayas & Hijabs</a>
-          <a href="#">Women's Dresses</a>
-          <a href="#">Bags & Footwear</a>
+        <div class="search-bar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search deals, coupons, stores...">
         </div>
-      </li>
+    </header>
 
-      <!-- Kitchen -->
-      <li class="nav-item dropdown">
-        <a href="#" class="nav-link">Kitchen ▾</a>
-        <div class="dropdown-menu">
-          <a href="#">Kitchen Appliances</a>
-          <a href="#">Cookware & Utensils</a>
-          <a href="#">Storage & Containers</a>
-        </div>
-      </li>
-
-      <!-- Electronics -->
-      <li class="nav-item dropdown">
-        <a href="#" class="nav-link">Electronics ▾</a>
-        <div class="dropdown-menu">
-          <a href="#">Mobile Accessories</a>
-          <a href="#">Smartwatches</a>
-          <a href="#">Headphones & Speakers</a>
-        </div>
-      </li>
-
-      <!-- Daily Use -->
-      <li class="nav-item dropdown">
-        <a href="#" class="nav-link">Daily Use ▾</a>
-        <div class="dropdown-menu">
-          <a href="#">Personal Care & Beauty</a>
-          <a href="#">Cleaning Essentials</a>
-          <a href="#">Home Organizers</a>
-        </div>
-      </li>
-    </ul>
-  </nav>
-
-  <!-- BANNER -->
-  <div class="hero-banner">
-    <h1>Welcome to PakDeals</h1>
-    <p>Find the Best Amazon Deals & Top Products</p>
-  </div>
-
-  <!-- PRODUCTS SECTION -->
-  <div class="container">
-    <h2 class="section-title">Featured Deals</h2>
-    
-    <div class="product-grid">
-      
-      <!-- Product 1: Abaya -->
-      <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=400" alt="Abaya">
-        <div class="product-title">Stylish Black Abaya</div>
-        <div class="price">$29.99</div>
-        <a href="#" class="buy-btn">Buy on Amazon</a>
-      </div>
-
-      <!-- Product 2: Kitchen -->
-      <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=400" alt="Kitchen">
-        <div class="product-title">Non-Stick Cookware Set</div>
-        <div class="price">$49.99</div>
-        <a href="#" class="buy-btn">Buy on Amazon</a>
-      </div>
-
-      <!-- Product 3: Electronics -->
-      <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=400" alt="Smartwatch">
-        <div class="product-title">Smart Fitness Watch</div>
-        <div class="price">$39.99</div>
-        <a href="#" class="buy-btn">Buy on Amazon</a>
-      </div>
-
+    <!-- Dark Green Category Bar -->
+    <div class="category-bar">
+        <button class="cat-btn active" onclick="filterCategory('all', event)"><i class="fa-solid fa-border-all"></i> All</button>
+        <button class="cat-btn" onclick="filterCategory('deals', event)"><i class="fa-solid fa-tag"></i> Deals</button>
+        <button class="cat-btn" onclick="filterCategory('coupons', event)"><i class="fa-solid fa-ticket"></i> Coupons</button>
+        <button class="cat-btn" onclick="filterCategory('stores', event)"><i class="fa-solid fa-store"></i> Stores</button>
+        <button class="cat-btn" onclick="filterCategory('electronics', event)"><i class="fa-solid fa-laptop"></i> Electronics</button>
+        <button class="cat-btn" onclick="filterCategory('fashion', event)"><i class="fa-solid fa-shirt"></i> Fashion</button>
+        
+        <!-- NEW UNIQUE ITEMS & PORTFOLIO CATEGORIES -->
+        <button class="cat-btn" onclick="filterCategory('unique', event)"><i class="fa-solid fa-wand-magic-sparkles"></i> Unique Items <span class="badge-new">NEW</span></button>
+        <button class="cat-btn" onclick="filterCategory('portfolio', event)"><i class="fa-solid fa-briefcase"></i> Portfolio</button>
     </div>
-  </div>
 
+    <!-- Deals Main Content -->
+    <main class="main-content">
+        <div class="deals-grid" id="dealsGrid">
+            
+            <!-- Unique Item Category Card -->
+            <div class="card" data-category="unique">
+                <div class="card-img"><i class="fa-solid fa-gem"></i></div>
+                <div class="card-body">
+                    <span class="card-badge">Unique Items</span>
+                    <h3 class="card-title">Custom Neon LED Lights</h3>
+                    <p class="card-desc">Handmade aesthetic room decor items with 30% discount.</p>
+                    <button class="btn-get">View Product</button>
+                </div>
+            </div>
+
+            <!-- Electronics Card -->
+            <div class="card" data-category="electronics">
+                <div class="card-img"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                <div class="card-body">
+                    <span class="card-badge">Electronics</span>
+                    <h3 class="card-title">Smartphone Sale 20% OFF</h3>
+                    <p class="card-desc">Get huge discounts on the latest smartphones in Pakistan.</p>
+                    <button class="btn-get">Get Deal</button>
+                </div>
+            </div>
+
+            <!-- Coupon Card -->
+            <div class="card" data-category="coupons">
+                <div class="card-img"><i class="fa-solid fa-bag-shopping"></i></div>
+                <div class="card-body">
+                    <span class="card-badge">Coupons</span>
+                    <h3 class="card-title">Rs. 500 Grocery Voucher</h3>
+                    <p class="card-desc">Use code PAK500 at checkout to get flat discount.</p>
+                    <button class="btn-get">Get Code</button>
+                </div>
+            </div>
+
+            <!-- Fashion Card -->
+            <div class="card" data-category="fashion">
+                <div class="card-img"><i class="fa-solid fa-shirt"></i></div>
+                <div class="card-body">
+                    <span class="card-badge">Fashion</span>
+                    <h3 class="card-title">Exclusive Summer Collection</h3>
+                    <p class="card-desc">Flat 40% OFF on top fashion brands in Pakistan.</p>
+                    <button class="btn-get">Get Deal</button>
+                </div>
+            </div>
+
+            <!-- Portfolio Card -->
+            <div class="card" data-category="portfolio">
+                <div class="card-img"><i class="fa-solid fa-code"></i></div>
+                <div class="card-body">
+                    <span class="card-badge">Portfolio</span>
+                    <h3 class="card-title">Web Development Services</h3>
+                    <p class="card-desc">Hire us for custom web development and UI/UX design.</p>
+                    <button class="btn-get">View Projects</button>
+                </div>
+            </div>
+
+            <!-- Store Card -->
+            <div class="card" data-category="stores">
+                <div class="card-img"><i class="fa-solid fa-store"></i></div>
+                <div class="card-body">
+                    <span class="card-badge">Stores</span>
+                    <h3 class="card-title">Verified Official Stores</h3>
+                    <p class="card-desc">Explore discounts from top rated Pakistan online stores.</p>
+                    <button class="btn-get">Visit Store</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 PakDeals. All Rights Reserved. Built for Vercel.</p>
+    </footer>
+
+    <!-- Filter JavaScript Code -->
+    <script>
+        function filterCategory(categoryName, event) {
+            // Button Active Highlight
+            const buttons = document.querySelectorAll('.cat-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            // Dynamic Cards Filter Logic
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                if (categoryName === 'all' || card.getAttribute('data-category') === categoryName) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
