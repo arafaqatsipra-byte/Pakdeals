@@ -48,27 +48,22 @@
     display: block;
     padding: 12px 18px;
     color: #333333 !important;
-    text-decoration: none;
-    font-weight: normal;
-    font-size: 14px;
-    border-bottom: 1px solid #f0f0f0;
-  }
-
-  .dropdown-menu a:hover {
-    background-color: #f8f9fa;
-    color: #007bff !important;
-  }
-
-  /* Hover Effect: Cursor lane par menu khulega */
-  .dropdown:hover .dropdown-menu {
-    display: block;
-  }
-</style>
-<nav class="main-nav">
+    <nav class="main-nav">
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
 
-    <!-- Kitchen Category Dropdown -->
+    <!-- 1. Fashion Category (with Abaya) -->
+    <li class="nav-item dropdown">
+      <a href="#" class="nav-link">Fashion ▾</a>
+      <div class="dropdown-menu">
+        <a href="#">Abayas & Hijabs</a>
+        <a href="#">Women's Dresses</a>
+        <a href="#">Bags & Footwear</a>
+        <a href="#">Jewelry & Accessories</a>
+      </div>
+    </li>
+
+    <!-- 2. Kitchen Category -->
     <li class="nav-item dropdown">
       <a href="#" class="nav-link">Kitchen ▾</a>
       <div class="dropdown-menu">
@@ -79,7 +74,7 @@
       </div>
     </li>
 
-    <!-- Electronics Category Dropdown -->
+    <!-- 3. Electronics Category -->
     <li class="nav-item dropdown">
       <a href="#" class="nav-link">Electronics ▾</a>
       <div class="dropdown-menu">
@@ -90,11 +85,11 @@
       </div>
     </li>
 
-    <!-- Daily Use Category Dropdown -->
+    <!-- 4. Daily Use Category -->
     <li class="nav-item dropdown">
       <a href="#" class="nav-link">Daily Use ▾</a>
       <div class="dropdown-menu">
-        <a href="#">Personal Care</a>
+        <a href="#">Personal Care & Beauty</a>
         <a href="#">Cleaning Essentials</a>
         <a href="#">Home Organizers</a>
       </div>
