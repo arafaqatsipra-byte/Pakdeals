@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PakDeals - Best Deals, Coupons & Unique Items in Pakistan</title>
+    <title>PakDeals - Top Deals & Coupons</title>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* CSS Reset & Variables */
         * {
             margin: 0;
             padding: 0;
@@ -18,12 +17,17 @@
         :root {
             --bg-color: #f8fafc;
             --card-bg: #ffffff;
-            --primary-dark: #0f3822; /* Dark Green Header & Buttons */
-            --primary-accent: #166534; /* Hover Green */
-            --arrow-gold: #f59e0b; /* Amazon Style Arrow Color */
+            --primary-dark: #0f3822; /* Dark Green Header */
+            --primary-accent: #166534;
+            --arrow-gold: #f59e0b; /* Amazon Yellow Arrow */
             --text-color: #1e293b;
             --text-muted: #64748b;
             --border-color: #e2e8f0;
+            
+            /* Affiliate Store Badges */
+            --amazon-color: #ff9900;
+            --aliexpress-color: #ff4747;
+            --shopify-color: #95bf47;
         }
 
         body {
@@ -52,7 +56,6 @@
             display: flex;
             flex-direction: column;
             text-decoration: none;
-            position: relative;
         }
 
         .logo-text {
@@ -62,7 +65,6 @@
             letter-spacing: -0.5px;
         }
 
-        /* Curved Smile Arrow under logo */
         .amazon-smile {
             width: 100%;
             height: 12px;
@@ -83,22 +85,9 @@
             background-color: #f1f5f9;
             color: var(--text-color);
             outline: none;
-            transition: border-color 0.3s;
         }
 
-        .search-bar input:focus {
-            border-color: var(--primary-dark);
-        }
-
-        .search-bar i {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-        }
-
-        /* Dark Green Navigation Category Bar */
+        /* Navigation Category Bar */
         .category-bar {
             background-color: var(--primary-dark);
             padding: 0.8rem 2rem;
@@ -106,7 +95,6 @@
             gap: 12px;
             overflow-x: auto;
             align-items: center;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
         .cat-btn {
@@ -131,18 +119,16 @@
             border-color: #ffffff;
         }
 
-        /* Badge for Special Categories */
-        .badge-new {
-            background-color: var(--arrow-gold);
-            color: #000;
-            font-size: 0.7rem;
+        .badge-hot {
+            background-color: #ef4444;
+            color: #fff;
+            font-size: 0.65rem;
             padding: 2px 6px;
             border-radius: 8px;
             font-weight: bold;
-            margin-left: 3px;
         }
 
-        /* Deals Grid Main Body */
+        /* Deals Grid */
         .main-content {
             padding: 2rem;
             max-width: 1300px;
@@ -166,7 +152,7 @@
             transition: transform 0.2s, box-shadow 0.2s;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            position: relative;
         }
 
         .card:hover {
@@ -193,6 +179,22 @@
             flex-grow: 1;
         }
 
+        /* Affiliate Store Tag */
+        .store-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 6px;
+            color: #fff;
+        }
+
+        .tag-amazon { background-color: var(--amazon-color); color: #000; }
+        .tag-aliexpress { background-color: var(--aliexpress-color); }
+        .tag-shopify { background-color: var(--shopify-color); }
+
         .card-badge {
             align-self: flex-start;
             background-color: #e6f4ea;
@@ -202,7 +204,6 @@
             font-size: 0.75rem;
             font-weight: 700;
             margin-bottom: 10px;
-            text-transform: uppercase;
         }
 
         .card-title {
@@ -220,7 +221,8 @@
             line-height: 1.4;
         }
 
-        .btn-get {
+        /* Buy / Affiliate Link Button */
+        .btn-buy {
             background-color: var(--primary-dark);
             color: #ffffff;
             border: none;
@@ -232,31 +234,32 @@
             transition: background 0.3s;
             text-align: center;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
-        .btn-get:hover {
+        .btn-buy:hover {
             background-color: var(--primary-accent);
         }
 
-        /* Footer */
         footer {
             background-color: var(--primary-dark);
             color: #e2e8f0;
             text-align: center;
             padding: 1.5rem;
             margin-top: auto;
-            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
 
-    <!-- White Top Header -->
+    <!-- Header -->
     <header>
         <a href="#" class="logo-container">
             <span class="logo-text">PakDeals</span>
-            <!-- Amazon Style Smile Arrow SVG -->
-            <svg class="amazon-smile" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="amazon-smile" viewBox="0 0 100 20" fill="none">
                 <path d="M 10,5 Q 50,22 90,5" stroke="#f59e0b" stroke-width="4" stroke-linecap="round" fill="transparent"/>
                 <path d="M 85,2 L 92,6 L 87,11" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" fill="transparent"/>
             </svg>
@@ -264,91 +267,66 @@
 
         <div class="search-bar">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Search deals, coupons, stores...">
+            <input type="text" placeholder="Search Amazon, AliExpress & Shopify Deals...">
         </div>
     </header>
 
-    <!-- Dark Green Category Bar -->
+    <!-- Navigation Bar with SAUDI ABAYA Category -->
     <div class="category-bar">
-        <button class="cat-btn active" onclick="filterCategory('all', event)"><i class="fa-solid fa-border-all"></i> All</button>
-        <button class="cat-btn" onclick="filterCategory('deals', event)"><i class="fa-solid fa-tag"></i> Deals</button>
-        <button class="cat-btn" onclick="filterCategory('coupons', event)"><i class="fa-solid fa-ticket"></i> Coupons</button>
-        <button class="cat-btn" onclick="filterCategory('stores', event)"><i class="fa-solid fa-store"></i> Stores</button>
+        <button class="cat-btn active" onclick="filterCategory('all', event)"><i class="fa-solid fa-border-all"></i> All Deals</button>
+        
+        <!-- NEW SAUDI ABAYA CATEGORY -->
+        <button class="cat-btn" onclick="filterCategory('abaya', event)"><i class="fa-solid fa-user-ninja"></i> Saudi Abaya <span class="badge-hot">HOT</span></button>
+        
+        <button class="cat-btn" onclick="filterCategory('unique', event)"><i class="fa-solid fa-wand-magic-sparkles"></i> Unique Items</button>
         <button class="cat-btn" onclick="filterCategory('electronics', event)"><i class="fa-solid fa-laptop"></i> Electronics</button>
         <button class="cat-btn" onclick="filterCategory('fashion', event)"><i class="fa-solid fa-shirt"></i> Fashion</button>
-        
-        <!-- NEW UNIQUE ITEMS & PORTFOLIO CATEGORIES -->
-        <button class="cat-btn" onclick="filterCategory('unique', event)"><i class="fa-solid fa-wand-magic-sparkles"></i> Unique Items <span class="badge-new">NEW</span></button>
         <button class="cat-btn" onclick="filterCategory('portfolio', event)"><i class="fa-solid fa-briefcase"></i> Portfolio</button>
     </div>
 
-    <!-- Deals Main Content -->
+    <!-- Main Content Grid -->
     <main class="main-content">
         <div class="deals-grid" id="dealsGrid">
             
-            <!-- Unique Item Category Card -->
+            <!-- SAUDI ABAYA ITEM (Shopify / Dropshipping Example) -->
+            <div class="card" data-category="abaya">
+                <span class="store-tag tag-shopify">Shopify</span>
+                <div class="card-img"><i class="fa-solid fa-person-dress"></i></div>
+                <div class="card-body">
+                    <span class="card-badge">Saudi Abaya</span>
+                    <h3 class="card-title">Luxury Black Silk Abaya</h3>
+                    <p class="card-desc">Authentic Saudi style design, breathable high quality fabric.</p>
+                    <a href="YOUR_SHOPIFY_AFFILIATE_LINK" target="_blank" class="btn-buy">
+                        Buy on Shopify <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- UNIQUE ITEM (AliExpress Affiliate Example) -->
             <div class="card" data-category="unique">
+                <span class="store-tag tag-aliexpress">AliExpress</span>
                 <div class="card-img"><i class="fa-solid fa-gem"></i></div>
                 <div class="card-body">
                     <span class="card-badge">Unique Items</span>
-                    <h3 class="card-title">Custom Neon LED Lights</h3>
-                    <p class="card-desc">Handmade aesthetic room decor items with 30% discount.</p>
-                    <button class="btn-get">View Product</button>
+                    <h3 class="card-title">Custom Neon LED Light</h3>
+                    <p class="card-desc">Trending room decor item available on AliExpress with fast shipping.</p>
+                    <a href="YOUR_ALIEXPRESS_AFFILIATE_LINK" target="_blank" class="btn-buy">
+                        Buy on AliExpress <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
                 </div>
             </div>
 
-            <!-- Electronics Card -->
+            <!-- ELECTRONICS ITEM (Amazon Affiliate Example) -->
             <div class="card" data-category="electronics">
-                <div class="card-img"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                <span class="store-tag tag-amazon">Amazon</span>
+                <div class="card-img"><i class="fa-solid fa-headphones"></i></div>
                 <div class="card-body">
                     <span class="card-badge">Electronics</span>
-                    <h3 class="card-title">Smartphone Sale 20% OFF</h3>
-                    <p class="card-desc">Get huge discounts on the latest smartphones in Pakistan.</p>
-                    <button class="btn-get">Get Deal</button>
-                </div>
-            </div>
-
-            <!-- Coupon Card -->
-            <div class="card" data-category="coupons">
-                <div class="card-img"><i class="fa-solid fa-bag-shopping"></i></div>
-                <div class="card-body">
-                    <span class="card-badge">Coupons</span>
-                    <h3 class="card-title">Rs. 500 Grocery Voucher</h3>
-                    <p class="card-desc">Use code PAK500 at checkout to get flat discount.</p>
-                    <button class="btn-get">Get Code</button>
-                </div>
-            </div>
-
-            <!-- Fashion Card -->
-            <div class="card" data-category="fashion">
-                <div class="card-img"><i class="fa-solid fa-shirt"></i></div>
-                <div class="card-body">
-                    <span class="card-badge">Fashion</span>
-                    <h3 class="card-title">Exclusive Summer Collection</h3>
-                    <p class="card-desc">Flat 40% OFF on top fashion brands in Pakistan.</p>
-                    <button class="btn-get">Get Deal</button>
-                </div>
-            </div>
-
-            <!-- Portfolio Card -->
-            <div class="card" data-category="portfolio">
-                <div class="card-img"><i class="fa-solid fa-code"></i></div>
-                <div class="card-body">
-                    <span class="card-badge">Portfolio</span>
-                    <h3 class="card-title">Web Development Services</h3>
-                    <p class="card-desc">Hire us for custom web development and UI/UX design.</p>
-                    <button class="btn-get">View Projects</button>
-                </div>
-            </div>
-
-            <!-- Store Card -->
-            <div class="card" data-category="stores">
-                <div class="card-img"><i class="fa-solid fa-store"></i></div>
-                <div class="card-body">
-                    <span class="card-badge">Stores</span>
-                    <h3 class="card-title">Verified Official Stores</h3>
-                    <p class="card-desc">Explore discounts from top rated Pakistan online stores.</p>
-                    <button class="btn-get">Visit Store</button>
+                    <h3 class="card-title">Wireless Bluetooth Earbuds</h3>
+                    <p class="card-desc">Noise-canceling earphones with long battery backup on Amazon.</p>
+                    <a href="YOUR_AMAZON_AFFILIATE_LINK" target="_blank" class="btn-buy">
+                        Buy on Amazon <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
                 </div>
             </div>
 
@@ -357,18 +335,16 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 PakDeals. All Rights Reserved. Built for Vercel.</p>
+        <p>&copy; 2026 PakDeals Affiliate Hub. Powered by Amazon, AliExpress & Shopify.</p>
     </footer>
 
-    <!-- Filter JavaScript Code -->
+    <!-- Filter JS Script -->
     <script>
         function filterCategory(categoryName, event) {
-            // Button Active Highlight
             const buttons = document.querySelectorAll('.cat-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             event.currentTarget.classList.add('active');
 
-            // Dynamic Cards Filter Logic
             const cards = document.querySelectorAll('.card');
             cards.forEach(card => {
                 if (categoryName === 'all' || card.getAttribute('data-category') === categoryName) {
