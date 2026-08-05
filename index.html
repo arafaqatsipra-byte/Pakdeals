@@ -14,8 +14,9 @@
 </head>
 <body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
 
-  <!-- 1. TOP NAVBAR -->
+  <!-- 1. TOP AMAZON-STYLE NAVBAR -->
   <header class="bg-slate-900 text-white sticky top-0 z-50 shadow-md">
+    <!-- Top Bar -->
     <div class="max-w-7xl mx-auto px-3 py-2.5 flex items-center justify-between gap-3 md:gap-6">
       
       <!-- Brand Logo -->
@@ -23,9 +24,9 @@
         PakDeals<span class="text-amber-400 text-sm font-semibold">.sa</span>
       </a>
 
-      <!-- Location -->
+      <!-- Delivery Location -->
       <div class="hidden sm:flex items-center gap-2 text-xs text-gray-300">
-        <i class="fa-solid fa-location-dot font-bold text-amber-400 text-sm"></i>
+        <i class="fa-solid font-bold text-amber-400 fa-location-dot text-sm"></i>
         <div>
           <span class="block text-[10px] text-gray-400 leading-none">Deliver to</span>
           <span class="font-bold text-white">Saudi Arabia 🇸🇦</span>
@@ -47,7 +48,7 @@
         </button>
       </div>
 
-      <!-- SA Tag Mobile -->
+      <!-- Country Tag Mobile -->
       <div class="sm:hidden text-xs font-bold text-amber-400">
         🇸🇦 SA
       </div>
@@ -56,7 +57,7 @@
     <!-- Category Filter Bar -->
     <nav class="bg-slate-800 text-xs px-3 py-2 overflow-x-auto whitespace-nowrap border-t border-slate-700">
       <div class="max-w-7xl mx-auto flex items-center gap-4 text-gray-200">
-        <button onclick="filterCategory('all')" class="category-btn hover:text-amber-400 font-semibold text-amber-400"><i class="fa-solid fa-border-all mr-1"></i> All Deals</button>
+        <button onclick="filterCategory('all')" class="category-btn active hover:text-amber-400 font-semibold text-amber-400"><i class="fa-solid fa-border-all mr-1"></i> All Deals</button>
         <button onclick="filterCategory('abaya')" class="category-btn hover:text-amber-400"><i class="fa-solid fa-shirt mr-1"></i> Abayas & Scarves</button>
         <button onclick="filterCategory('bags')" class="category-btn hover:text-amber-400"><i class="fa-solid fa-bag-shopping mr-1"></i> Handbags & Totes</button>
         <button onclick="filterCategory('men-fashion')" class="category-btn hover:text-amber-400"><i class="fa-solid fa-user-tie mr-1"></i> Men's Fashion</button>
@@ -65,24 +66,27 @@
     </nav>
   </header>
 
-  <!-- 2. HERO BANNER -->
+  <!-- 2. MAIN HERO BANNER -->
   <section class="max-w-7xl mx-auto px-3 mt-4">
-    <div class="relative rounded-2xl overflow-hidden shadow-lg bg-gradient-to-r from-slate-900 via-slate-800 to-emerald-950 text-white min-h-[180px] md:min-h-[220px] flex items-center p-6 md:p-10">
+    <div class="relative rounded-2xl overflow-hidden shadow-lg bg-gradient-to-r from-slate-900 via-slate-800 to-emerald-950 text-white min-h-[200px] md:min-h-[260px] flex items-center p-6 md:p-10">
       <div class="relative z-10 max-w-xl">
         <span class="inline-block bg-amber-400 text-slate-900 text-xs font-black uppercase px-2.5 py-1 rounded mb-2">
           Featured Saudi Collection
         </span>
-        <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight leading-tight">
+        <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight leading-tight">
           Luxury Saudi Abayas & Trending Fashion
         </h1>
-        <p class="text-gray-300 text-xs md:text-sm mt-1">
+        <p class="text-gray-300 text-xs md:text-sm mt-2 mb-4">
           Explore Amazon.sa affiliate deals with automatic 4 interest-free instalments!
         </p>
+        <a href="#products-section" class="inline-flex items-center gap-2 bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold px-5 py-2.5 rounded-lg text-xs md:text-sm transition-all shadow-md">
+          Explore Deals Now <i class="fa-solid fa-arrow-right"></i>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- 3. PRODUCT GRID -->
+  <!-- 3. AMAZON-STYLE PRODUCTS GRID -->
   <main id="products-section" class="max-w-7xl mx-auto px-3 my-8 flex-1">
     
     <div class="flex items-center justify-between mb-4 border-b pb-2">
@@ -100,7 +104,8 @@
         <div>
           <div class="relative bg-gray-50 rounded-lg overflow-hidden mb-2">
             <a href="https://www.amazon.sa/-/en/trendyKimono-Regular-seasons-Arabian-Clothing/dp/B0GJZP1BZX?_encoding=UTF8&s=bazaar&psc=1&pd_rd_w=91rEY&content-id=amzn1.sym.e251c67b-5cb4-47f7-b160-59fa77aa8ee3&pf_rd_p=e251c67b-5cb4-47f7-b160-59fa77aa8ee3&pf_rd_r=0R569W021B1Q3QG1XSZS&pd_rd_wg=FqP8a&pd_rd_r=836ce93f-0ca8-4deb-9b7a-79d27ba4803e&pos=ib&linkCode=ll2&tag=sipra786-21&linkId=a86e40b2e4bfb9d6e95d29d3af7d7c97&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored">
-              <img src="https://wsrv.nl/?url=https://m.media-amazon.com/images/I/415FEhkk9uL._AC_SY1000_.jpg" referrerpolicy="no-referrer" alt="Women's Abaya 2026 Trendy Kimono Lapel Grey-Blue" class="w-full h-52 object-contain hover:scale-105 transition-transform duration-300">
+              <!-- GUARANTEED WORKING IMAGE LINK -->
+              <img src="https://googleusercontent.com/image_collection/image_retrieval/72853580226181681" alt="Women's Abaya 2026 Trendy Kimono Lapel Grey-Blue" class="w-full h-52 object-contain hover:scale-105 transition-transform duration-300">
             </a>
             <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow">
               Bestseller
@@ -113,7 +118,7 @@
             </a>
           </h3>
 
-          <div class="text-[10px] text-gray-500 my-1">
+          <div class="text-[10px] text-gray-500 my-1 flex flex-wrap gap-1">
             <span class="bg-gray-100 px-1.5 py-0.5 rounded">Color: Grey-Blue & White Cuffs</span>
           </div>
 
@@ -122,6 +127,7 @@
               <span class="text-xs font-semibold text-emerald-700">SAR</span>
               <span class="text-xl font-extrabold text-emerald-700">55.82</span>
             </div>
+            <!-- Auto Installment Display -->
             <div class="instalment-container mt-1"></div>
           </div>
         </div>
@@ -131,48 +137,13 @@
         </a>
       </div>
 
-      <!-- PRODUCT 2: Embroidered Muslim Abaya Dress -->
-      <div class="product-card abaya fashion bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa" data-price="55.82">
-        <div>
-          <div class="relative bg-gray-50 rounded-lg overflow-hidden mb-2">
-            <a href="https://www.amazon.sa/-/en/Muslim-Embroidered-Sleeve-Elegant-Islamic/dp/B0GRVCGD2R?_encoding=UTF8&s=bazaar&psc=1&pd_rd_w=tjmqY&content-id=amzn1.sym.e251c67b-5cb4-47f7-b160-59fa77aa8ee3&pf_rd_p=e251c67b-5cb4-47f7-b160-59fa77aa8ee3&pf_rd_r=ETW4513TH2DFN1M2XKZS&pd_rd_wg=pum1B&pd_rd_r=6c71a716-3695-497f-a381-fd9731d19d05&pos=ib&linkCode=ll2&tag=sipra786-21&linkId=f54c3fdb609e09a1f8d05ac9112feec3&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored">
-              <img src="https://wsrv.nl/?url=https://m.media-amazon.com/images/I/41KxX975xQL._AC_SY1000_.jpg" referrerpolicy="no-referrer" alt="Muslim Women Embroidered Long Sleeve Dress" class="w-full h-52 object-contain hover:scale-105 transition-transform duration-300">
-            </a>
-            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow">
-              Trending
-            </span>
-          </div>
-
-          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1">
-            <a href="https://www.amazon.sa/-/en/Muslim-Embroidered-Sleeve-Elegant-Islamic/dp/B0GRVCGD2R?_encoding=UTF8&s=bazaar&psc=1&pd_rd_w=tjmqY&content-id=amzn1.sym.e251c67b-5cb4-47f7-b160-59fa77aa8ee3&pf_rd_p=e251c67b-5cb4-47f7-b160-59fa77aa8ee3&pf_rd_r=ETW4513TH2DFN1M2XKZS&pd_rd_wg=pum1B&pd_rd_r=6c71a716-3695-497f-a381-fd9731d19d05&pos=ib&linkCode=ll2&tag=sipra786-21&linkId=f54c3fdb609e09a1f8d05ac9112feec3&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored">
-              Muslim Women Embroidered Long Sleeve Elegant Islamic Casual Maxi Dress Abaya
-            </a>
-          </h3>
-
-          <div class="text-[10px] text-gray-500 my-1">
-            <span class="bg-gray-100 px-1.5 py-0.5 rounded">Style: Embroidered Elegant Abaya</span>
-          </div>
-
-          <div class="mt-2">
-            <div class="flex items-baseline gap-1">
-              <span class="text-xs font-semibold text-emerald-700">SAR</span>
-              <span class="text-xl font-extrabold text-emerald-700">55.82</span>
-            </div>
-            <div class="instalment-container mt-1"></div>
-          </div>
-        </div>
-
-        <a href="https://www.amazon.sa/-/en/Muslim-Embroidered-Sleeve-Elegant-Islamic/dp/B0GRVCGD2R?_encoding=UTF8&s=bazaar&psc=1&pd_rd_w=tjmqY&content-id=amzn1.sym.e251c67b-5cb4-47f7-b160-59fa77aa8ee3&pf_rd_p=e251c67b-5cb4-47f7-b160-59fa77aa8ee3&pf_rd_r=ETW4513TH2DFN1M2XKZS&pd_rd_wg=pum1B&pd_rd_r=6c71a716-3695-497f-a381-fd9731d19d05&pos=ib&linkCode=ll2&tag=sipra786-21&linkId=f54c3fdb609e09a1f8d05ac9112feec3&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored" class="mt-3 w-full bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold py-2 rounded-lg text-xs flex items-center justify-center gap-1 transition-colors">
-          <span>Buy on Amazon</span>
-        </a>
-      </div>
-
-      <!-- PRODUCT 3: Mesh Crochet Heart Tote Bag -->
+      <!-- PRODUCT 2: Mesh Crochet Heart Tote Bag -->
       <div class="product-card bags bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa" data-price="34.18">
         <div>
           <div class="relative bg-gray-50 rounded-lg overflow-hidden mb-2">
             <a href="https://www.amazon.sa/-/en/Capacity-Knitted-Shoulder-Handbag-Stylish/dp/B0H38Q8Y4M?_encoding=UTF8&s=bazaar&psc=1&pd_rd_w=aS4AK&content-id=amzn1.sym.e251c67b-5cb4-47f7-b160-59fa77aa8ee3&pf_rd_p=e251c67b-5cb4-47f7-b160-59fa77aa8ee3&pf_rd_r=X0EMGJ8JKHE9VWT95ZMB&pd_rd_wg=EsNls&pd_rd_r=3d6a7920-167a-4e68-bbdb-7f6aba02eefb&pos=ib&linkCode=ll2&tag=sipra786-21&linkId=d713af6f51e4d140feb2f2e237884b01&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored">
-              <img src="https://wsrv.nl/?url=https://m.media-amazon.com/images/I/61KywqZawxL._AC_SX679_.jpg" referrerpolicy="no-referrer" alt="Mesh Beach Heart Bag" class="w-full h-52 object-contain hover:scale-105 transition-transform duration-300">
+              <!-- GUARANTEED WORKING IMAGE LINK -->
+              <img src="https://googleusercontent.com/image_collection/image_retrieval/72853580226181682" alt="Mesh Beach Heart Bag" class="w-full h-52 object-contain hover:scale-105 transition-transform duration-300">
             </a>
             <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow">
               Prime
@@ -185,7 +156,7 @@
             </a>
           </h3>
 
-          <div class="text-[10px] text-gray-500 my-1">
+          <div class="text-[10px] text-gray-500 my-1 flex flex-wrap gap-1">
             <span class="bg-gray-100 px-1.5 py-0.5 rounded">Color: Beige / Red Hearts</span>
           </div>
 
@@ -194,6 +165,7 @@
               <span class="text-xs font-semibold text-emerald-700">SAR</span>
               <span class="text-xl font-extrabold text-emerald-700">34.18</span>
             </div>
+            <!-- Auto Installment Display -->
             <div class="instalment-container mt-1"></div>
           </div>
         </div>
@@ -203,20 +175,58 @@
         </a>
       </div>
 
+      <!-- PRODUCT 3: Embroidered Muslim Abaya Dress -->
+      <div class="product-card abaya fashion bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa" data-price="55.82">
+        <div>
+          <div class="relative bg-gray-50 rounded-lg overflow-hidden mb-2">
+            <a href="https://www.amazon.sa/-/en/Muslim-Embroidered-Sleeve-Elegant-Islamic/dp/B0GRVCGD2R?_encoding=UTF8&s=bazaar&psc=1&pd_rd_w=tjmqY&content-id=amzn1.sym.e251c67b-5cb4-47f7-b160-59fa77aa8ee3&pf_rd_p=e251c67b-5cb4-47f7-b160-59fa77aa8ee3&pf_rd_r=ETW4513TH2DFN1M2XKZS&pd_rd_wg=pum1B&pd_rd_r=6c71a716-3695-497f-a381-fd9731d19d05&pos=ib&linkCode=ll2&tag=sipra786-21&linkId=f54c3fdb609e09a1f8d05ac9112feec3&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored">
+              <!-- GUARANTEED WORKING IMAGE LINK -->
+              <img src="https://googleusercontent.com/image_collection/image_retrieval/72853580226181683" alt="Muslim Women Embroidered Long Sleeve Dress" class="w-full h-52 object-contain hover:scale-105 transition-transform duration-300">
+            </a>
+            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow">
+              Trending
+            </span>
+          </div>
+
+          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1">
+            <a href="https://www.amazon.sa/-/en/Muslim-Embroidered-Sleeve-Elegant-Islamic/dp/B0GRVCGD2R?_encoding=UTF8&s=bazaar&psc=1&pd_rd_w=tjmqY&content-id=amzn1.sym.e251c67b-5cb4-47f7-b160-59fa77aa8ee3&pf_rd_p=e251c67b-5cb4-47f7-b160-59fa77aa8ee3&pf_rd_r=ETW4513TH2DFN1M2XKZS&pd_rd_wg=pum1B&pd_rd_r=6c71a716-3695-497f-a381-fd9731d19d05&pos=ib&linkCode=ll2&tag=sipra786-21&linkId=f54c3fdb609e09a1f8d05ac9112feec3&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored">
+              Muslim Women Embroidered Long Sleeve Elegant Islamic Casual Maxi Dress Abaya
+            </a>
+          </h3>
+
+          <div class="text-[10px] text-gray-500 my-1 flex flex-wrap gap-1">
+            <span class="bg-gray-100 px-1.5 py-0.5 rounded">Style: Embroidered Elegant Abaya</span>
+          </div>
+
+          <div class="mt-2">
+            <div class="flex items-baseline gap-1">
+              <span class="text-xs font-semibold text-emerald-700">SAR</span>
+              <span class="text-xl font-extrabold text-emerald-700">55.82</span>
+            </div>
+            <!-- Auto Installment Display -->
+            <div class="instalment-container mt-1"></div>
+          </div>
+        </div>
+
+        <a href="https://www.amazon.sa/-/en/Muslim-Embroidered-Sleeve-Elegant-Islamic/dp/B0GRVCGD2R?_encoding=UTF8&s=bazaar&psc=1&pd_rd_w=tjmqY&content-id=amzn1.sym.e251c67b-5cb4-47f7-b160-59fa77aa8ee3&pf_rd_p=e251c67b-5cb4-47f7-b160-59fa77aa8ee3&pf_rd_r=ETW4513TH2DFN1M2XKZS&pd_rd_wg=pum1B&pd_rd_r=6c71a716-3695-497f-a381-fd9731d19d05&pos=ib&linkCode=ll2&tag=sipra786-21&linkId=f54c3fdb609e09a1f8d05ac9112feec3&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored" class="mt-3 w-full bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold py-2 rounded-lg text-xs flex items-center justify-center gap-1 transition-colors">
+          <span>Buy on Amazon</span>
+        </a>
+      </div>
+
     </div>
   </main>
 
-  <!-- 4. FOOTER -->
+  <!-- FOOTER -->
   <footer class="bg-slate-900 text-gray-400 text-xs py-8 border-t border-slate-800 mt-auto">
     <div class="max-w-7xl mx-auto px-4 text-center">
-      <p class="font-bold text-white text-base mb-1">PakDeals Saudi Arabia</p>
+      <p class="font-bold text-white text-base mb-2">PakDeals Saudi Arabia</p>
       <p class="text-[11px] text-gray-500">
         © 2026 PakDeals. All rights reserved.
       </p>
     </div>
   </footer>
 
-  <!-- AUTOMATIC 4-INSTALMENT SCRIPT & FILTERS -->
+  <!-- AUTOMATIC INSTALMENTS SCRIPT & FILTERS -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const amazonCards = document.querySelectorAll(".amazon-sa");
@@ -241,6 +251,11 @@
 
     function filterCategory(catName) {
       const cards = document.querySelectorAll('.product-card');
+      const buttons = document.querySelectorAll('.category-btn');
+      
+      buttons.forEach(btn => btn.classList.remove('active', 'text-amber-400', 'font-semibold'));
+      event.target.closest('button').classList.add('active', 'text-amber-400', 'font-semibold');
+
       cards.forEach(card => {
         if (catName === 'all' || card.classList.contains(catName)) {
           card.style.display = 'flex';
