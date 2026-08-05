@@ -176,7 +176,82 @@
 
     </div>
   </main>
+<!-- Amazon Product Card Start -->
+<div class="product-card">
+    <div class="product-image">
+        <!-- Image Note: Aap Amazon se product image ka link copy kar ke yahan src mein laga sakte hain -->
+        <img src="https://m.media-amazon.com/images/I/71HndLIDu1L._AC_SX569_.jpg" alt="Muslim Embroidered Dress">
+    </div>
+    <div class="product-info">
+        <h2 class="product-title">Muslim Embroidered Long Sleeve Elegant Islamic Dress</h2>
+        <p class="product-description">High-quality, modest, and elegant floor-length tassel dress. Perfect for everyday wear or special occasions.</p>
+        <div class="product-price">
+            <span class="currency">SAR</span>
+            <span class="amount">120.00</span>
+        </div>
+        <a href="https://www.amazon.sa/-/en/Muslim-Embroidered-Sleeve-Elegant-Islamic/dp/B0GRVCGD2R?tag=sipra786-21" target="_blank" class="buy-button">View on Amazon</a>
+    </div>
+</div>
 
+<style>
+    .product-card {
+        width: 300px;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #fff;
+        margin: 20px auto;
+        transition: transform 0.3s ease;
+    }
+    .product-card:hover {
+        transform: translateY(-5px);
+    }
+    .product-image img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+    }
+    .product-info {
+        padding: 20px;
+        text-align: center;
+    }
+    .product-title {
+        font-size: 1.1rem;
+        color: #333;
+        margin-bottom: 10px;
+        height: 45px;
+        overflow: hidden;
+    }
+    .product-description {
+        font-size: 0.85rem;
+        color: #666;
+        margin-bottom: 15px;
+        line-height: 1.4;
+    }
+    .product-price {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: #B12704; /* Amazon Style Price Color */
+        margin-bottom: 15px;
+    }
+    .currency { font-size: 0.8rem; vertical-align: top; margin-right: 2px; }
+    .buy-button {
+        display: block;
+        background-color: #FFD814;
+        color: #000;
+        text-decoration: none;
+        padding: 10px 0;
+        border-radius: 20px;
+        font-weight: 500;
+        transition: background 0.3s;
+        border: 1px solid #FCD200;
+    }
+    .buy-button:hover {
+        background-color: #F7CA00;
+    }
+</style>
+<!-- Amazon Product Card End -->
   <!-- FOOTER -->
   <footer class="bg-slate-900 text-gray-400 text-xs py-8 border-t border-slate-800 mt-auto">
     <div class="max-w-7xl mx-auto px-4 text-center">
