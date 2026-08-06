@@ -3,195 +3,276 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PakDeals Saudi Arabia - Best Amazon Deals & Fashion</title>
-  <!-- Tailwind CSS CDN -->
+  <title>Your Store - Mobile Accessories & Men Fashion</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-    body { font-family: 'Inter', sans-serif; }
+    body {
+      font-family: 'Inter', sans-serif;
+    }
   </style>
 </head>
-<body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
+<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col justify-between">
 
-  <!-- 1. TOP NAVBAR -->
-  <header class="bg-slate-900 text-white sticky top-0 z-50 shadow-md">
-    <div class="max-w-7xl mx-auto px-3 py-2.5 flex items-center justify-between gap-3 md:gap-6">
-      
-      <!-- Brand Logo -->
-      <a href="#" class="text-xl md:text-2xl font-black tracking-tight text-white flex items-center gap-1">
-        PakDeals<span class="text-amber-400 text-sm font-semibold">.sa</span>
-      </a>
-
-      <!-- Location -->
-      <div class="hidden sm:flex items-center gap-2 text-xs text-gray-300">
-        <i class="fa-solid font-bold text-amber-400 fa-location-dot text-sm"></i>
-        <div>
-          <span class="block text-[10px] text-gray-400 leading-none">Deliver to</span>
-          <span class="font-bold text-white">Saudi Arabia 🇸🇦</span>
-        </div>
+  <!-- HEADER / NAVBAR -->
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl font-black bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">StoreHub</span>
       </div>
-
-      <!-- Search Bar -->
-      <div class="flex-1 max-w-2xl flex rounded-md overflow-hidden bg-white text-gray-800 shadow-inner">
-        <select id="categorySelect" onchange="filterProducts()" class="bg-gray-100 text-xs px-2 md:px-3 text-gray-700 border-r border-gray-300 focus:outline-none cursor-pointer hidden sm:block">
-          <option value="all">All Categories</option>
-          <option value="abaya">Abayas & Modest Wear</option>
-          <option value="bags">Bags & Totes</option>
-          <option value="men-fashion">Men's Fashion</option>
-          <option value="mobile-accessories">Mobile Accessories</option>
-        </select>
-        <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="Search Amazon SA deals..." class="w-full px-3 py-2 text-xs md:text-sm focus:outline-none" />
-        <button onclick="searchProducts()" class="bg-amber-400 hover:bg-amber-500 text-slate-900 px-4 font-bold text-sm transition-colors">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-600">
+        <a href="#" onclick="filterCategory('all', event)" class="hover:text-emerald-600 transition-colors">All Products</a>
+        <a href="#" onclick="filterCategory('mobile-accessories', event)" class="hover:text-emerald-600 transition-colors">Mobile Accessories</a>
+        <a href="#" onclick="filterCategory('mens-fashion', event)" class="hover:text-emerald-600 transition-colors">Men Fashion</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <span class="text-xs font-bold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full">Amazon 4-Instalment Active</span>
       </div>
-
-      <div class="sm:hidden text-xs font-bold text-amber-400">🇸🇦 SA</div>
     </div>
-
-    <!-- Category Navigation -->
-    <nav class="bg-slate-800 text-xs px-3 py-2 overflow-x-auto whitespace-nowrap border-t border-slate-700">
-      <div class="max-w-7xl mx-auto flex items-center gap-4 text-gray-200">
-        <button onclick="filterCategory('all')" class="category-btn active hover:text-amber-400 font-semibold text-amber-400"><i class="fa-solid fa-border-all mr-1"></i> All Deals</button>
-        <button onclick="filterCategory('abaya')" class="category-btn hover:text-amber-400"><i class="fa-solid fa-shirt mr-1"></i> Abayas & Scarves</button>
-        <button onclick="filterCategory('bags')" class="category-btn hover:text-amber-400"><i class="fa-solid fa-bag-shopping mr-1"></i> Handbags & Totes</button>
-        <button onclick="filterCategory('men-fashion')" class="category-btn hover:text-amber-400"><i class="fa-solid fa-user-tie mr-1"></i> Men's Fashion</button>
-        <button onclick="filterCategory('mobile-accessories')" class="category-btn hover:text-amber-400"><i class="fa-solid fa-mobile-screen mr-1"></i> Mobile Accessories</button>
-      </div>
-    </nav>
   </header>
 
-  <!-- 2. HERO BANNER -->
-  <section class="max-w-7xl mx-auto px-3 mt-4">
-    <div class="relative rounded-2xl overflow-hidden shadow-lg bg-gradient-to-r from-slate-900 via-slate-800 to-emerald-950 text-white min-h-[180px] md:min-h-[220px] flex items-center p-6 md:p-10">
-      <div class="relative z-10 max-w-xl">
-        <span class="inline-block bg-amber-400 text-slate-900 text-xs font-black uppercase px-2.5 py-1 rounded mb-2">
-          Featured Saudi Collection
-        </span>
-        <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight">
-          Luxury Deals & Mobile Accessories
-        </h1>
-        <p class="text-gray-300 text-xs md:text-sm mt-1 mb-4">
-          Direct Amazon.sa affiliate deals with 4 interest-free instalments!
-        </p>
+  <!-- CATEGORY TABS MOBILE -->
+  <div class="bg-white border-b border-gray-200 py-3 px-4 md:hidden flex gap-2 overflow-x-auto">
+    <button onclick="filterCategory('all', event)" class="whitespace-nowrap px-4 py-1.5 bg-emerald-600 text-white rounded-full text-xs font-bold category-btn">All</button>
+    <button onclick="filterCategory('mobile-accessories', event)" class="whitespace-nowrap px-4 py-1.5 bg-gray-100 text-gray-700 rounded-full text-xs font-bold category-btn">Mobile Accessories</button>
+    <button onclick="filterCategory('mens-fashion', event)" class="whitespace-nowrap px-4 py-1.5 bg-gray-100 text-gray-700 rounded-full text-xs font-bold category-btn">Men Fashion</button>
+  </div>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+    <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div>
+        <h1 class="text-2xl font-extrabold text-gray-900">Featured Collections</h1>
+        <p class="text-sm text-gray-500">Explore trending products with automated 4 installment plans.</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-semibold text-gray-500">Filter:</span>
+        <select id="sortSelect" onchange="sortProducts()" class="bg-white border border-gray-300 text-xs font-semibold rounded-lg px-3 py-2 outline-none focus:border-emerald-500">
+          <option value="default">Default sorting</option>
+          <option value="low-high">Price: Low to High</option>
+          <option value="high-low">Price: High to Low</option>
+        </select>
       </div>
     </div>
-  </section>
 
-  <!-- 3. PRODUCTS GRID -->
-  <main id="products-section" class="max-w-7xl mx-auto px-3 my-8 flex-1">
-    
-    <div class="flex items-center justify-between mb-4 border-b pb-2">
-      <h2 id="section-title" class="text-lg md:text-xl font-extrabold text-slate-900">
-        Today's Top Amazon Deals
-      </h2>
-      <span class="text-xs text-gray-500 font-medium">Updated Daily</span>
-    </div>
+    <!-- PRODUCT GRID -->
+    <div id="productGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
 
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5" id="productGrid">
-
-      <!-- PRODUCT 1: Kimono Abaya -->
-      <div class="product-card abaya bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa cursor-pointer" 
-           data-price="55.82"
-           data-title="Women's Abaya 2026 Trendy Kimono Lapel Modest Four Seasons Arabian Clothing"
-           data-mainimg="https://m.media-amazon.com/images/I/415FEhkk9uL._AC_SY1000_.jpg"
-           data-img1="https://m.media-amazon.com/images/I/415FEhkk9uL._AC_SY1000_.jpg"
-           data-img2="https://m.media-amazon.com/images/I/415FEhkk9uL._AC_SY1000_.jpg"
-           data-img3="https://m.media-amazon.com/images/I/415FEhkk9uL._AC_SY1000_.jpg"
-           data-img4="https://m.media-amazon.com/images/I/415FEhkk9uL._AC_SY1000_.jpg"
-           data-sizes="Free Size, Standard"
-           data-colors="Grey-Blue & White"
-           data-link="https://www.amazon.sa/-/en/trendyKimono-Regular-seasons-Arabian-Clothing/dp/B0GJZP1BZX"
+      <!-- PRODUCT 1: Short Sleeve Polo Shirt -->
+      <div class="product-card mens-fashion bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa cursor-pointer" 
+           data-price="13.00"
+           data-title="Short-Sleeve Polo Shirt for Men - Casual Summer Wear"
+           data-mainimg="https://images.unsplash.com/photo-1625910513418-7c471bfad756?w=600"
+           data-img1="https://images.unsplash.com/photo-1625910513418-7c471bfad756?w=600"
+           data-img2="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=600"
+           data-sizes="S, M, L, XL, XXL"
+           data-colors="Navy Blue, Black, White, Grey"
+           data-link="https://www.amazon.sa"
            onclick="openModal(this)">
         <div>
           <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative">
-            <img src="https://m.media-amazon.com/images/I/415FEhkk9uL._AC_SY1000_.jpg" alt="Kimono Abaya" class="w-full h-48 object-contain">
-            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow">Bestseller</span>
+            <img src="https://images.unsplash.com/photo-1625910513418-7c471bfad756?w=600" alt="Polo Shirt" class="w-full h-48 object-cover">
+            <span class="absolute top-2 left-2 bg-emerald-600 text-white font-bold text-[10px] px-2 py-0.5 rounded shadow">Men Fashion</span>
           </div>
-
           <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1">
-            Women's Abaya 2026 Trendy Kimono Lapel Modest Four Seasons Arabian Clothing
+            Short-Sleeve Polo Shirt for Men - Casual Summer Wear
           </h3>
-
           <div class="mt-2">
             <div class="flex items-baseline gap-1">
               <span class="text-xs font-semibold text-emerald-700">SAR</span>
-              <span class="text-xl font-extrabold text-emerald-700">55.82</span>
+              <span class="text-xl font-extrabold text-emerald-700">13.00</span>
             </div>
             <div class="instalment-container mt-1"></div>
           </div>
         </div>
-
         <button type="button" class="mt-3 w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 rounded-lg text-xs transition-colors">
           View Details
         </button>
       </div>
 
-      <!-- PRODUCT 2: Tote Bag -->
-      <div class="product-card bags bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa cursor-pointer" 
-           data-price="34.18"
-           data-title="Mesh Beach Bag Crochet Handbag Boho Bag For Women Knit Tote"
-           data-mainimg="https://m.media-amazon.com/images/I/61KywqZawxL._AC_SX679_.jpg"
-           data-img1="https://m.media-amazon.com/images/I/61KywqZawxL._AC_SX679_.jpg"
-           data-img2="https://m.media-amazon.com/images/I/61KywqZawxL._AC_SX679_.jpg"
-           data-img3="https://m.media-amazon.com/images/I/61KywqZawxL._AC_SX679_.jpg"
-           data-img4="https://m.media-amazon.com/images/I/61KywqZawxL._AC_SX679_.jpg"
+      <!-- PRODUCT 2: Wireless Earbuds -->
+      <div class="product-card mobile-accessories bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa cursor-pointer" 
+           data-price="89.00"
+           data-title="Pro Wireless Bluetooth Earbuds with Charging Case"
+           data-mainimg="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600"
+           data-img1="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600"
+           data-img2="https://images.unsplash.com/photo-1572536147248-ac59a8abfa4b?w=600"
            data-sizes="One Size"
-           data-colors="Beige / Red Hearts"
-           data-link="https://www.amazon.sa/-/en/Capacity-Knitted-Shoulder-Handbag-Stylish/dp/B0H38Q8Y4M"
+           data-colors="White, Black"
+           data-link="https://www.amazon.sa"
            onclick="openModal(this)">
         <div>
           <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative">
-            <img src="https://m.media-amazon.com/images/I/61KywqZawxL._AC_SX679_.jpg" alt="Mesh Beach Bag" class="w-full h-48 object-contain">
-            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow">Prime</span>
+            <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600" alt="Wireless Earbuds" class="w-full h-48 object-cover">
+            <span class="absolute top-2 left-2 bg-teal-600 text-white font-bold text-[10px] px-2 py-0.5 rounded shadow">Mobile Accessories</span>
           </div>
-
           <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1">
-            Mesh Beach Bag Crochet Handbag Boho Bag For Women Knit Tote
+            Pro Wireless Bluetooth Earbuds with Charging Case
           </h3>
-
           <div class="mt-2">
             <div class="flex items-baseline gap-1">
               <span class="text-xs font-semibold text-emerald-700">SAR</span>
-              <span class="text-xl font-extrabold text-emerald-700">34.18</span>
+              <span class="text-xl font-extrabold text-emerald-700">89.00</span>
             </div>
             <div class="instalment-container mt-1"></div>
           </div>
         </div>
-
         <button type="button" class="mt-3 w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 rounded-lg text-xs transition-colors">
           View Details
         </button>
       </div>
 
-      <!-- PRODUCT 3: Men's Polo Shirt -->
-      <div class="product-card men-fashion bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa cursor-pointer" 
-           data-price="20.80"
-           data-title="Men's Quick Dry Golf Polo Shirt Short Sleeve Solid Collared Athletic Casual"
-           data-mainimg="https://i.postimg.cc/gj30kQh2/61VHez-S-LL-AC-SY879.jpg"
-           data-img1="https://i.postimg.cc/gj30kQh2/61VHez-S-LL-AC-SY879.jpg"
-           data-img2="https://i.postimg.cc/gj30kQh2/61VHez-S-LL-AC-SY879.jpg"
-           data-img3="https://i.postimg.cc/gj30kQh2/61VHez-S-LL-AC-SY879.jpg"
-           data-img4="https://i.postimg.cc/gj30kQh2/61VHez-S-LL-AC-SY879.jpg"
+      <!-- PRODUCT 3: Magnetic Phone Mount -->
+      <div class="product-card mobile-accessories bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa cursor-pointer" 
+           data-price="45.00"
+           data-title="Dashboard Magnetic Car Phone Holder Mount"
+           data-mainimg="https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?w=600"
+           data-img1="https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?w=600"
+           data-sizes="Universal"
+           data-colors="Matte Black, Silver"
+           data-link="https://www.amazon.sa"
+           onclick="openModal(this)">
+        <div>
+          <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative">
+            <img src="https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?w=600" alt="Phone Mount" class="w-full h-48 object-cover">
+            <span class="absolute top-2 left-2 bg-teal-600 text-white font-bold text-[10px] px-2 py-0.5 rounded shadow">Mobile Accessories</span>
+          </div>
+          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1">
+            Dashboard Magnetic Car Phone Holder Mount
+          </h3>
+          <div class="mt-2">
+            <div class="flex items-baseline gap-1">
+              <span class="text-xs font-semibold text-emerald-700">SAR</span>
+              <span class="text-xl font-extrabold text-emerald-700">45.00</span>
+            </div>
+            <div class="instalment-container mt-1"></div>
+          </div>
+        </div>
+        <button type="button" class="mt-3 w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 rounded-lg text-xs transition-colors">
+          View Details
+        </button>
+      </div>
+
+      <!-- PRODUCT 4: Men Casual Linen Shirt -->
+      <div class="product-card mens-fashion bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa cursor-pointer" 
+           data-price="75.50"
+           data-title="Men Casual Long Sleeve Cotton Linen Button Down Shirt"
+           data-mainimg="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600"
+           data-img1="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600"
            data-sizes="S, M, L, XL"
-           data-colors="Black, White, Navy"
-           data-link="https://www.amazon.sa/-/en/Sleeve-Collared-Athletic-Casual-Medium/dp/B0GZ3J7LSZ"
+           data-colors="Beige, White, Khaki"
+           data-link="https://www.amazon.sa"
            onclick="openModal(this)">
         <div>
           <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative">
-            <img src="https://i.postimg.cc/gj30kQh2/61VHez-S-LL-AC-SY879.jpg" alt="Golf Polo Shirt" class="w-full h-48 object-contain">
-            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow">Men's Fashion</span>
+            <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600" alt="Linen Shirt" class="w-full h-48 object-cover">
+            <span class="absolute top-2 left-2 bg-emerald-600 text-white font-bold text-[10px] px-2 py-0.5 rounded shadow">Men Fashion</span>
+          </div>
+          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1">
+            Men Casual Long Sleeve Cotton Linen Button Down Shirt
+          </h3>
+          <div class="mt-2">
+            <div class="flex items-baseline gap-1">
+              <span class="text-xs font-semibold text-emerald-700">SAR</span>
+              <span class="text-xl font-extrabold text-emerald-700">75.50</span>
+            </div>
+            <div class="instalment-container mt-1"></div>
+          </div>
+        </div>
+        <button type="button" class="mt-3 w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 rounded-lg text-xs transition-colors">
+          View Details
+        </button>
+      </div>
+
+      <!-- PRODUCT 5: Fast Charging Power Bank -->
+      <div class="product-card mobile-accessories bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa cursor-pointer" 
+           data-price="120.00"
+           data-title="10000mAh Portable Fast Charging Power Bank Type-C"
+           data-mainimg="https://images.unsplash.com/photo-1609592424097-d81729b794b6?w=600"
+           data-img1="https://images.unsplash.com/photo-1609592424097-d81729b794b6?w=600"
+           data-sizes="10000mAh"
+           data-colors="Black, White"
+           data-link="https://www.amazon.sa"
+           onclick="openModal(this)">
+        <div>
+          <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative">
+            <img src="https://images.unsplash.com/photo-1609592424097-d81729b794b6?w=600" alt="Power Bank" class="w-full h-48 object-cover">
+            <span class="absolute top-2 left-2 bg-teal-600 text-white font-bold text-[10px] px-2 py-0.5 rounded shadow">Mobile Accessories</span>
+          </div>
+          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1">
+            10000mAh Portable Fast Charging Power Bank Type-C
+          </h3>
+          <div class="mt-2">
+            <div class="flex items-baseline gap-1">
+              <span class="text-xs font-semibold text-emerald-700">SAR</span>
+              <span class="text-xl font-extrabold text-emerald-700">120.00</span>
+            </div>
+            <div class="instalment-container mt-1"></div>
+          </div>
+        </div>
+        <button type="button" class="mt-3 w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 rounded-lg text-xs transition-colors">
+          View Details
+        </button>
+      </div>
+
+      <!-- PRODUCT 6: Men Slim Fit Chino Pants -->
+      <div class="product-card mens-fashion bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa cursor-pointer" 
+           data-price="95.00"
+           data-title="Men Slim Fit Stretch Casual Chino Pants"
+           data-mainimg="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600"
+           data-img1="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600"
+           data-sizes="30, 32, 34, 36, 38"
+           data-colors="Khaki, Navy, Olive"
+           data-link="https://www.amazon.sa"
+           onclick="openModal(this)">
+        <div>
+          <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative">
+            <img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600" alt="Chino Pants" class="w-full h-48 object-cover">
+            <span class="absolute top-2 left-2 bg-emerald-600 text-white font-bold text-[10px] px-2 py-0.5 rounded shadow">Men Fashion</span>
+          </div>
+          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1">
+            Men Slim Fit Stretch Casual Chino Pants
+          </h3>
+          <div class="mt-2">
+            <div class="flex items-baseline gap-1">
+              <span class="text-xs font-semibold text-emerald-700">SAR</span>
+              <span class="text-xl font-extrabold text-emerald-700">95.00</span>
+            </div>
+            <div class="instalment-container mt-1"></div>
+          </div>
+        </div>
+        <button type="button" class="mt-3 w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 rounded-lg text-xs transition-colors">
+          View Details
+        </button>
+      </div>
+
+      <!-- PRODUCT 9: HANNEA Phone Charm -->
+      <div class="product-card mobile-accessories bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa cursor-pointer" 
+           data-price="17.10"
+           data-title="HANNEA 1Pcs Phone Charm, Sweetly Stylish Beaded Chain Phone Charms, Glossing Heart Beads"
+           data-mainimg="https://i.postimg.cc/MHYZyS3f/41Jngqb-My-EL-AC.jpg"
+           data-img1="https://i.postimg.cc/MHYZyS3f/41Jngqb-My-EL-AC.jpg"
+           data-img2="https://i.postimg.cc/MHYZyS3f/41Jngqb-My-EL-AC.jpg"
+           data-img3="https://i.postimg.cc/MHYZyS3f/41Jngqb-My-EL-AC.jpg"
+           data-img4="https://i.postimg.cc/MHYZyS3f/41Jngqb-My-EL-AC.jpg"
+           data-sizes="Universal with Insert Pad"
+           data-colors="Sweet Beaded / Heart Beads"
+           data-link="https://www.amazon.sa/-/en/Sweetly-Glossing-BeadsAcrylic-Wristlet-Accessories/dp/B0F8HWT3LM?_encoding=UTF8&s=bazaar&psc=1&pd_rd_w=MS62j&content-id=amzn1.sym.e251c67b-5cb4-47f7-b160-59fa77aa8ee3&pf_rd_p=e251c67b-5cb4-47f7-b160-59fa77aa8ee3&pf_rd_r=W7BEH1JJZ13EGFNS5JEV&pd_rd_wg=FiIsZ&pd_rd_r=5128a295-639f-4dec-abcc-d6bd58c16963&pos=ib&linkCode=ll2&tag=sipra786-21&linkId=1c761bfa97d6ad4ac73c3926e173d141&ref_=as_li_ss_tl"
+           onclick="openModal(this)">
+        <div>
+          <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative">
+            <img src="https://i.postimg.cc/MHYZyS3f/41Jngqb-My-EL-AC.jpg" alt="HANNEA Phone Charm" class="w-full h-48 object-contain">
+            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow">Charm Style</span>
           </div>
 
           <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1">
-            Men's Quick Dry Golf Polo Shirt Short Sleeve Solid Collared Athletic Casual
+            HANNEA 1Pcs Phone Charm, Sweetly Stylish Beaded Chain Phone Charms, Glossing Heart Beads
           </h3>
 
           <div class="mt-2">
             <div class="flex items-baseline gap-1">
               <span class="text-xs font-semibold text-emerald-700">SAR</span>
-              <span class="text-xl font-extrabold text-emerald-700">20.80</span>
+              <span class="text-xl font-extrabold text-emerald-700">17.10</span>
             </div>
             <div class="instalment-container mt-1"></div>
           </div>
@@ -202,181 +283,33 @@
         </button>
       </div>
 
-      <!-- PRODUCT 4: Airplane Phone Mount -->
+      <!-- PRODUCT 10: Cell Phone Lanyard Cute Cat Paw -->
       <div class="product-card mobile-accessories bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa cursor-pointer" 
-           data-price="16.00"
-           data-title="Universal Airplane in Flight Phone Mount - Multi-Directional Dual 360 Rotation Travel Accessory"
-           data-mainimg="https://i.postimg.cc/PJCyG3Wf/file-0000000004a4820a88c95f0a5a0c2afb.png"
-           data-img1="https://i.postimg.cc/PJCyG3Wf/file-0000000004a4820a88c95f0a5a0c2afb.png"
-           data-img2="https://i.postimg.cc/PJCyG3Wf/file-0000000004a4820a88c95f0a5a0c2afb.png"
-           data-img3="https://i.postimg.cc/PJCyG3Wf/file-0000000004a4820a88c95f0a5a0c2afb.png"
-           data-img4="https://i.postimg.cc/PJCyG3Wf/file-0000000004a4820a88c95f0a5a0c2afb.png"
-           data-sizes="Universal (Fits All Phones)"
-           data-colors="Black"
-           data-link="https://www.amazon.sa/"
+           data-price="10.00"
+           data-title="Cell Phone Lanyard Cute Cat Paw Mobile Phone Chain Wrist Strap Adjustable Hanging Cord"
+           data-mainimg="https://i.postimg.cc/SK4ZPbgR/61B7v-NVw-Gr-L-AC-SX679.jpg"
+           data-img1="https://i.postimg.cc/SK4ZPbgR/61B7v-NVw-Gr-L-AC-SX679.jpg"
+           data-img2="https://i.postimg.cc/SK4ZPbgR/61B7v-NVw-Gr-L-AC-SX679.jpg"
+           data-img3="https://i.postimg.cc/SK4ZPbgR/61B7v-NVw-Gr-L-AC-SX679.jpg"
+           data-img4="https://i.postimg.cc/SK4ZPbgR/61B7v-NVw-Gr-L-AC-SX679.jpg"
+           data-sizes="Adjustable Universal"
+           data-colors="Cat Paw Theme"
+           data-link="https://www.amazon.sa/-/en/Lanyard-Mobile-Adjustable-Hanging-Travel/dp/B0FW4MXDDW?_encoding=UTF8&s=bazaar&psc=1&pd_rd_w=XkGUO&content-id=amzn1.sym.10ff1f53-dc26-4d75-8aff-399918f1787a&pf_rd_p=10ff1f53-dc26-4d75-8aff-399918f1787a&pf_rd_r=0PGPFX46KWJYC7R1K6HX&pd_rd_wg=zOGfr&pd_rd_r=0b0cb365-024e-40e8-95ab-28e82c81d432&pos=ib&linkCode=ll2&tag=sipra786-21&linkId=fb74d6b8efdb68c93b387823074aab2e&ref_=as_li_ss_tl"
            onclick="openModal(this)">
         <div>
           <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative">
-            <img src="https://i.postimg.cc/PJCyG3Wf/file-0000000004a4820a88c95f0a5a0c2afb.png" alt="Airplane Phone Mount" class="w-full h-48 object-contain">
-            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow">Travel Gear</span>
+            <img src="https://i.postimg.cc/SK4ZPbgR/61B7v-NVw-Gr-L-AC-SX679.jpg" alt="Cat Paw Lanyard" class="w-full h-48 object-contain">
+            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow">Cat Paw</span>
           </div>
 
           <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1">
-            Universal Airplane in Flight Phone Mount - Multi-Directional Dual 360 Rotation
+            Cell Phone Lanyard Cute Cat Paw Mobile Phone Chain Wrist Strap Adjustable Hanging Cord
           </h3>
 
           <div class="mt-2">
             <div class="flex items-baseline gap-1">
               <span class="text-xs font-semibold text-emerald-700">SAR</span>
-              <span class="text-xl font-extrabold text-emerald-700">16.00</span>
-            </div>
-            <div class="instalment-container mt-1"></div>
-          </div>
-        </div>
-
-        <button type="button" class="mt-3 w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 rounded-lg text-xs transition-colors">
-          View Details
-        </button>
-      </div>
-
-      <!-- PRODUCT 5: Waterproof Phone Pouch -->
-      <div class="product-card mobile-accessories bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa cursor-pointer" 
-           data-price="28.00"
-           data-title="JOTO Waterproof Phone Pouch for iPhone & Galaxy, Black | IPX8 Underwater Dry Bag"
-           data-mainimg="https://i.postimg.cc/QtYy2WTq/71ba3Iat-Na-L-AC-SL1500.jpg"
-           data-img1="https://i.postimg.cc/QtYy2WTq/71ba3Iat-Na-L-AC-SL1500.jpg"
-           data-img2="https://i.postimg.cc/CLsKbhTs/file-000000001e8481f4a161b45e3557ca1b.png"
-           data-img3="https://i.postimg.cc/QtYy2WTq/71ba3Iat-Na-L-AC-SL1500.jpg"
-           data-img4="https://i.postimg.cc/CLsKbhTs/file-000000001e8481f4a161b45e3557ca1b.png"
-           data-sizes="Fits phones up to 7 inches"
-           data-colors="Black"
-           data-link="https://www.amazon.sa/-/en/JOTO-Waterproof-Phone-iPhone-Galaxy/dp/B00LBK7OSY"
-           onclick="openModal(this)">
-        <div>
-          <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative">
-            <img src="https://i.postimg.cc/QtYy2WTq/71ba3Iat-Na-L-AC-SL1500.jpg" alt="Waterproof Pouch" class="w-full h-48 object-contain">
-            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow">IPX8 Rated</span>
-          </div>
-
-          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1">
-            JOTO Waterproof Phone Pouch for iPhone & Galaxy, Black | IPX8 Dry Bag
-          </h3>
-
-          <div class="mt-2">
-            <div class="flex items-baseline gap-1">
-              <span class="text-xs font-semibold text-emerald-700">SAR</span>
-              <span class="text-xl font-extrabold text-emerald-700">28.00</span>
-            </div>
-            <div class="instalment-container mt-1"></div>
-          </div>
-        </div>
-
-        <button type="button" class="mt-3 w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 rounded-lg text-xs transition-colors">
-          View Details
-        </button>
-      </div>
-
-      <!-- PRODUCT 6: Beaded Phone Chain Strap -->
-      <div class="product-card mobile-accessories bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa cursor-pointer" 
-           data-price="4.00"
-           data-title="Black and White Bead Heart-shaped Bow Handmade Cartoon Beaded Phone Accessory, Lanyard Wrist Strap"
-           data-mainimg="https://i.postimg.cc/85s7pqjX/71mus2p-Ha6L-AC-SX679.jpg"
-           data-img1="https://i.postimg.cc/85s7pqjX/71mus2p-Ha6L-AC-SX679.jpg"
-           data-img2="https://i.postimg.cc/2jbGj5LC/file-00000000ffe881f495c86b87c3c19d33.png"
-           data-img3="https://i.postimg.cc/85s7pqjX/71mus2p-Ha6L-AC-SX679.jpg"
-           data-img4="https://i.postimg.cc/2jbGj5LC/file-00000000ffe881f495c86b87c3c19d33.png"
-           data-sizes="Universal Size"
-           data-colors="Black & White"
-           data-link="https://www.amazon.sa/-/en/Heart-shaped-Handmade-Cartoon-Accessory-Decoration/dp/B0H1CGQK17?_encoding=UTF8&s=bazaar&psc=1&pd_rd_w=EGrbP&content-id=amzn1.sym.10ff1f53-dc26-4d75-8aff-399918f1787a&pf_rd_p=10ff1f53-dc26-4d75-8aff-399918f1787a&pf_rd_r=HCTB7MBBCHW4FJHP1F3R&pd_rd_wg=Oy3VF&pd_rd_r=30e32c23-1b1a-460e-82ed-d44ddbcf7421&pos=ib&linkCode=ll2&tag=sipra786-21&linkId=cbba5aa57a7627293066c0975423d960&ref_=as_li_ss_tl"
-           onclick="openModal(this)">
-        <div>
-          <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative">
-            <img src="https://i.postimg.cc/85s7pqjX/71mus2p-Ha6L-AC-SX679.jpg" alt="Beaded Phone Strap" class="w-full h-48 object-contain">
-            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow">Cute Trend</span>
-          </div>
-
-          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1">
-            Black and White Bead Heart-shaped Bow Handmade Cartoon Beaded Phone Strap
-          </h3>
-
-          <div class="mt-2">
-            <div class="flex items-baseline gap-1">
-              <span class="text-xs font-semibold text-emerald-700">SAR</span>
-              <span class="text-xl font-extrabold text-emerald-700">4.00</span>
-            </div>
-            <div class="instalment-container mt-1"></div>
-          </div>
-        </div>
-
-        <button type="button" class="mt-3 w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 rounded-lg text-xs transition-colors">
-          View Details
-        </button>
-      </div>
-
-      <!-- PRODUCT 7: Heart Charm Wrist Strap -->
-      <div class="product-card mobile-accessories bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa cursor-pointer" 
-           data-price="9.00"
-           data-title="1PCS Beaded Phone Wrist Strap with Heart Charm Keychain Holder Mobile Lanyard"
-           data-mainimg="https://i.postimg.cc/vTJ3yJtc/715Xq-Yf-Cqw-L-AC-SX679.jpg"
-           data-img1="https://i.postimg.cc/vTJ3yJtc/715Xq-Yf-Cqw-L-AC-SX679.jpg"
-           data-img2="https://i.postimg.cc/vTJ3yJtc/715Xq-Yf-Cqw-L-AC-SX679.jpg"
-           data-img3="https://i.postimg.cc/vTJ3yJtc/715Xq-Yf-Cqw-L-AC-SX679.jpg"
-           data-img4="https://i.postimg.cc/vTJ3yJtc/715Xq-Yf-Cqw-L-AC-SX679.jpg"
-           data-sizes="Universal Size"
-           data-colors="Pink / Multicolor"
-           data-link="https://www.amazon.sa/-/en/Keychain-Lanyard-Pendant-Accessory-Gemstone/dp/B0H28379MB?_encoding=UTF8&s=bazaar&psc=1&pd_rd_w=6X9sP&content-id=amzn1.sym.e251c67b-5cb4-47f7-b160-59fa77aa8ee3&pf_rd_p=e251c67b-5cb4-47f7-b160-59fa77aa8ee3&pf_rd_r=8NN8GWZK85777YFRTXWY&pd_rd_wg=US3DA&pd_rd_r=07ea1960-e70b-44d1-a9e4-0e34281b471b&pos=ib&linkCode=ll2&tag=sipra786-21&linkId=4bf91d8b41403d9fb16e286170089cc3&ref_=as_li_ss_tl"
-           onclick="openModal(this)">
-        <div>
-          <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative">
-            <img src="https://i.postimg.cc/vTJ3yJtc/715Xq-Yf-Cqw-L-AC-SX679.jpg" alt="Heart Charm Strap" class="w-full h-48 object-contain">
-            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow">Trending</span>
-          </div>
-
-          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1">
-            1PCS Beaded Phone Wrist Strap with Heart Charm Keychain Holder Mobile Lanyard
-          </h3>
-
-          <div class="mt-2">
-            <div class="flex items-baseline gap-1">
-              <span class="text-xs font-semibold text-emerald-700">SAR</span>
-              <span class="text-xl font-extrabold text-emerald-700">9.00</span>
-            </div>
-            <div class="instalment-container mt-1"></div>
-          </div>
-        </div>
-
-        <button type="button" class="mt-3 w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 rounded-lg text-xs transition-colors">
-          View Details
-        </button>
-      </div>
-
-      <!-- PRODUCT 8: Cloud Star Lanyard -->
-      <div class="product-card mobile-accessories bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa cursor-pointer" 
-           data-price="8.00"
-           data-title="Cell Phone Lanyard with Phone Patch Cloud Star Style Wrist Strap Fashion Cute Anti-drop"
-           data-mainimg="https://i.postimg.cc/x1hH4vgN/61l-Lu-R63dk-L-AC-SX679.jpg"
-           data-img1="https://i.postimg.cc/x1hH4vgN/61l-Lu-R63dk-L-AC-SX679.jpg"
-           data-img2="https://i.postimg.cc/x1hH4vgN/61l-Lu-R63dk-L-AC-SX679.jpg"
-           data-img3="https://i.postimg.cc/x1hH4vgN/61l-Lu-R63dk-L-AC-SX679.jpg"
-           data-img4="https://i.postimg.cc/x1hH4vgN/61l-Lu-R63dk-L-AC-SX679.jpg"
-           data-sizes="Universal Size"
-           data-colors="Yellow / Star"
-           data-link="https://www.amazon.sa/-/en/Lanyard-Fashion-Anti-drop-Decoration-Yellow/dp/B0FRRFR9QM?_encoding=UTF8&s=bazaar&pd_rd_w=Nl8jP&content-id=amzn1.sym.10ff1f53-dc26-4d75-8aff-399918f1787a&pf_rd_p=10ff1f53-dc26-4d75-8aff-399918f1787a&pf_rd_r=2Y4CYDHBVZN6D0J23772&pd_rd_wg=s0QcM&pd_rd_r=63ed51d3-5b9a-4616-b0f2-5f66f5eec2ab&pos=ib&th=1&linkCode=ll2&tag=sipra786-21&linkId=938fac8c5c55282dedfff51730d861f4&ref_=as_li_ss_tl"
-           onclick="openModal(this)">
-        <div>
-          <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative">
-            <img src="https://i.postimg.cc/x1hH4vgN/61l-Lu-R63dk-L-AC-SX679.jpg" alt="Cloud Star Lanyard" class="w-full h-48 object-contain">
-            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow">New Arrival</span>
-          </div>
-
-          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1">
-            Cell Phone Lanyard with Phone Patch Cloud Star Style Wrist Strap Fashion Cute Anti-drop
-          </h3>
-
-          <div class="mt-2">
-            <div class="flex items-baseline gap-1">
-              <span class="text-xs font-semibold text-emerald-700">SAR</span>
-              <span class="text-xl font-extrabold text-emerald-700">8.00</span>
+              <span class="text-xl font-extrabold text-emerald-700">10.00</span>
             </div>
             <div class="instalment-container mt-1"></div>
           </div>
@@ -390,156 +323,101 @@
     </div>
   </main>
 
-  <!-- 4. MODAL POPUP WINDOW (4 PICTURES GALLERY) -->
-  <div id="productModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm">
-    <div class="bg-white rounded-2xl max-w-4xl w-full p-5 md:p-6 relative max-h-[90vh] overflow-y-auto shadow-2xl">
-      <!-- Close Button -->
-      <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-xl font-bold w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 z-10">
-        &times;
-      </button>
+  <!-- PRODUCT DETAILS MODAL -->
+  <div id="productModal" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4 backdrop-blur-sm">
+    <div class="bg-white w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row max-h-[90vh]">
+      <!-- Image Gallery Column -->
+      <div class="md:w-1/2 bg-gray-100 p-4 flex flex-col justify-between">
+        <div class="h-64 md:h-80 flex items-center justify-center bg-white rounded-xl overflow-hidden shadow-inner">
+          <img id="modalMainImg" src="" alt="Product" class="max-h-full max-w-full object-contain">
+        </div>
+        <div id="modalThumbnails" class="flex gap-2 mt-3 overflow-x-auto py-1"></div>
+      </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
-        <!-- 4 PICTURES GRID IN DETAILS -->
+      <!-- Product Info Column -->
+      <div class="md:w-1/2 p-6 flex flex-col justify-between overflow-y-auto">
         <div>
-          <div class="flex items-center justify-between mb-2">
-            <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wide">Product Gallery (4 Views)</h4>
-            <span class="text-[10px] text-amber-600 font-semibold"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i>Click image for Full Size</span>
+          <div class="flex justify-between items-start">
+            <span id="modalCategoryBadge" class="text-[10px] font-bold uppercase px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded-full mb-2 inline-block">Mobile Accessory</span>
+            <button onclick="closeModal()" class="text-gray-400 hover:text-gray-700 font-bold text-xl">&times;</button>
           </div>
-          <div class="grid grid-cols-2 gap-2 bg-gray-50 p-2 rounded-xl border">
-            <img id="modalImg1" src="" onclick="openLightbox(this.src)" class="w-full h-32 md:h-36 object-contain rounded bg-white border p-1 cursor-pointer hover:opacity-80 transition-opacity" alt="View 1">
-            <img id="modalImg2" src="" onclick="openLightbox(this.src)" class="w-full h-32 md:h-36 object-contain rounded bg-white border p-1 cursor-pointer hover:opacity-80 transition-opacity" alt="View 2">
-            <img id="modalImg3" src="" onclick="openLightbox(this.src)" class="w-full h-32 md:h-36 object-contain rounded bg-white border p-1 cursor-pointer hover:opacity-80 transition-opacity" alt="View 3">
-            <img id="modalImg4" src="" onclick="openLightbox(this.src)" class="w-full h-32 md:h-36 object-contain rounded bg-white border p-1 cursor-pointer hover:opacity-80 transition-opacity" alt="View 4">
+          <h2 id="modalTitle" class="text-lg md:text-xl font-extrabold text-gray-900 mb-2">Product Title</h2>
+          <div class="flex items-baseline gap-2 mb-4">
+            <span class="text-sm font-semibold text-emerald-700">SAR</span>
+            <span id="modalPrice" class="text-2xl font-black text-emerald-700">0.00</span>
+          </div>
+
+          <!-- Instalment box inside modal -->
+          <div id="modalInstalmentBox" class="bg-amber-50 border border-amber-200 rounded-xl p-3 mb-4 text-xs text-amber-900"></div>
+
+          <!-- Variations -->
+          <div class="mb-4">
+            <label class="block text-xs font-bold text-gray-700 mb-1">Size / Option:</label>
+            <div id="modalSizes" class="flex flex-wrap gap-2"></div>
+          </div>
+          <div class="mb-4">
+            <label class="block text-xs font-bold text-gray-700 mb-1">Color / Style:</label>
+            <div id="modalColors" class="flex flex-wrap gap-2"></div>
           </div>
         </div>
 
-        <!-- Details Column -->
-        <div class="flex flex-col justify-between">
-          <div>
-            <h2 id="modalTitle" class="text-base md:text-lg font-extrabold text-slate-900 leading-snug"></h2>
-            
-            <div class="mt-4">
-              <span class="text-xs text-gray-500 block">Price:</span>
-              <div class="flex items-baseline gap-1">
-                <span class="text-sm font-semibold text-emerald-700">SAR</span>
-                <span id="modalPrice" class="text-2xl font-black text-emerald-700"></span>
-              </div>
-              <div id="modalInstalment" class="mt-2"></div>
-            </div>
-
-            <!-- Specifications -->
-            <div class="mt-5 space-y-3 border-t pt-4">
-              <div>
-                <span class="text-xs font-bold text-slate-700 block mb-1">Available Colors:</span>
-                <span id="modalColors" class="inline-block bg-slate-100 text-slate-800 text-xs px-2.5 py-1 rounded-md font-medium"></span>
-              </div>
-              <div>
-                <span class="text-xs font-bold text-slate-700 block mb-1">Available Sizes / Compatibility:</span>
-                <span id="modalSizes" class="inline-block bg-slate-100 text-slate-800 text-xs px-2.5 py-1 rounded-md font-medium"></span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Buy Button -->
-          <div class="mt-6">
-            <a id="modalBuyBtn" href="#" target="_blank" rel="nofollow sponsored" class="w-full bg-amber-400 hover:bg-amber-500 text-slate-900 font-extrabold py-3 rounded-xl text-sm flex items-center justify-center gap-2 transition-all shadow-md">
-              <i class="fa-solid fa-cart-shopping"></i>
-              <span>Buy on Amazon SA</span>
-            </a>
-          </div>
+        <div class="mt-4 pt-4 border-t border-gray-100 flex gap-3">
+          <a id="modalBuyBtn" href="#" target="_blank" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl text-center text-sm shadow-lg shadow-emerald-600/20 transition-all flex items-center justify-center gap-2">
+            <span>Buy on Amazon SA</span>
+          </a>
+          <button onclick="closeModal()" class="px-4 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold text-sm rounded-xl transition-colors">Close</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 5. FULL-SIZE LIGHTBOX VIEWER -->
-  <div id="imageLightbox" class="fixed inset-0 bg-black/90 z-[60] hidden flex items-center justify-center p-4" onclick="closeLightbox()">
-    <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white text-3xl font-bold hover:text-amber-400 z-10 w-10 h-10 flex items-center justify-center">
-      &times;
-    </button>
-    <img id="lightboxImg" src="" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl transition-all scale-100" onclick="event.stopPropagation()">
-  </div>
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-gray-200 mt-12 py-6 text-center text-xs text-gray-500">
+    <p>&copy; 2026 StoreHub. All rights reserved. Powered by GitHub & Vercel.</p>
+  </footer>
 
-  <!-- JAVASCRIPT LOGIC -->
+  <!-- AUTOMATED SCRIPT -->
   <script>
-    // Automatic 4 Instalments Display
-    document.addEventListener("DOMContentLoaded", function() {
-      const amazonCards = document.querySelectorAll(".amazon-sa");
-      
-      amazonCards.forEach(card => {
-        const priceAttr = card.getAttribute("data-price");
+    // Automatic 4-Installment Calculator
+    function calculateInstalments(price) {
+      const perMonth = (price / 4).toFixed(2);
+      return `Pay in 4 installments of <strong>SAR ${perMonth}</strong> with Tabby/Tamara or Amazon installments. No extra fees.`;
+    }
+
+    // Initialize all product cards with 4 installment displays automatically
+    document.addEventListener("DOMContentLoaded", () => {
+      const cards = document.querySelectorAll(".product-card");
+      cards.forEach(card => {
+        const price = parseFloat(card.getAttribute("data-price"));
         const container = card.querySelector(".instalment-container");
-        
-        if (priceAttr && container) {
-          const price = parseFloat(priceAttr);
-          if (!isNaN(price) && price > 0) {
-            const instalment = (price / 4).toFixed(2);
-            container.innerHTML = `
-              <div class="bg-emerald-50 border border-emerald-200 rounded p-1 text-[10px] text-emerald-900 font-medium">
-                Or 4 payments of <span class="font-bold text-emerald-700">SAR ${instalment}</span>/mo
-              </div>
-            `;
-          }
+        if (container) {
+          container.innerHTML = `
+            <div class="bg-amber-50 border border-amber-200/60 rounded-md p-1.5 text-[10px] text-amber-800 flex items-center gap-1">
+              <span>⚡ 4 x <strong>SAR ${(price / 4).toFixed(2)}</strong></span>
+            </div>
+          `;
         }
       });
     });
 
-    // Open Modal with 4 Pictures
-    function openModal(card) {
-      const title = card.getAttribute('data-title');
-      const price = parseFloat(card.getAttribute('data-price')).toFixed(2);
+    // Category Filtering
+    function filterCategory(category, event) {
+      if(event) event.preventDefault();
       
-      const img1 = card.getAttribute('data-img1');
-      const img2 = card.getAttribute('data-img2');
-      const img3 = card.getAttribute('data-img3');
-      const img4 = card.getAttribute('data-img4');
+      // Update button styling
+      document.querySelectorAll('.category-btn, nav a').forEach(btn => {
+        btn.classList.remove('bg-emerald-600', 'text-white');
+        btn.classList.add('bg-gray-100', 'text-gray-700');
+      });
+      if(event && event.target) {
+        event.target.classList.remove('bg-gray-100', 'text-gray-700');
+        event.target.classList.add('bg-emerald-600', 'text-white');
+      }
 
-      const sizes = card.getAttribute('data-sizes');
-      const colors = card.getAttribute('data-colors');
-      const link = card.getAttribute('data-link');
-
-      document.getElementById('modalTitle').innerText = title;
-      document.getElementById('modalPrice').innerText = price;
-      
-      // Setting 4 Pictures
-      document.getElementById('modalImg1').src = img1;
-      document.getElementById('modalImg2').src = img2;
-      document.getElementById('modalImg3').src = img3;
-      document.getElementById('modalImg4').src = img4;
-
-      document.getElementById('modalSizes').innerText = sizes || 'Standard';
-      document.getElementById('modalColors').innerText = colors || 'Default';
-      document.getElementById('modalBuyBtn').href = link;
-
-      const instalment = (price / 4).toFixed(2);
-      document.getElementById('modalInstalment').innerHTML = `
-        <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-2 text-xs text-emerald-900">
-          Or 4 interest-free payments of <span class="font-bold text-emerald-700">SAR ${instalment}</span>/mo with Tabby / Tamara
-        </div>
-      `;
-
-      document.getElementById('productModal').classList.remove('hidden');
-    }
-
-    function closeModal() {
-      document.getElementById('productModal').classList.add('hidden');
-    }
-
-    // Full Size Lightbox Functions
-    function openLightbox(imgUrl) {
-      if (!imgUrl) return;
-      document.getElementById('lightboxImg').src = imgUrl;
-      document.getElementById('imageLightbox').classList.remove('hidden');
-    }
-
-    function closeLightbox() {
-      document.getElementById('imageLightbox').classList.add('hidden');
-    }
-
-    function filterCategory(catName) {
+      // Filter cards
       const cards = document.querySelectorAll('.product-card');
       cards.forEach(card => {
-        if (catName === 'all' || card.classList.contains(catName)) {
+        if (category === 'all' || card.classList.contains(category)) {
           card.style.display = 'flex';
         } else {
           card.style.display = 'none';
@@ -547,20 +425,70 @@
       });
     }
 
-    function searchProducts() {
-      const input = document.getElementById('searchInput').value.toLowerCase();
-      const cards = document.querySelectorAll('.product-card');
-      cards.forEach(card => {
-        const title = card.getAttribute('data-title').toLowerCase();
-        card.style.display = title.includes(input) ? 'flex' : 'none';
+    // Sorting function
+    function sortProducts() {
+      const sortValue = document.getElementById('sortSelect').value;
+      const grid = document.getElementById('productGrid');
+      const cardsArray = Array.from(grid.getElementsByClassName('product-card'));
+
+      cardsArray.sort((a, b) => {
+        const priceA = parseFloat(a.getAttribute('data-price'));
+        const priceB = parseFloat(b.getAttribute('data-price'));
+        if (sortValue === 'low-high') return priceA - priceB;
+        if (sortValue === 'high-low') return priceB - priceA;
+        return 0; // default order
       });
+
+      cardsArray.forEach(card => grid.appendChild(card));
     }
 
-    function filterProducts() {
-      const selected = document.getElementById('categorySelect').value;
-      filterCategory(selected);
+    // Modal functionality
+    function openModal(card) {
+      const title = card.getAttribute('data-title');
+      const price = card.getAttribute('data-price');
+      const mainImg = card.getAttribute('data-mainimg');
+      const link = card.getAttribute('data-link');
+      const sizes = card.getAttribute('data-sizes').split(',');
+      const colors = card.getAttribute('data-colors').split(',');
+
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalPrice').innerText = price;
+      document.getElementById('modalMainImg').src = mainImg;
+      document.getElementById('modalBuyBtn').href = link;
+      
+      // Instalment box in modal
+      document.getElementById('modalInstalmentBox').innerHTML = calculateInstalments(parseFloat(price));
+
+      // Populate Sizes
+      const sizesContainer = document.getElementById('modalSizes');
+      sizesContainer.innerHTML = '';
+      sizes.forEach((size, idx) => {
+        sizesContainer.innerHTML += `<button type="button" class="px-3 py-1 border ${idx === 0 ? 'border-emerald-600 bg-emerald-50 text-emerald-700 font-bold' : 'border-gray-200 text-gray-700'} rounded-lg text-xs">${size.trim()}</button>`;
+      });
+
+      // Populate Colors
+      const colorsContainer = document.getElementById('modalColors');
+      colorsContainer.innerHTML = '';
+      colors.forEach((color, idx) => {
+        colorsContainer.innerHTML += `<button type="button" class="px-3 py-1 border ${idx === 0 ? 'border-emerald-600 bg-emerald-50 text-emerald-700 font-bold' : 'border-gray-200 text-gray-700'} rounded-lg text-xs">${color.trim()}</button>`;
+      });
+
+      // Thumbnails
+      const thumbContainer = document.getElementById('modalThumbnails');
+      thumbContainer.innerHTML = `
+        <div class="w-16 h-16 rounded-lg border-2 border-emerald-600 overflow-hidden cursor-pointer bg-white flex items-center justify-center">
+          <img src="${mainImg}" class="object-contain h-full w-full">
+        </div>
+      `;
+
+      document.getElementById('productModal').classList.remove('hidden');
+      document.getElementById('productModal').classList.add('flex');
+    }
+
+    function closeModal() {
+      document.getElementById('productModal').classList.remove('flex');
+      document.getElementById('productModal').classList.add('hidden');
     }
   </script>
-
 </body>
 </html>
