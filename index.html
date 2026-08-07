@@ -92,23 +92,27 @@
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5" id="productGrid">
 
       <!-- PRODUCT 1: Kimono Abaya -->
-      <div class="product-card abaya bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa cursor-pointer" 
+      <div class="product-card abaya bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa" 
            data-price="55.82"
            data-title="Women's Abaya 2026 Trendy Kimono Lapel Modest Four Seasons Arabian Clothing"
            data-mainimg="https://m.media-amazon.com/images/I/415FEhkk9uL._AC_SY1000_.jpg"
            data-img1="https://m.media-amazon.com/images/I/415FEhkk9uL._AC_SY1000_.jpg"
-           data-img2="https://m.media-amazon.com/images/I/415FEhkk9uL._AC_SY1000_.jpg"
            data-sizes="Free Size, Standard"
            data-colors="Grey-Blue & White"
-           data-link="https://www.amazon.sa/-/en/trendyKimono-Regular-seasons-Arabian-Clothing/dp/B0GJZP1BZX"
-           onclick="openModal(this)">
+           data-link="https://www.amazon.sa/-/en/trendyKimono-Regular-seasons-Arabian-Clothing/dp/B0GJZP1BZX">
         <div>
-          <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative">
-            <img src="https://m.media-amazon.com/images/I/415FEhkk9uL._AC_SY1000_.jpg" alt="Kimono Abaya" class="w-full h-48 object-contain">
-            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow">Bestseller</span>
+          <!-- Picture with Open in New Tab -->
+          <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative group">
+            <a href="https://m.media-amazon.com/images/I/415FEhkk9uL._AC_SY1000_.jpg" target="_blank" title="Click to view full image in new tab" class="w-full h-full flex items-center justify-center">
+              <img src="https://m.media-amazon.com/images/I/415FEhkk9uL._AC_SY1000_.jpg" alt="Kimono Abaya" class="w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300">
+            </a>
+            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow pointer-events-none">Bestseller</span>
+            <span class="absolute bottom-2 right-2 bg-slate-900/80 text-white text-[10px] px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+              <i class="fa-solid fa-up-right-from-square"></i> Open Pic
+            </span>
           </div>
 
-          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1">
+          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1 cursor-pointer" onclick="openModal(this.closest('.product-card'))">
             Women's Abaya 2026 Trendy Kimono Lapel Modest Four Seasons Arabian Clothing
           </h3>
 
@@ -121,7 +125,7 @@
           </div>
         </div>
 
-        <div class="mt-3 flex flex-col gap-1.5" onclick="event.stopPropagation()">
+        <div class="mt-3 flex flex-col gap-1.5">
           <button type="button" onclick="openModal(this.closest('.product-card'))" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 rounded-lg text-xs transition-colors">
             View Details
           </button>
@@ -132,22 +136,26 @@
       </div>
 
       <!-- PRODUCT 2: Tote Bag -->
-      <div class="product-card bags bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa cursor-pointer" 
+      <div class="product-card bags bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa" 
            data-price="34.18"
            data-title="Mesh Beach Bag Crochet Handbag Boho Bag For Women Knit Tote"
            data-mainimg="https://m.media-amazon.com/images/I/61KywqZawxL._AC_SX679_.jpg"
            data-img1="https://m.media-amazon.com/images/I/61KywqZawxL._AC_SX679_.jpg"
            data-sizes="One Size"
            data-colors="Beige / Red Hearts"
-           data-link="https://www.amazon.sa/-/en/Capacity-Knitted-Shoulder-Handbag-Stylish/dp/B0H38Q8Y4M"
-           onclick="openModal(this)">
+           data-link="https://www.amazon.sa/-/en/Capacity-Knitted-Shoulder-Handbag-Stylish/dp/B0H38Q8Y4M">
         <div>
-          <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative">
-            <img src="https://m.media-amazon.com/images/I/61KywqZawxL._AC_SX679_.jpg" alt="Mesh Beach Bag" class="w-full h-48 object-contain">
-            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow">Prime</span>
+          <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative group">
+            <a href="https://m.media-amazon.com/images/I/61KywqZawxL._AC_SX679_.jpg" target="_blank" title="Click to view full image in new tab" class="w-full h-full flex items-center justify-center">
+              <img src="https://m.media-amazon.com/images/I/61KywqZawxL._AC_SX679_.jpg" alt="Mesh Beach Bag" class="w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300">
+            </a>
+            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow pointer-events-none">Prime</span>
+            <span class="absolute bottom-2 right-2 bg-slate-900/80 text-white text-[10px] px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+              <i class="fa-solid fa-up-right-from-square"></i> Open Pic
+            </span>
           </div>
 
-          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1">
+          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1 cursor-pointer" onclick="openModal(this.closest('.product-card'))">
             Mesh Beach Bag Crochet Handbag Boho Bag For Women Knit Tote
           </h3>
 
@@ -160,7 +168,7 @@
           </div>
         </div>
 
-        <div class="mt-3 flex flex-col gap-1.5" onclick="event.stopPropagation()">
+        <div class="mt-3 flex flex-col gap-1.5">
           <button type="button" onclick="openModal(this.closest('.product-card'))" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 rounded-lg text-xs transition-colors">
             View Details
           </button>
@@ -171,22 +179,26 @@
       </div>
 
       <!-- PRODUCT 3: Men's Polo Shirt -->
-      <div class="product-card men-fashion bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa cursor-pointer" 
+      <div class="product-card men-fashion bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa" 
            data-price="20.80"
            data-title="Men's Quick Dry Golf Polo Shirt Short Sleeve Solid Collared Athletic Casual"
            data-mainimg="https://i.postimg.cc/gj30kQh2/61VHez-S-LL-AC-SY879.jpg"
            data-img1="https://i.postimg.cc/gj30kQh2/61VHez-S-LL-AC-SY879.jpg"
            data-sizes="S, M, L, XL"
            data-colors="Black, White, Navy"
-           data-link="https://www.amazon.sa/-/en/Sleeve-Collared-Athletic-Casual-Medium/dp/B0GZ3J7LSZ"
-           onclick="openModal(this)">
+           data-link="https://www.amazon.sa/-/en/Sleeve-Collared-Athletic-Casual-Medium/dp/B0GZ3J7LSZ">
         <div>
-          <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative">
-            <img src="https://i.postimg.cc/gj30kQh2/61VHez-S-LL-AC-SY879.jpg" alt="Golf Polo Shirt" class="w-full h-48 object-contain">
-            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow">Men's Fashion</span>
+          <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative group">
+            <a href="https://i.postimg.cc/gj30kQh2/61VHez-S-LL-AC-SY879.jpg" target="_blank" title="Click to view full image in new tab" class="w-full h-full flex items-center justify-center">
+              <img src="https://i.postimg.cc/gj30kQh2/61VHez-S-LL-AC-SY879.jpg" alt="Golf Polo Shirt" class="w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300">
+            </a>
+            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow pointer-events-none">Men's Fashion</span>
+            <span class="absolute bottom-2 right-2 bg-slate-900/80 text-white text-[10px] px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+              <i class="fa-solid fa-up-right-from-square"></i> Open Pic
+            </span>
           </div>
 
-          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1">
+          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1 cursor-pointer" onclick="openModal(this.closest('.product-card'))">
             Men's Quick Dry Golf Polo Shirt Short Sleeve Solid Collared Athletic Casual
           </h3>
 
@@ -199,7 +211,7 @@
           </div>
         </div>
 
-        <div class="mt-3 flex flex-col gap-1.5" onclick="event.stopPropagation()">
+        <div class="mt-3 flex flex-col gap-1.5">
           <button type="button" onclick="openModal(this.closest('.product-card'))" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 rounded-lg text-xs transition-colors">
             View Details
           </button>
@@ -210,22 +222,26 @@
       </div>
 
       <!-- PRODUCT 4: Airplane Phone Mount -->
-      <div class="product-card mobile-accessories bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa cursor-pointer" 
+      <div class="product-card mobile-accessories bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa" 
            data-price="16.00"
            data-title="Universal Airplane in Flight Phone Mount - Multi-Directional Dual 360 Rotation Travel Accessory"
            data-mainimg="https://i.postimg.cc/PJCyG3Wf/file-0000000004a4820a88c95f0a5a0c2afb.png"
            data-img1="https://i.postimg.cc/PJCyG3Wf/file-0000000004a4820a88c95f0a5a0c2afb.png"
            data-sizes="Universal (Fits All Phones)"
            data-colors="Black"
-           data-link="https://www.amazon.sa/"
-           onclick="openModal(this)">
+           data-link="https://www.amazon.sa/">
         <div>
-          <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative">
-            <img src="https://i.postimg.cc/PJCyG3Wf/file-0000000004a4820a88c95f0a5a0c2afb.png" alt="Airplane Phone Mount" class="w-full h-48 object-contain">
-            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow">Travel Gear</span>
+          <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative group">
+            <a href="https://i.postimg.cc/PJCyG3Wf/file-0000000004a4820a88c95f0a5a0c2afb.png" target="_blank" title="Click to view full image in new tab" class="w-full h-full flex items-center justify-center">
+              <img src="https://i.postimg.cc/PJCyG3Wf/file-0000000004a4820a88c95f0a5a0c2afb.png" alt="Airplane Phone Mount" class="w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300">
+            </a>
+            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow pointer-events-none">Travel Gear</span>
+            <span class="absolute bottom-2 right-2 bg-slate-900/80 text-white text-[10px] px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+              <i class="fa-solid fa-up-right-from-square"></i> Open Pic
+            </span>
           </div>
 
-          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1">
+          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1 cursor-pointer" onclick="openModal(this.closest('.product-card'))">
             Universal Airplane in Flight Phone Mount - Multi-Directional Dual 360 Rotation
           </h3>
 
@@ -238,7 +254,7 @@
           </div>
         </div>
 
-        <div class="mt-3 flex flex-col gap-1.5" onclick="event.stopPropagation()">
+        <div class="mt-3 flex flex-col gap-1.5">
           <button type="button" onclick="openModal(this.closest('.product-card'))" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 rounded-lg text-xs transition-colors">
             View Details
           </button>
@@ -249,7 +265,7 @@
       </div>
 
       <!-- PRODUCT 5: Waterproof Phone Pouch -->
-      <div class="product-card mobile-accessories bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa cursor-pointer" 
+      <div class="product-card mobile-accessories bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa" 
            data-price="28.00"
            data-title="JOTO Waterproof Phone Pouch for iPhone & Galaxy, Black | IPX8 Underwater Dry Bag"
            data-mainimg="https://i.postimg.cc/QtYy2WTq/71ba3Iat-Na-L-AC-SL1500.jpg"
@@ -257,15 +273,19 @@
            data-img2="https://i.postimg.cc/CLsKbhTs/file-000000001e8481f4a161b45e3557ca1b.png"
            data-sizes="Fits phones up to 7 inches"
            data-colors="Black"
-           data-link="https://www.amazon.sa/-/en/JOTO-Waterproof-Phone-iPhone-Galaxy/dp/B00LBK7OSY"
-           onclick="openModal(this)">
+           data-link="https://www.amazon.sa/-/en/JOTO-Waterproof-Phone-iPhone-Galaxy/dp/B00LBK7OSY">
         <div>
-          <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative">
-            <img src="https://i.postimg.cc/QtYy2WTq/71ba3Iat-Na-L-AC-SL1500.jpg" alt="Waterproof Pouch" class="w-full h-48 object-contain">
-            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow">IPX8 Rated</span>
+          <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative group">
+            <a href="https://i.postimg.cc/QtYy2WTq/71ba3Iat-Na-L-AC-SL1500.jpg" target="_blank" title="Click to view full image in new tab" class="w-full h-full flex items-center justify-center">
+              <img src="https://i.postimg.cc/QtYy2WTq/71ba3Iat-Na-L-AC-SL1500.jpg" alt="Waterproof Pouch" class="w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300">
+            </a>
+            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow pointer-events-none">IPX8 Rated</span>
+            <span class="absolute bottom-2 right-2 bg-slate-900/80 text-white text-[10px] px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+              <i class="fa-solid fa-up-right-from-square"></i> Open Pic
+            </span>
           </div>
 
-          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1">
+          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1 cursor-pointer" onclick="openModal(this.closest('.product-card'))">
             JOTO Waterproof Phone Pouch for iPhone & Galaxy, Black | IPX8 Dry Bag
           </h3>
 
@@ -278,7 +298,7 @@
           </div>
         </div>
 
-        <div class="mt-3 flex flex-col gap-1.5" onclick="event.stopPropagation()">
+        <div class="mt-3 flex flex-col gap-1.5">
           <button type="button" onclick="openModal(this.closest('.product-card'))" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 rounded-lg text-xs transition-colors">
             View Details
           </button>
@@ -289,7 +309,7 @@
       </div>
 
       <!-- PRODUCT 6: Beaded Phone Chain Strap -->
-      <div class="product-card mobile-accessories bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa cursor-pointer" 
+      <div class="product-card mobile-accessories bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa" 
            data-price="4.00"
            data-title="Black and White Bead Heart-shaped Bow Handmade Cartoon Beaded Phone Accessory, Lanyard Wrist Strap"
            data-mainimg="https://i.postimg.cc/85s7pqjX/71mus2p-Ha6L-AC-SX679.jpg"
@@ -297,15 +317,19 @@
            data-img2="https://i.postimg.cc/2jbGj5LC/file-00000000ffe881f495c86b87c3c19d33.png"
            data-sizes="Universal Size"
            data-colors="Black & White"
-           data-link="https://www.amazon.sa/-/en/Heart-shaped-Handmade-Cartoon-Accessory-Decoration/dp/B0H1CGQK17?tag=sipra786-21"
-           onclick="openModal(this)">
+           data-link="https://www.amazon.sa/-/en/Heart-shaped-Handmade-Cartoon-Accessory-Decoration/dp/B0H1CGQK17?tag=sipra786-21">
         <div>
-          <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative">
-            <img src="https://i.postimg.cc/85s7pqjX/71mus2p-Ha6L-AC-SX679.jpg" alt="Beaded Phone Strap" class="w-full h-48 object-contain">
-            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow">Cute Trend</span>
+          <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative group">
+            <a href="https://i.postimg.cc/85s7pqjX/71mus2p-Ha6L-AC-SX679.jpg" target="_blank" title="Click to view full image in new tab" class="w-full h-full flex items-center justify-center">
+              <img src="https://i.postimg.cc/85s7pqjX/71mus2p-Ha6L-AC-SX679.jpg" alt="Beaded Phone Strap" class="w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300">
+            </a>
+            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow pointer-events-none">Cute Trend</span>
+            <span class="absolute bottom-2 right-2 bg-slate-900/80 text-white text-[10px] px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+              <i class="fa-solid fa-up-right-from-square"></i> Open Pic
+            </span>
           </div>
 
-          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1">
+          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1 cursor-pointer" onclick="openModal(this.closest('.product-card'))">
             Black and White Bead Heart Bow Handmade Cartoon Beaded Phone Lanyard
           </h3>
 
@@ -318,7 +342,7 @@
           </div>
         </div>
 
-        <div class="mt-3 flex flex-col gap-1.5" onclick="event.stopPropagation()">
+        <div class="mt-3 flex flex-col gap-1.5">
           <button type="button" onclick="openModal(this.closest('.product-card'))" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 rounded-lg text-xs transition-colors">
             View Details
           </button>
@@ -343,8 +367,13 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-2">
         <!-- Main Image & Thumbnails -->
         <div>
-          <div class="bg-gray-50 border rounded-xl overflow-hidden h-64 flex items-center justify-center mb-3">
-            <img id="modalMainImg" src="" alt="Product" class="h-full object-contain">
+          <div class="bg-gray-50 border rounded-xl overflow-hidden h-64 flex items-center justify-center mb-3 relative group">
+            <a id="modalMainImgLink" href="" target="_blank" title="Click to view high-res image">
+              <img id="modalMainImg" src="" alt="Product" class="h-64 object-contain">
+            </a>
+            <span class="absolute bottom-2 right-2 bg-slate-900/70 text-white text-[10px] px-2 py-0.5 rounded opacity-80 pointer-events-none">
+              <i class="fa-solid fa-expand mr-1"></i> Tap picture to open full image
+            </span>
           </div>
           <div id="modalThumbnails" class="flex gap-2 overflow-x-auto pb-1"></div>
         </div>
@@ -410,7 +439,6 @@
       const cards = document.querySelectorAll(".product-card");
       const title = document.getElementById("section-title");
 
-      // Update Active Navigation Button Styling
       document.querySelectorAll(".category-btn").forEach(btn => {
         btn.classList.remove("text-amber-400", "font-semibold");
       });
@@ -462,6 +490,7 @@
       document.getElementById("modalTitle").innerText = title;
       document.getElementById("modalPrice").innerText = price;
       document.getElementById("modalMainImg").src = mainImg;
+      document.getElementById("modalMainImgLink").href = mainImg;
       document.getElementById("modalSizes").innerText = sizes;
       document.getElementById("modalColors").innerText = colors;
       document.getElementById("modalBuyLink").href = link;
@@ -478,12 +507,13 @@
       
       const images = [mainImg, card.getAttribute("data-img1"), card.getAttribute("data-img2")].filter(Boolean);
       
-      images.forEach((imgSrc, index) => {
+      images.forEach((imgSrc) => {
         const imgBtn = document.createElement("img");
         imgBtn.src = imgSrc;
         imgBtn.className = "w-12 h-12 object-contain border rounded-lg cursor-pointer hover:border-amber-400 bg-white p-0.5";
         imgBtn.onclick = () => {
           document.getElementById("modalMainImg").src = imgSrc;
+          document.getElementById("modalMainImgLink").href = imgSrc;
         };
         thumbnailsContainer.appendChild(imgBtn);
       });
