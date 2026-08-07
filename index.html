@@ -3,351 +3,248 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PakDeals Saudi Arabia - Best Amazon Deals & Fashion</title>
+  <title>PakDeals SA | Amazon.sa & Othaim Daily Deals</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-    body { font-family: 'Inter', sans-serif; }
+    body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
-<body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
+<body class="bg-gray-100 text-gray-900 pb-16 md:pb-0 min-h-screen flex flex-col">
 
-  <!-- 1. TOP NAVBAR -->
-  <header class="bg-slate-900 text-white sticky top-0 z-40 shadow-md">
-    <div class="max-w-7xl mx-auto px-3 py-2.5 flex items-center justify-between gap-3 md:gap-6">
-      
-      <!-- Brand Logo -->
-      <a href="#" class="text-xl md:text-2xl font-black tracking-tight text-white flex items-center gap-1">
-        PakDeals<span class="text-amber-400 text-sm font-semibold">.sa</span>
+  <!-- 1. AMAZON STYLE HEADER -->
+  <header class="bg-[#131921] text-white sticky top-0 z-40 shadow-md">
+    <!-- Top Bar -->
+    <div class="max-w-7xl mx-auto px-3 py-2 flex items-center justify-between gap-2">
+      <!-- Logo -->
+      <a href="#" class="flex items-center text-xl font-bold tracking-tight text-white">
+        PakDeals<span class="text-[#febd69] text-xs ml-0.5">.sa</span>
       </a>
 
-      <!-- Location -->
-      <div class="hidden sm:flex items-center gap-2 text-xs text-gray-300">
-        <i class="fa-solid font-bold text-amber-400 fa-location-dot text-sm"></i>
+      <!-- Location (Deliver to Saudi Arabia) -->
+      <div class="hidden md:flex items-center gap-1.5 text-xs text-gray-300">
+        <i class="fa-solid fa-location-dot text-[#febd69]"></i>
         <div>
           <span class="block text-[10px] text-gray-400 leading-none">Deliver to</span>
-          <span class="font-bold text-white">Saudi Arabia 🇸🇦</span>
+          <span class="font-bold text-white leading-none">Saudi Arabia 🇸🇦</span>
         </div>
       </div>
 
       <!-- Search Bar -->
-      <div class="flex-1 max-w-2xl flex rounded-md overflow-hidden bg-white text-gray-800 shadow-inner">
-        <select id="categorySelect" onchange="filterProducts()" class="bg-gray-100 text-xs px-2 md:px-3 text-gray-700 border-r border-gray-300 focus:outline-none cursor-pointer hidden sm:block">
-          <option value="all">All Categories</option>
-          <option value="abaya">Abayas & Modest Wear</option>
-          <option value="bags">Bags & Totes</option>
-          <option value="men-fashion">Men's Fashion</option>
-          <option value="mobile-accessories">Mobile Accessories</option>
+      <div class="flex-1 max-w-2xl flex rounded-lg overflow-hidden bg-white text-gray-800 shadow-sm">
+        <select id="storeSelect" onchange="filterStore()" class="bg-gray-100 text-xs px-2 text-gray-700 border-r focus:outline-none cursor-pointer hidden sm:block">
+          <option value="all">All Stores</option>
+          <option value="amazon">Amazon.sa</option>
+          <option value="othaim">Othaim Market</option>
         </select>
-        <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="Search Amazon SA deals..." class="w-full px-3 py-2 text-xs md:text-sm focus:outline-none" />
-        <button onclick="searchProducts()" class="bg-amber-400 hover:bg-amber-500 text-slate-900 px-4 font-bold text-sm transition-colors">
+        <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="Search Amazon SA & Othaim deals..." class="w-full px-3 py-2 text-xs md:text-sm focus:outline-none" />
+        <button onclick="searchProducts()" class="bg-[#febd69] hover:bg-[#f3a847] text-slate-900 px-4 font-bold transition-colors">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
       </div>
 
-      <div class="sm:hidden text-xs font-bold text-amber-400">🇸🇦 SA</div>
+      <div class="text-xs font-bold text-[#febd69] flex items-center gap-1">
+        <span>🇸🇦</span> <span class="hidden sm:inline">SA Deals</span>
+      </div>
     </div>
 
-    <!-- Category Navigation -->
-    <nav class="bg-slate-800 text-xs px-3 py-2 overflow-x-auto whitespace-nowrap border-t border-slate-700">
-      <div class="max-w-7xl mx-auto flex items-center gap-4 text-gray-200">
-        <button onclick="filterCategory('all')" class="category-btn active hover:text-amber-400 font-semibold text-amber-400"><i class="fa-solid fa-border-all mr-1"></i> All Deals</button>
-        <button onclick="filterCategory('abaya')" class="category-btn hover:text-amber-400"><i class="fa-solid fa-shirt mr-1"></i> Abayas & Scarves</button>
-        <button onclick="filterCategory('bags')" class="category-btn hover:text-amber-400"><i class="fa-solid fa-bag-shopping mr-1"></i> Handbags & Totes</button>
-        <button onclick="filterCategory('men-fashion')" class="category-btn hover:text-amber-400"><i class="fa-solid fa-user-tie mr-1"></i> Men's Fashion</button>
-        <button onclick="filterCategory('mobile-accessories')" class="category-btn hover:text-amber-400"><i class="fa-solid fa-mobile-screen mr-1"></i> Mobile Accessories</button>
+    <!-- Sub-Header / Deliver Bar for Mobile -->
+    <div class="bg-[#232f3e] text-xs px-3 py-1.5 flex items-center justify-between text-gray-200 border-t border-gray-700">
+      <div class="flex items-center gap-1">
+        <i class="fa-solid fa-location-dot text-[#febd69] text-xs"></i>
+        <span>Deliver to KSA (Riyadh, Jeddah, Dammam)</span>
+      </div>
+      <span class="text-[10px] bg-emerald-700 text-white font-bold px-1.5 py-0.5 rounded">Othaim & Amazon Partner</span>
+    </div>
+
+    <!-- Category Pills Navigation -->
+    <nav class="bg-[#232f3e] text-xs px-2 py-1.5 overflow-x-auto whitespace-nowrap no-scrollbar border-t border-gray-700/50">
+      <div class="flex items-center gap-2">
+        <button onclick="filterCategory('all')" class="bg-white/10 hover:bg-white/20 text-white px-3 py-1 rounded-full font-medium active">All Deals</button>
+        <button onclick="filterCategory('othaim-grocery')" class="bg-emerald-600/80 hover:bg-emerald-600 text-white px-3 py-1 rounded-full font-medium"><i class="fa-solid fa-cart-shopping mr-1"></i> Othaim Grocery</button>
+        <button onclick="filterCategory('abaya')" class="bg-white/10 hover:bg-white/20 text-white px-3 py-1 rounded-full font-medium"><i class="fa-solid fa-shirt mr-1"></i> Abayas & Scarves</button>
+        <button onclick="filterCategory('bags')" class="bg-white/10 hover:bg-white/20 text-white px-3 py-1 rounded-full font-medium"><i class="fa-solid fa-bag-shopping mr-1"></i> Handbags</button>
+        <button onclick="filterCategory('men-fashion')" class="bg-white/10 hover:bg-white/20 text-white px-3 py-1 rounded-full font-medium"><i class="fa-solid fa-user-tie mr-1"></i> Men's Fashion</button>
+        <button onclick="filterCategory('mobile-accessories')" class="bg-white/10 hover:bg-white/20 text-white px-3 py-1 rounded-full font-medium"><i class="fa-solid fa-mobile-screen mr-1"></i> Accessories</button>
       </div>
     </nav>
   </header>
 
-  <!-- 2. HERO BANNER -->
-  <section class="max-w-7xl mx-auto px-3 mt-4 w-full">
-    <div class="relative rounded-2xl overflow-hidden shadow-lg bg-gradient-to-r from-slate-900 via-slate-800 to-emerald-950 text-white min-h-[180px] md:min-h-[220px] flex items-center p-6 md:p-10">
-      <div class="relative z-10 max-w-xl">
-        <span class="inline-block bg-amber-400 text-slate-900 text-xs font-black uppercase px-2.5 py-1 rounded mb-2">
-          Featured Saudi Collection
-        </span>
-        <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight">
-          Luxury Deals & Mobile Accessories
-        </h1>
-        <p class="text-gray-300 text-xs md:text-sm mt-1 mb-4">
-          Direct Amazon.sa affiliate deals with 4 interest-free instalments!
-        </p>
+  <!-- 2. HERO BANNER & QUICK LINKS -->
+  <section class="max-w-7xl mx-auto px-2 md:px-3 mt-3 w-full">
+    <!-- Amazon & Othaim Partner Banner -->
+    <div class="relative rounded-xl overflow-hidden shadow-md bg-gradient-to-r from-[#131921] via-[#232f3e] to-emerald-900 text-white p-4 md:p-6">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="bg-[#febd69] text-slate-900 font-extrabold text-[10px] px-2 py-0.5 rounded uppercase">Amazon.sa Affiliate</span>
+            <span class="bg-emerald-500 text-slate-950 font-extrabold text-[10px] px-2 py-0.5 rounded uppercase">Othaim Supermarket</span>
+          </div>
+          <h1 class="text-xl md:text-2xl font-black tracking-tight">Daily Essentials & Luxury Amazon Deals</h1>
+          <p class="text-gray-300 text-xs mt-1">Direct links to Amazon Saudi Arabia & Othaim Supermarket with Tabby & Tamara 4-instalments!</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- 3. PRODUCTS GRID -->
-  <main id="products-section" class="max-w-7xl mx-auto px-3 my-8 flex-1 w-full">
-    
-    <div class="flex items-center justify-between mb-4 border-b pb-2">
-      <h2 id="section-title" class="text-lg md:text-xl font-extrabold text-slate-900">
-        Today's Top Amazon Deals
+  <main class="max-w-7xl mx-auto px-2 md:px-3 my-6 flex-1 w-full">
+    <div class="flex items-center justify-between mb-3 border-b pb-2">
+      <h2 id="section-title" class="text-base md:text-lg font-bold text-slate-900 flex items-center gap-2">
+        <i class="fa-solid fa-bolt text-[#f3a847]"></i> Featured Amazon.sa & Othaim Deals
       </h2>
       <span class="text-xs text-gray-500 font-medium">Updated Daily</span>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5" id="productGrid">
+    <!-- Product Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5 md:gap-4" id="productGrid">
 
-      <!-- PRODUCT 1: Kimono Abaya -->
-      <div class="product-card abaya bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa" 
+      <!-- PRODUCT 1: Othaim Daily Grocery (Al Mudhish Milk Powder) -->
+      <div class="product-card othaim-grocery bg-white border border-gray-200 rounded-lg p-2.5 hover:shadow-md transition-shadow flex flex-col justify-between"
+           data-store="othaim"
+           data-price="44.95"
+           data-title="Al Mudhish Full Cream Milk Powder 2.25kg - Othaim Daily Offer"
+           data-mainimg="https://m.media-amazon.com/images/I/71Y9A2N0dWL._AC_SL1500_.jpg"
+           data-sizes="2.25 KG"
+           data-colors="N/A"
+           data-link="https://www.othaimmarkets.com/">
+        <div>
+          <div class="bg-gray-50 rounded overflow-hidden mb-2 h-40 flex items-center justify-center relative group">
+            <a href="https://m.media-amazon.com/images/I/71Y9A2N0dWL._AC_SL1500_.jpg" target="_blank" title="Tap image to open full preview" class="w-full h-full flex items-center justify-center">
+              <img src="https://m.media-amazon.com/images/I/71Y9A2N0dWL._AC_SL1500_.jpg" alt="Milk Powder" class="w-full h-40 object-contain p-2">
+            </a>
+            <span class="absolute top-1.5 left-1.5 bg-emerald-600 text-white font-extrabold text-[9px] px-1.5 py-0.5 rounded">Othaim Deal</span>
+            <span class="absolute bottom-1.5 right-1.5 bg-black/60 text-white text-[9px] px-1 rounded opacity-0 group-hover:opacity-100">
+              <i class="fa-solid fa-up-right-from-square"></i> Open Pic
+            </span>
+          </div>
+          <h3 onclick="openAmazonAppModal(this.closest('.product-card'))" class="text-xs font-semibold text-gray-900 line-clamp-2 hover:text-emerald-700 cursor-pointer">
+            Al Mudhish Full Cream Milk Powder 2.25kg - Daily Household Essential
+          </h3>
+          <div class="mt-2">
+            <div class="flex items-baseline gap-1">
+              <span class="text-[10px] font-bold text-slate-700">SAR</span>
+              <span class="text-base font-extrabold text-slate-900">44.95</span>
+            </div>
+            <div class="instalment-container mt-0.5"></div>
+          </div>
+        </div>
+        <div class="mt-2 space-y-1">
+          <button onclick="openAmazonAppModal(this.closest('.product-card'))" class="w-full bg-slate-800 text-white font-semibold py-1.5 rounded text-[11px]">View App Details</button>
+          <a href="https://www.othaimmarkets.com/" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-1.5 rounded text-[11px] flex items-center justify-center gap-1">
+            <i class="fa-solid fa-cart-shopping"></i> Othaim Buy
+          </a>
+        </div>
+      </div>
+
+      <!-- PRODUCT 2: Kimono Abaya (Amazon.sa) -->
+      <div class="product-card abaya bg-white border border-gray-200 rounded-lg p-2.5 hover:shadow-md transition-shadow flex flex-col justify-between"
+           data-store="amazon"
            data-price="55.82"
            data-title="Women's Abaya 2026 Trendy Kimono Lapel Modest Four Seasons Arabian Clothing"
            data-mainimg="https://m.media-amazon.com/images/I/415FEhkk9uL._AC_SY1000_.jpg"
-           data-img1="https://m.media-amazon.com/images/I/415FEhkk9uL._AC_SY1000_.jpg"
            data-sizes="Free Size, Standard"
            data-colors="Grey-Blue & White"
            data-link="https://www.amazon.sa/-/en/trendyKimono-Regular-seasons-Arabian-Clothing/dp/B0GJZP1BZX">
         <div>
-          <!-- Picture with Open in New Tab -->
-          <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative group">
-            <a href="https://m.media-amazon.com/images/I/415FEhkk9uL._AC_SY1000_.jpg" target="_blank" title="Click to view full image in new tab" class="w-full h-full flex items-center justify-center">
-              <img src="https://m.media-amazon.com/images/I/415FEhkk9uL._AC_SY1000_.jpg" alt="Kimono Abaya" class="w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300">
+          <div class="bg-gray-50 rounded overflow-hidden mb-2 h-40 flex items-center justify-center relative group">
+            <a href="https://m.media-amazon.com/images/I/415FEhkk9uL._AC_SY1000_.jpg" target="_blank" title="Tap image to open full preview" class="w-full h-full flex items-center justify-center">
+              <img src="https://m.media-amazon.com/images/I/415FEhkk9uL._AC_SY1000_.jpg" alt="Kimono Abaya" class="w-full h-40 object-contain p-2">
             </a>
-            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow pointer-events-none">Bestseller</span>
-            <span class="absolute bottom-2 right-2 bg-slate-900/80 text-white text-[10px] px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+            <span class="absolute top-1.5 left-1.5 bg-[#febd69] text-slate-900 font-extrabold text-[9px] px-1.5 py-0.5 rounded">Amazon SA</span>
+            <span class="absolute bottom-1.5 right-1.5 bg-black/60 text-white text-[9px] px-1 rounded opacity-0 group-hover:opacity-100">
               <i class="fa-solid fa-up-right-from-square"></i> Open Pic
             </span>
           </div>
-
-          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1 cursor-pointer" onclick="openModal(this.closest('.product-card'))">
-            Women's Abaya 2026 Trendy Kimono Lapel Modest Four Seasons Arabian Clothing
+          <h3 onclick="openAmazonAppModal(this.closest('.product-card'))" class="text-xs font-semibold text-gray-900 line-clamp-2 hover:text-[#c45500] cursor-pointer">
+            Women's Abaya 2026 Trendy Kimono Lapel Modest Arabian Wear
           </h3>
-
           <div class="mt-2">
             <div class="flex items-baseline gap-1">
-              <span class="text-xs font-semibold text-emerald-700">SAR</span>
-              <span class="text-xl font-extrabold text-emerald-700">55.82</span>
+              <span class="text-[10px] font-bold text-slate-700">SAR</span>
+              <span class="text-base font-extrabold text-slate-900">55.82</span>
             </div>
-            <div class="instalment-container mt-1"></div>
+            <div class="instalment-container mt-0.5"></div>
           </div>
         </div>
-
-        <div class="mt-3 flex flex-col gap-1.5">
-          <button type="button" onclick="openModal(this.closest('.product-card'))" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 rounded-lg text-xs transition-colors">
-            View Details
-          </button>
-          <a href="https://www.amazon.sa/-/en/trendyKimono-Regular-seasons-Arabian-Clothing/dp/B0GJZP1BZX" target="_blank" class="w-full bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold py-2 rounded-lg text-xs text-center transition-colors flex items-center justify-center gap-1">
-            <i class="fa-brands fa-amazon"></i> Buy on Amazon
+        <div class="mt-2 space-y-1">
+          <button onclick="openAmazonAppModal(this.closest('.product-card'))" class="w-full bg-slate-800 text-white font-semibold py-1.5 rounded text-[11px]">View App Details</button>
+          <a href="https://www.amazon.sa/-/en/trendyKimono-Regular-seasons-Arabian-Clothing/dp/B0GJZP1BZX" target="_blank" class="w-full bg-[#ffa41c] hover:bg-[#e69317] text-slate-950 font-bold py-1.5 rounded text-[11px] flex items-center justify-center gap-1">
+            <i class="fa-brands fa-amazon"></i> Amazon Buy
           </a>
         </div>
       </div>
 
-      <!-- PRODUCT 2: Tote Bag -->
-      <div class="product-card bags bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa" 
+      <!-- PRODUCT 3: Mesh Tote Bag (Amazon.sa) -->
+      <div class="product-card bags bg-white border border-gray-200 rounded-lg p-2.5 hover:shadow-md transition-shadow flex flex-col justify-between"
+           data-store="amazon"
            data-price="34.18"
            data-title="Mesh Beach Bag Crochet Handbag Boho Bag For Women Knit Tote"
            data-mainimg="https://m.media-amazon.com/images/I/61KywqZawxL._AC_SX679_.jpg"
-           data-img1="https://m.media-amazon.com/images/I/61KywqZawxL._AC_SX679_.jpg"
            data-sizes="One Size"
            data-colors="Beige / Red Hearts"
            data-link="https://www.amazon.sa/-/en/Capacity-Knitted-Shoulder-Handbag-Stylish/dp/B0H38Q8Y4M">
         <div>
-          <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative group">
-            <a href="https://m.media-amazon.com/images/I/61KywqZawxL._AC_SX679_.jpg" target="_blank" title="Click to view full image in new tab" class="w-full h-full flex items-center justify-center">
-              <img src="https://m.media-amazon.com/images/I/61KywqZawxL._AC_SX679_.jpg" alt="Mesh Beach Bag" class="w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300">
+          <div class="bg-gray-50 rounded overflow-hidden mb-2 h-40 flex items-center justify-center relative group">
+            <a href="https://m.media-amazon.com/images/I/61KywqZawxL._AC_SX679_.jpg" target="_blank" title="Tap image to open full preview" class="w-full h-full flex items-center justify-center">
+              <img src="https://m.media-amazon.com/images/I/61KywqZawxL._AC_SX679_.jpg" alt="Tote Bag" class="w-full h-40 object-contain p-2">
             </a>
-            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow pointer-events-none">Prime</span>
-            <span class="absolute bottom-2 right-2 bg-slate-900/80 text-white text-[10px] px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-              <i class="fa-solid fa-up-right-from-square"></i> Open Pic
-            </span>
+            <span class="absolute top-1.5 left-1.5 bg-[#febd69] text-slate-900 font-extrabold text-[9px] px-1.5 py-0.5 rounded">Prime</span>
           </div>
-
-          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1 cursor-pointer" onclick="openModal(this.closest('.product-card'))">
-            Mesh Beach Bag Crochet Handbag Boho Bag For Women Knit Tote
+          <h3 onclick="openAmazonAppModal(this.closest('.product-card'))" class="text-xs font-semibold text-gray-900 line-clamp-2 hover:text-[#c45500] cursor-pointer">
+            Mesh Beach Bag Crochet Handbag Boho Knit Tote Bag
           </h3>
-
           <div class="mt-2">
             <div class="flex items-baseline gap-1">
-              <span class="text-xs font-semibold text-emerald-700">SAR</span>
-              <span class="text-xl font-extrabold text-emerald-700">34.18</span>
+              <span class="text-[10px] font-bold text-slate-700">SAR</span>
+              <span class="text-base font-extrabold text-slate-900">34.18</span>
             </div>
-            <div class="instalment-container mt-1"></div>
+            <div class="instalment-container mt-0.5"></div>
           </div>
         </div>
-
-        <div class="mt-3 flex flex-col gap-1.5">
-          <button type="button" onclick="openModal(this.closest('.product-card'))" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 rounded-lg text-xs transition-colors">
-            View Details
-          </button>
-          <a href="https://www.amazon.sa/-/en/Capacity-Knitted-Shoulder-Handbag-Stylish/dp/B0H38Q8Y4M" target="_blank" class="w-full bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold py-2 rounded-lg text-xs text-center transition-colors flex items-center justify-center gap-1">
-            <i class="fa-brands fa-amazon"></i> Buy on Amazon
+        <div class="mt-2 space-y-1">
+          <button onclick="openAmazonAppModal(this.closest('.product-card'))" class="w-full bg-slate-800 text-white font-semibold py-1.5 rounded text-[11px]">View App Details</button>
+          <a href="https://www.amazon.sa/-/en/Capacity-Knitted-Shoulder-Handbag-Stylish/dp/B0H38Q8Y4M" target="_blank" class="w-full bg-[#ffa41c] hover:bg-[#e69317] text-slate-950 font-bold py-1.5 rounded text-[11px] flex items-center justify-center gap-1">
+            <i class="fa-brands fa-amazon"></i> Amazon Buy
           </a>
         </div>
       </div>
 
-      <!-- PRODUCT 3: Men's Polo Shirt -->
-      <div class="product-card men-fashion bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa" 
+      <!-- PRODUCT 4: Men's Golf Polo (Amazon.sa) -->
+      <div class="product-card men-fashion bg-white border border-gray-200 rounded-lg p-2.5 hover:shadow-md transition-shadow flex flex-col justify-between"
+           data-store="amazon"
            data-price="20.80"
            data-title="Men's Quick Dry Golf Polo Shirt Short Sleeve Solid Collared Athletic Casual"
            data-mainimg="https://i.postimg.cc/gj30kQh2/61VHez-S-LL-AC-SY879.jpg"
-           data-img1="https://i.postimg.cc/gj30kQh2/61VHez-S-LL-AC-SY879.jpg"
            data-sizes="S, M, L, XL"
            data-colors="Black, White, Navy"
            data-link="https://www.amazon.sa/-/en/Sleeve-Collared-Athletic-Casual-Medium/dp/B0GZ3J7LSZ">
         <div>
-          <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative group">
-            <a href="https://i.postimg.cc/gj30kQh2/61VHez-S-LL-AC-SY879.jpg" target="_blank" title="Click to view full image in new tab" class="w-full h-full flex items-center justify-center">
-              <img src="https://i.postimg.cc/gj30kQh2/61VHez-S-LL-AC-SY879.jpg" alt="Golf Polo Shirt" class="w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300">
+          <div class="bg-gray-50 rounded overflow-hidden mb-2 h-40 flex items-center justify-center relative group">
+            <a href="https://i.postimg.cc/gj30kQh2/61VHez-S-LL-AC-SY879.jpg" target="_blank" title="Tap image to open full preview" class="w-full h-full flex items-center justify-center">
+              <img src="https://i.postimg.cc/gj30kQh2/61VHez-S-LL-AC-SY879.jpg" alt="Polo Shirt" class="w-full h-40 object-contain p-2">
             </a>
-            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow pointer-events-none">Men's Fashion</span>
-            <span class="absolute bottom-2 right-2 bg-slate-900/80 text-white text-[10px] px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-              <i class="fa-solid fa-up-right-from-square"></i> Open Pic
-            </span>
+            <span class="absolute top-1.5 left-1.5 bg-[#febd69] text-slate-900 font-extrabold text-[9px] px-1.5 py-0.5 rounded">Men's Wear</span>
           </div>
-
-          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1 cursor-pointer" onclick="openModal(this.closest('.product-card'))">
-            Men's Quick Dry Golf Polo Shirt Short Sleeve Solid Collared Athletic Casual
+          <h3 onclick="openAmazonAppModal(this.closest('.product-card'))" class="text-xs font-semibold text-gray-900 line-clamp-2 hover:text-[#c45500] cursor-pointer">
+            Men's Quick Dry Golf Polo Shirt Short Sleeve Athletic Casual
           </h3>
-
           <div class="mt-2">
             <div class="flex items-baseline gap-1">
-              <span class="text-xs font-semibold text-emerald-700">SAR</span>
-              <span class="text-xl font-extrabold text-emerald-700">20.80</span>
+              <span class="text-[10px] font-bold text-slate-700">SAR</span>
+              <span class="text-base font-extrabold text-slate-900">20.80</span>
             </div>
-            <div class="instalment-container mt-1"></div>
+            <div class="instalment-container mt-0.5"></div>
           </div>
         </div>
-
-        <div class="mt-3 flex flex-col gap-1.5">
-          <button type="button" onclick="openModal(this.closest('.product-card'))" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 rounded-lg text-xs transition-colors">
-            View Details
-          </button>
-          <a href="https://www.amazon.sa/-/en/Sleeve-Collared-Athletic-Casual-Medium/dp/B0GZ3J7LSZ" target="_blank" class="w-full bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold py-2 rounded-lg text-xs text-center transition-colors flex items-center justify-center gap-1">
-            <i class="fa-brands fa-amazon"></i> Buy on Amazon
-          </a>
-        </div>
-      </div>
-
-      <!-- PRODUCT 4: Airplane Phone Mount -->
-      <div class="product-card mobile-accessories bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa" 
-           data-price="16.00"
-           data-title="Universal Airplane in Flight Phone Mount - Multi-Directional Dual 360 Rotation Travel Accessory"
-           data-mainimg="https://i.postimg.cc/PJCyG3Wf/file-0000000004a4820a88c95f0a5a0c2afb.png"
-           data-img1="https://i.postimg.cc/PJCyG3Wf/file-0000000004a4820a88c95f0a5a0c2afb.png"
-           data-sizes="Universal (Fits All Phones)"
-           data-colors="Black"
-           data-link="https://www.amazon.sa/">
-        <div>
-          <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative group">
-            <a href="https://i.postimg.cc/PJCyG3Wf/file-0000000004a4820a88c95f0a5a0c2afb.png" target="_blank" title="Click to view full image in new tab" class="w-full h-full flex items-center justify-center">
-              <img src="https://i.postimg.cc/PJCyG3Wf/file-0000000004a4820a88c95f0a5a0c2afb.png" alt="Airplane Phone Mount" class="w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300">
-            </a>
-            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow pointer-events-none">Travel Gear</span>
-            <span class="absolute bottom-2 right-2 bg-slate-900/80 text-white text-[10px] px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-              <i class="fa-solid fa-up-right-from-square"></i> Open Pic
-            </span>
-          </div>
-
-          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1 cursor-pointer" onclick="openModal(this.closest('.product-card'))">
-            Universal Airplane in Flight Phone Mount - Multi-Directional Dual 360 Rotation
-          </h3>
-
-          <div class="mt-2">
-            <div class="flex items-baseline gap-1">
-              <span class="text-xs font-semibold text-emerald-700">SAR</span>
-              <span class="text-xl font-extrabold text-emerald-700">16.00</span>
-            </div>
-            <div class="instalment-container mt-1"></div>
-          </div>
-        </div>
-
-        <div class="mt-3 flex flex-col gap-1.5">
-          <button type="button" onclick="openModal(this.closest('.product-card'))" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 rounded-lg text-xs transition-colors">
-            View Details
-          </button>
-          <a href="https://www.amazon.sa/" target="_blank" class="w-full bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold py-2 rounded-lg text-xs text-center transition-colors flex items-center justify-center gap-1">
-            <i class="fa-brands fa-amazon"></i> Buy on Amazon
-          </a>
-        </div>
-      </div>
-
-      <!-- PRODUCT 5: Waterproof Phone Pouch -->
-      <div class="product-card mobile-accessories bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa" 
-           data-price="28.00"
-           data-title="JOTO Waterproof Phone Pouch for iPhone & Galaxy, Black | IPX8 Underwater Dry Bag"
-           data-mainimg="https://i.postimg.cc/QtYy2WTq/71ba3Iat-Na-L-AC-SL1500.jpg"
-           data-img1="https://i.postimg.cc/QtYy2WTq/71ba3Iat-Na-L-AC-SL1500.jpg"
-           data-img2="https://i.postimg.cc/CLsKbhTs/file-000000001e8481f4a161b45e3557ca1b.png"
-           data-sizes="Fits phones up to 7 inches"
-           data-colors="Black"
-           data-link="https://www.amazon.sa/-/en/JOTO-Waterproof-Phone-iPhone-Galaxy/dp/B00LBK7OSY">
-        <div>
-          <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative group">
-            <a href="https://i.postimg.cc/QtYy2WTq/71ba3Iat-Na-L-AC-SL1500.jpg" target="_blank" title="Click to view full image in new tab" class="w-full h-full flex items-center justify-center">
-              <img src="https://i.postimg.cc/QtYy2WTq/71ba3Iat-Na-L-AC-SL1500.jpg" alt="Waterproof Pouch" class="w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300">
-            </a>
-            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow pointer-events-none">IPX8 Rated</span>
-            <span class="absolute bottom-2 right-2 bg-slate-900/80 text-white text-[10px] px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-              <i class="fa-solid fa-up-right-from-square"></i> Open Pic
-            </span>
-          </div>
-
-          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1 cursor-pointer" onclick="openModal(this.closest('.product-card'))">
-            JOTO Waterproof Phone Pouch for iPhone & Galaxy, Black | IPX8 Dry Bag
-          </h3>
-
-          <div class="mt-2">
-            <div class="flex items-baseline gap-1">
-              <span class="text-xs font-semibold text-emerald-700">SAR</span>
-              <span class="text-xl font-extrabold text-emerald-700">28.00</span>
-            </div>
-            <div class="instalment-container mt-1"></div>
-          </div>
-        </div>
-
-        <div class="mt-3 flex flex-col gap-1.5">
-          <button type="button" onclick="openModal(this.closest('.product-card'))" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 rounded-lg text-xs transition-colors">
-            View Details
-          </button>
-          <a href="https://www.amazon.sa/-/en/JOTO-Waterproof-Phone-iPhone-Galaxy/dp/B00LBK7OSY" target="_blank" class="w-full bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold py-2 rounded-lg text-xs text-center transition-colors flex items-center justify-center gap-1">
-            <i class="fa-brands fa-amazon"></i> Buy on Amazon
-          </a>
-        </div>
-      </div>
-
-      <!-- PRODUCT 6: Beaded Phone Chain Strap -->
-      <div class="product-card mobile-accessories bg-white border border-gray-200 rounded-xl p-3 hover:shadow-xl transition-shadow flex flex-col justify-between amazon-sa" 
-           data-price="4.00"
-           data-title="Black and White Bead Heart-shaped Bow Handmade Cartoon Beaded Phone Accessory, Lanyard Wrist Strap"
-           data-mainimg="https://i.postimg.cc/85s7pqjX/71mus2p-Ha6L-AC-SX679.jpg"
-           data-img1="https://i.postimg.cc/85s7pqjX/71mus2p-Ha6L-AC-SX679.jpg"
-           data-img2="https://i.postimg.cc/2jbGj5LC/file-00000000ffe881f495c86b87c3c19d33.png"
-           data-sizes="Universal Size"
-           data-colors="Black & White"
-           data-link="https://www.amazon.sa/-/en/Heart-shaped-Handmade-Cartoon-Accessory-Decoration/dp/B0H1CGQK17?tag=sipra786-21">
-        <div>
-          <div class="bg-gray-50 rounded-lg overflow-hidden mb-2 h-48 flex items-center justify-center relative group">
-            <a href="https://i.postimg.cc/85s7pqjX/71mus2p-Ha6L-AC-SX679.jpg" target="_blank" title="Click to view full image in new tab" class="w-full h-full flex items-center justify-center">
-              <img src="https://i.postimg.cc/85s7pqjX/71mus2p-Ha6L-AC-SX679.jpg" alt="Beaded Phone Strap" class="w-full h-48 object-contain group-hover:scale-105 transition-transform duration-300">
-            </a>
-            <span class="absolute top-2 left-2 bg-amber-400 text-slate-900 font-extrabold text-[10px] px-1.5 py-0.5 rounded shadow pointer-events-none">Cute Trend</span>
-            <span class="absolute bottom-2 right-2 bg-slate-900/80 text-white text-[10px] px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-              <i class="fa-solid fa-up-right-from-square"></i> Open Pic
-            </span>
-          </div>
-
-          <h3 class="text-xs md:text-sm font-bold text-gray-900 line-clamp-2 hover:text-emerald-600 mb-1 cursor-pointer" onclick="openModal(this.closest('.product-card'))">
-            Black and White Bead Heart Bow Handmade Cartoon Beaded Phone Lanyard
-          </h3>
-
-          <div class="mt-2">
-            <div class="flex items-baseline gap-1">
-              <span class="text-xs font-semibold text-emerald-700">SAR</span>
-              <span class="text-xl font-extrabold text-emerald-700">4.00</span>
-            </div>
-            <div class="instalment-container mt-1"></div>
-          </div>
-        </div>
-
-        <div class="mt-3 flex flex-col gap-1.5">
-          <button type="button" onclick="openModal(this.closest('.product-card'))" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 rounded-lg text-xs transition-colors">
-            View Details
-          </button>
-          <a href="https://www.amazon.sa/-/en/Heart-shaped-Handmade-Cartoon-Accessory-Decoration/dp/B0H1CGQK17?tag=sipra786-21" target="_blank" class="w-full bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold py-2 rounded-lg text-xs text-center transition-colors flex items-center justify-center gap-1">
-            <i class="fa-brands fa-amazon"></i> Buy on Amazon
+        <div class="mt-2 space-y-1">
+          <button onclick="openAmazonAppModal(this.closest('.product-card'))" class="w-full bg-slate-800 text-white font-semibold py-1.5 rounded text-[11px]">View App Details</button>
+          <a href="https://www.amazon.sa/-/en/Sleeve-Collared-Athletic-Casual-Medium/dp/B0GZ3J7LSZ" target="_blank" class="w-full bg-[#ffa41c] hover:bg-[#e69317] text-slate-950 font-bold py-1.5 rounded text-[11px] flex items-center justify-center gap-1">
+            <i class="fa-brands fa-amazon"></i> Amazon Buy
           </a>
         </div>
       </div>
@@ -355,67 +252,82 @@
     </div>
   </main>
 
-  <!-- 4. PRODUCT DETAILS MODAL -->
-  <div id="productModal" class="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-3 hidden opacity-0 transition-opacity duration-300">
-    <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative p-5 md:p-6 transform transition-transform duration-300 scale-95" id="modalContainer">
+  <!-- 4. AMAZON APP STYLE BOTTOM SHEET / MODAL -->
+  <div id="amazonAppModal" class="fixed inset-0 bg-black/70 z-50 flex items-end sm:items-center justify-center hidden opacity-0 transition-opacity duration-300">
+    <!-- App Sheet Container -->
+    <div class="bg-white w-full sm:max-w-xl sm:rounded-2xl rounded-t-2xl max-h-[90vh] overflow-y-auto shadow-2xl relative p-4 md:p-6 transform transition-transform duration-300 translate-y-full sm:translate-y-0" id="appModalSheet">
       
+      <!-- Top Handle Bar for Mobile App Feel -->
+      <div class="w-12 h-1.5 bg-gray-300 rounded-full mx-auto mb-3 sm:hidden"></div>
+
       <!-- Close Button -->
-      <button onclick="closeModal()" class="absolute top-3 right-3 text-gray-400 hover:text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-full w-8 h-8 flex items-center justify-center transition-colors">
-        <i class="fa-solid fa-xmark text-lg"></i>
+      <button onclick="closeAmazonAppModal()" class="absolute top-3 right-3 text-gray-500 hover:text-slate-900 bg-gray-100 rounded-full w-8 h-8 flex items-center justify-center">
+        <i class="fa-solid fa-xmark"></i>
       </button>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-2">
-        <!-- Main Image & Thumbnails -->
-        <div>
-          <div class="bg-gray-50 border rounded-xl overflow-hidden h-64 flex items-center justify-center mb-3 relative group">
-            <a id="modalMainImgLink" href="" target="_blank" title="Click to view high-res image">
-              <img id="modalMainImg" src="" alt="Product" class="h-64 object-contain">
-            </a>
-            <span class="absolute bottom-2 right-2 bg-slate-900/70 text-white text-[10px] px-2 py-0.5 rounded opacity-80 pointer-events-none">
-              <i class="fa-solid fa-expand mr-1"></i> Tap picture to open full image
-            </span>
-          </div>
-          <div id="modalThumbnails" class="flex gap-2 overflow-x-auto pb-1"></div>
-        </div>
+      <div class="space-y-4">
+        <!-- Store Badge -->
+        <span id="appModalBadge" class="inline-block bg-[#febd69] text-slate-900 font-extrabold text-[10px] px-2 py-0.5 rounded"></span>
 
-        <!-- Details -->
-        <div class="flex flex-col justify-between">
-          <div>
-            <h2 id="modalTitle" class="text-sm md:text-base font-bold text-slate-900 mb-2 leading-snug"></h2>
-            
-            <div class="flex items-baseline gap-1 my-2">
-              <span class="text-xs font-semibold text-emerald-700">SAR</span>
-              <span id="modalPrice" class="text-2xl font-black text-emerald-700"></span>
-            </div>
+        <!-- Title -->
+        <h2 id="appModalTitle" class="text-sm md:text-base font-bold text-slate-900 leading-snug"></h2>
 
-            <div id="modalInstalment" class="bg-emerald-50 border border-emerald-200 p-2.5 rounded-lg text-xs text-emerald-900 mb-3"></div>
-
-            <div class="space-y-1.5 text-xs text-gray-600 border-t border-b py-2 my-2">
-              <p><span class="font-bold text-slate-800">Available Sizes:</span> <span id="modalSizes"></span></p>
-              <p><span class="font-bold text-slate-800">Colors:</span> <span id="modalColors"></span></p>
-            </div>
-          </div>
-
-          <a id="modalBuyLink" href="#" target="_blank" class="w-full bg-amber-400 hover:bg-amber-500 text-slate-900 font-extrabold py-3 rounded-xl text-center transition-colors flex items-center justify-center gap-2 mt-4 shadow-md">
-            <i class="fa-brands fa-amazon text-lg"></i> Buy directly on Amazon.sa
+        <!-- Image Preview with Open Link -->
+        <div class="bg-gray-50 border rounded-xl p-2 h-64 flex items-center justify-center relative">
+          <a id="appModalImgLink" href="" target="_blank" class="w-full h-full flex items-center justify-center">
+            <img id="appModalImg" src="" alt="Product" class="h-60 object-contain">
           </a>
+          <span class="absolute bottom-2 right-2 bg-slate-900/80 text-white text-[10px] px-2 py-0.5 rounded pointer-events-none">
+            <i class="fa-solid fa-up-right-from-square mr-1"></i> Tap picture to open in New Tab
+          </span>
         </div>
+
+        <!-- Price & Tabby/Tamara Instalments -->
+        <div class="border-t border-b py-2 my-2">
+          <div class="flex items-baseline gap-1">
+            <span class="text-xs font-bold text-slate-700">SAR</span>
+            <span id="appModalPrice" class="text-2xl font-black text-slate-900"></span>
+          </div>
+          <div id="appModalInstalment" class="mt-1 text-xs bg-amber-50 border border-amber-200 text-amber-900 p-2 rounded"></div>
+        </div>
+
+        <!-- Sizes & Specs -->
+        <div class="text-xs text-gray-600 space-y-1">
+          <p><span class="font-bold text-slate-800">Size / Capacity:</span> <span id="appModalSizes"></span></p>
+          <p><span class="font-bold text-slate-800">Color / Variant:</span> <span id="appModalColors"></span></p>
+        </div>
+
+        <!-- Buy Action Button -->
+        <a id="appModalBuyBtn" href="#" target="_blank" class="w-full bg-[#ffa41c] hover:bg-[#e69317] text-slate-950 font-black py-3 rounded-xl text-center text-sm transition-colors flex items-center justify-center gap-2 shadow-md">
+          Proceed to Buy
+        </a>
       </div>
     </div>
   </div>
 
-  <!-- 5. FOOTER -->
-  <footer class="bg-slate-900 text-gray-400 text-xs py-6 border-t border-slate-800 mt-auto">
-    <div class="max-w-7xl mx-auto px-3 text-center space-y-2">
-      <p class="font-bold text-white text-sm">PakDeals Saudi Arabia</p>
-      <p>As an Amazon Associate, PakDeals earns from qualifying purchases.</p>
-      <p class="text-gray-500">© 2026 PakDeals.sa - All rights reserved.</p>
-    </div>
-  </footer>
+  <!-- 5. MOBILE AMAZON APP BOTTOM NAVIGATION BAR -->
+  <div class="fixed bottom-0 left-0 right-0 bg-[#131921] border-t border-slate-800 text-white flex items-center justify-around py-2 z-40 md:hidden text-[10px]">
+    <button onclick="filterCategory('all')" class="flex flex-col items-center text-[#febd69]">
+      <i class="fa-solid fa-house text-base"></i>
+      <span>Home</span>
+    </button>
+    <button onclick="filterCategory('othaim-grocery')" class="flex flex-col items-center text-gray-300">
+      <i class="fa-solid fa-cart-shopping text-base text-emerald-400"></i>
+      <span>Othaim</span>
+    </button>
+    <button onclick="filterStore()" class="flex flex-col items-center text-gray-300">
+      <i class="fa-brands fa-amazon text-base text-[#febd69]"></i>
+      <span>Amazon.sa</span>
+    </button>
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex flex-col items-center text-gray-300">
+      <i class="fa-solid fa-arrow-up text-base"></i>
+      <span>Top</span>
+    </button>
+  </div>
 
-  <!-- 6. JAVASCRIPT CONTROLLERS -->
+  <!-- 6. JAVASCRIPT LOGIC -->
   <script>
-    // 1. Calculate Tabby/Tamara 4-Instalments Automatically
+    // Tabby / Tamara 4-Instalments Calculator
     document.addEventListener("DOMContentLoaded", function() {
       const cards = document.querySelectorAll(".product-card");
       cards.forEach(card => {
@@ -425,8 +337,8 @@
           const container = card.querySelector(".instalment-container");
           if (container) {
             container.innerHTML = `
-              <div class="text-[10px] text-gray-500 bg-gray-100 rounded px-1.5 py-0.5 inline-block">
-                Or 4 payments of <span class="font-bold text-slate-800">${installment} SAR</span>
+              <div class="text-[9px] text-gray-500 bg-gray-100 rounded px-1 py-0.5 inline-block">
+                Or 4 x <span class="font-bold text-slate-800">${installment} SAR</span> (Tabby/Tamara)
               </div>
             `;
           }
@@ -434,16 +346,9 @@
       });
     });
 
-    // 2. Filter Category Function
+    // Category Filter Function
     function filterCategory(category) {
       const cards = document.querySelectorAll(".product-card");
-      const title = document.getElementById("section-title");
-
-      document.querySelectorAll(".category-btn").forEach(btn => {
-        btn.classList.remove("text-amber-400", "font-semibold");
-      });
-      event.target.classList.add("text-amber-400", "font-semibold");
-
       cards.forEach(card => {
         if (category === "all" || card.classList.contains(category)) {
           card.style.display = "flex";
@@ -451,20 +356,26 @@
           card.style.display = "none";
         }
       });
-
-      title.innerText = category === "all" ? "Today's Top Amazon Deals" : category.replace('-', ' ').toUpperCase() + " DEALS";
     }
 
-    function filterProducts() {
-      const selected = document.getElementById("categorySelect").value;
-      filterCategory(selected);
+    // Store Filter Function (Amazon vs Othaim)
+    function filterStore() {
+      const store = document.getElementById("storeSelect") ? document.getElementById("storeSelect").value : 'all';
+      const cards = document.querySelectorAll(".product-card");
+      cards.forEach(card => {
+        const cardStore = card.getAttribute("data-store");
+        if (store === "all" || cardStore === store) {
+          card.style.display = "flex";
+        } else {
+          card.style.display = "none";
+        }
+      });
     }
 
-    // 3. Search Products Function
+    // Search Bar
     function searchProducts() {
       const query = document.getElementById("searchInput").value.toLowerCase();
       const cards = document.querySelectorAll(".product-card");
-
       cards.forEach(card => {
         const title = card.getAttribute("data-title").toLowerCase();
         if (title.includes(query)) {
@@ -475,10 +386,10 @@
       });
     }
 
-    // 4. Modal Functions
-    function openModal(card) {
-      const modal = document.getElementById("productModal");
-      const modalContainer = document.getElementById("modalContainer");
+    // Amazon App Style Modal Handler
+    function openAmazonAppModal(card) {
+      const modal = document.getElementById("amazonAppModal");
+      const sheet = document.getElementById("appModalSheet");
 
       const title = card.getAttribute("data-title");
       const price = card.getAttribute("data-price");
@@ -486,60 +397,56 @@
       const sizes = card.getAttribute("data-sizes") || "Standard";
       const colors = card.getAttribute("data-colors") || "Default";
       const link = card.getAttribute("data-link");
+      const store = card.getAttribute("data-store");
 
-      document.getElementById("modalTitle").innerText = title;
-      document.getElementById("modalPrice").innerText = price;
-      document.getElementById("modalMainImg").src = mainImg;
-      document.getElementById("modalMainImgLink").href = mainImg;
-      document.getElementById("modalSizes").innerText = sizes;
-      document.getElementById("modalColors").innerText = colors;
-      document.getElementById("modalBuyLink").href = link;
+      document.getElementById("appModalTitle").innerText = title;
+      document.getElementById("appModalPrice").innerText = price;
+      document.getElementById("appModalImg").src = mainImg;
+      document.getElementById("appModalImgLink").href = mainImg;
+      document.getElementById("appModalSizes").innerText = sizes;
+      document.getElementById("appModalColors").innerText = colors;
+      
+      const buyBtn = document.getElementById("appModalBuyBtn");
+      buyBtn.href = link;
 
-      const instalment = (parseFloat(price) / 4).toFixed(2);
-      document.getElementById("modalInstalment").innerHTML = `
-        <i class="fa-solid fa-credit-card mr-1 text-emerald-600"></i>
-        Split in 4 interest-free payments of <strong>${instalment} SAR</strong> with Tabby/Tamara.
+      if(store === 'othaim') {
+        document.getElementById("appModalBadge").innerText = "Othaim Supermarket Deal";
+        document.getElementById("appModalBadge").className = "inline-block bg-emerald-600 text-white font-extrabold text-[10px] px-2 py-0.5 rounded";
+        buyBtn.innerHTML = '<i class="fa-solid fa-cart-shopping"></i> Buy on Othaim Market';
+        buyBtn.className = "w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black py-3 rounded-xl text-center text-sm transition-colors flex items-center justify-center gap-2 shadow-md";
+      } else {
+        document.getElementById("appModalBadge").innerText = "Amazon.sa Affiliate Deal";
+        document.getElementById("appModalBadge").className = "inline-block bg-[#febd69] text-slate-900 font-extrabold text-[10px] px-2 py-0.5 rounded";
+        buyBtn.innerHTML = '<i class="fa-brands fa-amazon"></i> Buy directly on Amazon.sa';
+        buyBtn.className = "w-full bg-[#ffa41c] hover:bg-[#e69317] text-slate-950 font-black py-3 rounded-xl text-center text-sm transition-colors flex items-center justify-center gap-2 shadow-md";
+      }
+
+      const installment = (parseFloat(price) / 4).toFixed(2);
+      document.getElementById("appModalInstalment").innerHTML = `
+        <i class="fa-solid fa-credit-card mr-1 text-emerald-700"></i>
+        Split in 4 interest-free payments of <strong>${installment} SAR</strong> with Tabby or Tamara.
       `;
 
-      // Build Thumbnail Gallery
-      const thumbnailsContainer = document.getElementById("modalThumbnails");
-      thumbnailsContainer.innerHTML = "";
-      
-      const images = [mainImg, card.getAttribute("data-img1"), card.getAttribute("data-img2")].filter(Boolean);
-      
-      images.forEach((imgSrc) => {
-        const imgBtn = document.createElement("img");
-        imgBtn.src = imgSrc;
-        imgBtn.className = "w-12 h-12 object-contain border rounded-lg cursor-pointer hover:border-amber-400 bg-white p-0.5";
-        imgBtn.onclick = () => {
-          document.getElementById("modalMainImg").src = imgSrc;
-          document.getElementById("modalMainImgLink").href = imgSrc;
-        };
-        thumbnailsContainer.appendChild(imgBtn);
-      });
-
-      // Show Modal animation
       modal.classList.remove("hidden");
       setTimeout(() => {
         modal.classList.remove("opacity-0");
-        modalContainer.classList.remove("scale-95");
+        sheet.classList.remove("translate-y-full");
       }, 10);
     }
 
-    function closeModal() {
-      const modal = document.getElementById("productModal");
-      const modalContainer = document.getElementById("modalContainer");
+    function closeAmazonAppModal() {
+      const modal = document.getElementById("amazonAppModal");
+      const sheet = document.getElementById("appModalSheet");
 
       modal.classList.add("opacity-0");
-      modalContainer.classList.add("scale-95");
+      sheet.classList.add("translate-y-full");
       setTimeout(() => {
         modal.classList.add("hidden");
       }, 300);
     }
 
-    // Close Modal on Background Click
-    document.getElementById("productModal").addEventListener("click", function(e) {
-      if (e.target === this) closeModal();
+    document.getElementById("amazonAppModal").addEventListener("click", function(e) {
+      if (e.target === this) closeAmazonAppModal();
     });
   </script>
 </body>
