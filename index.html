@@ -771,6 +771,22 @@
     document.getElementById("productModal").addEventListener("click", function(e) {
       if (e.target === this) closeModal();
     });
-  </script>
+  </script>function updateProductSize(selectElement) {
+  const card = selectElement.closest('.product-card');
+  const selectedSize = selectElement.value;
+  
+  // Card ke attribute mein selected size save karna
+  card.setAttribute('data-selected-size', selectedSize);
+  
+  // Amazon link mein size add/update karna
+  const baseLink = card.getAttribute('data-base-link');
+  const buyBtn = card.querySelector('.buy-amazon-btn');
+  
+  const updatedLink = baseLink + `&th=1&psc=1&size=${selectedSize}`;
+  card.setAttribute('data-link', updatedLink);
+  if (buyBtn) {
+    buyBtn.setAttribute('href', updatedLink);
+  }
+}
 </body>
 </html>
