@@ -3,36 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Online Store - Direct WhatsApp Order</title>
-  <!-- Modern Cairo Font -->
+  <title>Store</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
     body { background-color: #f7f9fc; color: #1e293b; direction: rtl; }
-
-    /* Modern Theme */
     header { background-color: #1e2329; color: white; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-    header h1 { font-size: 1.6rem; }
-    header p { font-size: 0.9rem; color: #a0aec0; }
-
+    header h1 { font-size: 1.5rem; }
+    header p { font-size: 0.85rem; color: #a0aec0; }
     .container { max-width: 1200px; margin: 25px auto; padding: 0 15px; }
     .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
-
-    /* Product Card */
-    .product-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: transform 0.2s ease; display: flex; flex-direction: column; }
-    .product-card:hover { transform: translateY(-4px); box-shadow: 0 6px 15px rgba(0,0,0,0.1); }
-    
+    .product-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); display: flex; flex-direction: column; border: 1px solid #e2e8f0; }
     .img-container { width: 100%; height: 230px; background-color: #edf2f7; display: flex; align-items: center; justify-content: center; overflow: hidden; }
     .img-container img { width: 100%; height: 100%; object-fit: cover; }
-    
     .card-content { padding: 18px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
-    .title { font-size: 1rem; font-weight: 700; color: #0f172a; margin-bottom: 8px; line-height: 1.4; height: 2.8em; overflow: hidden; }
+    .title { font-size: 1rem; font-weight: 700; color: #0f172a; margin-bottom: 8px; line-height: 1.4; }
     .price-tag { font-size: 1.2rem; font-weight: 800; color: #27ae60; margin-bottom: 12px; }
-
     .wa-button { display: flex; align-items: center; justify-content: center; gap: 8px; background-color: #25D366; color: white; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: 700; transition: background 0.2s ease; }
     .wa-button:hover { background-color: #1ebc57; }
-
-    /* Messages */
     .loading-message { text-align: center; grid-column: 1 / -1; padding: 40px; color: #718096; }
     footer { text-align: center; padding: 20px; margin-top: 40px; border-top: 1px solid #e2e8f0; color: #94a3b8; font-size: 0.8rem; }
   </style>
@@ -41,7 +29,7 @@
 
   <header>
     <h1>متجرنا الإلكتروني</h1>
-    <p>تصفح المنتجات واطلب مباشرة عبر الواتساب</p>
+    <p>اطلب مباشرة عبر الواتساب</p>
   </header>
 
   <div class="container">
@@ -51,19 +39,12 @@
   </div>
 
   <footer>
-    <p>&copy; 2026 All Rights Reserved. Easy WhatsApp Ordering.</p>
+    <p>&copy; 2026 All Rights Reserved.</p>
   </footer>
 
   <script>
-    // ⚠️ APNA WHATSAPP NUMBER YAHAN DALEIN (Saudi Code 966 Ke Sath, Bina + Ke)
+    // ⚠️ Apna WhatsApp Number yahan daalein
     const WHATSAPP_NUMBER = "966500000000";
-
-    // Image Proxy helper to load images from external CJ Dropshipping servers
-    function getSafeImageUrl(url) {
-      if (!url) return 'https://via.placeholder.com/300x300?text=No+Image';
-      // Use images.weserv.nl as a proxy for external images
-      return 'https://images.weserv.nl/?url=' + encodeURIComponent(url);
-    }
 
     fetch('products.json')
       .then(response => {
@@ -79,15 +60,13 @@
 
         let html = '';
         products.forEach(product => {
-          // Use proxy function for image
-          const safeImg = getSafeImageUrl(product.image);
           const msg = product.whatsapp_message || `Hello, I want to order ${product.title}`;
           const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
 
           html += `
             <div class="product-card">
               <div class="img-container">
-                <img src="${safeImg}" alt="${product.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x300?text=Error';">
+                <img src="${product.image}" alt="${product.title}" loading="lazy">
               </div>
               <div class="card-content">
                 <div>
@@ -106,7 +85,7 @@
       .catch(error => {
         console.error(error);
         document.getElementById('products-container').innerHTML = 
-          '<div class="loading-message" style="color: #e53e3e;">حدث خطأ في تحميل المنتجات. تأكد من صحة ملف products.json</div>';
+          '<div class="loading-message" style="color: #e53e3e;">خطأ في تحميل المنتجات</div>';
       });
   </script>
 </body>
