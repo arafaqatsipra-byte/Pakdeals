@@ -72,12 +72,18 @@
       border-right: 4px solid #e60012;
       padding-right: 8px;
     }
-
-    /* 2 Products Per Line (Mobile Friendly) */
+/* Mobile par 2 products per line, Desktop par 4 products per line */
     .products-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
+      gap: 12px;
+    }
+
+    @media (min-width: 768px) {
+      .products-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
     }
 
     @media (min-width: 768px) {
