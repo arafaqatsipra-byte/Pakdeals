@@ -3,227 +3,314 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Online Store - High Quality Products</title>
+  <title>Store - Direct Dropshipping Store</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* Reset & Base Styles */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Cairo', sans-serif;
     }
     body {
-      background-color: #f8fafc;
-      color: #1e293b;
-      line-height: 1.6;
-      direction: rtl;
+      background-color: #f4f6f9;
+      color: #1a1d20;
     }
 
-    /* Header & Banner */
-    header {
-      background: linear-gradient(135deg, #0f172a, #1e293b);
+    /* Top Announcement Bar */
+    .top-bar {
+      background-color: #ff6600;
       color: #ffffff;
-      padding: 25px 20px;
       text-align: center;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    header h1 {
-      font-size: 1.8rem;
-      margin-bottom: 5px;
-    }
-    header p {
-      font-size: 0.95rem;
-      color: #94a3b8;
+      padding: 8px 12px;
+      font-size: 0.85rem;
+      font-weight: 700;
     }
 
-    /* Container & Layout */
+    /* Header Styling */
+    header {
+      background-color: #1e2329;
+      color: #ffffff;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #ff6600;
+      text-decoration: none;
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: linear-gradient(135deg, #1e2329 0%, #2b313a 100%);
+      color: #ffffff;
+      text-align: center;
+      padding: 35px 20px;
+      border-bottom: 3px solid #ff6600;
+    }
+    .hero h1 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+    .hero p {
+      color: #a0aec0;
+      font-size: 0.95rem;
+    }
+
+    /* Container */
     .container {
       max-width: 1200px;
-      margin: 30px auto;
+      margin: 25px auto;
       padding: 0 15px;
     }
 
-    /* Products Grid */
+    /* Product Grid */
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
       gap: 20px;
     }
 
-    /* Product Card */
+    /* Ecommerce Card Design */
     .product-card {
       background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
+      border-radius: 10px;
       overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: all 0.25s ease;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .product-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    }
-    .image-container {
-      width: 100%;
-      height: 240px;
-      background-color: #f1f5f9;
+      border: 1px solid #e2e8f0;
       position: relative;
     }
-    .image-container img {
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      border-color: #ff6600;
+    }
+
+    .badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #ff6600;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      z-index: 2;
+    }
+
+    .img-box {
+      width: 100%;
+      height: 220px;
+      background-color: #f8fafc;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .img-box img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.3s ease;
     }
-    .card-content {
-      padding: 16px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .product-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #0f172a;
-      margin-bottom: 8px;
-    }
-    .price-tag {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #16a34a;
-      margin-bottom: 8px;
-    }
-    
-    /* Payment Badges (Tabby / Tamara Note) */
-    .payment-info {
-      font-size: 0.8rem;
-      color: #64748b;
-      background: #f8fafc;
-      padding: 6px 10px;
-      border-radius: 6px;
-      margin-bottom: 15px;
-      border: 1px dashed #cbd5e1;
+    .product-card:hover .img-box img {
+      transform: scale(1.05);
     }
 
-    /* WhatsApp Button */
-    .wa-button {
+    .card-details {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+    .title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #2d3748;
+      margin-bottom: 8px;
+      line-height: 1.4;
+      height: 2.8em;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    .rating {
+      color: #f59e0b;
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+    }
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .price {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #e53e3e;
+    }
+    .shipping-info {
+      font-size: 0.75rem;
+      color: #38a169;
+      background: #f0fff4;
+      padding: 4px 8px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      display: inline-block;
+      width: fit-content;
+      font-weight: 600;
+    }
+
+    .wa-btn {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      background-color: #25D366;
+      background-color: #25d366;
       color: #ffffff;
       text-decoration: none;
-      padding: 12px;
-      border-radius: 8px;
+      padding: 10px;
+      border-radius: 6px;
       font-weight: 700;
       font-size: 0.95rem;
-      transition: background-color 0.2s ease;
+      transition: background 0.2s ease;
     }
-    .wa-button:hover {
+    .wa-btn:hover {
       background-color: #1ebc57;
-    }
-
-    /* Loading & Error States */
-    .state-message {
-      text-align: center;
-      grid-column: 1 / -1;
-      padding: 50px 20px;
-      color: #64748b;
-      font-size: 1.1rem;
     }
 
     /* Footer */
     footer {
+      background: #1e2329;
+      color: #a0aec0;
       text-align: center;
       padding: 20px;
-      color: #94a3b8;
-      font-size: 0.85rem;
       margin-top: 40px;
-      border-top: 1px solid #e2e8f0;
+      font-size: 0.85rem;
+      border-top: 2px solid #ff6600;
+    }
+
+    .loading-msg {
+      text-align: center;
+      grid-column: 1 / -1;
+      padding: 40px;
+      color: #718096;
+      font-size: 1.1rem;
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Header Banner -->
+  <!-- Top Bar -->
+  <div class="top-bar">⚡ توصيل سريع لجميع مناطق المملكة العربية السعودية | الدفع عند الطلب عبر الواتساب</div>
+
+  <!-- Header -->
   <header>
-    <h1>متجرنا الإلكتروني (Online Store)</h1>
-    <p>تصفح أفضل المنتجات واطلب مباشرة عبر الواتساب</p>
+    <div class="nav-container">
+      <a href="#" class="logo">🛒 STORE SHOP</a>
+      <span style="font-size: 0.85rem; background: #ff6600; padding: 4px 10px; border-radius: 20px; font-weight: bold;">Direct Store</span>
+    </div>
   </header>
 
-  <!-- Main Content Container -->
+  <!-- Hero Banner -->
+  <section class="hero">
+    <h1>أحدث المنتجات والعروض الحصرية</h1>
+    <p>تصفح منتجاتنا المميزة واطلب مباشرة بسهولة</p>
+  </section>
+
+  <!-- Products Grid -->
   <div class="container">
     <div id="products-container" class="products-grid">
-      <div class="state-message">جاري تحميل المنتجات... (Loading Products...)</div>
+      <div class="loading-msg">جاري تحميل المنتجات...</div>
     </div>
   </div>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2026 All Rights Reserved. Easy Direct WhatsApp Ordering.</p>
+    <p>&copy; 2026 All Rights Reserved. Direct Shopping via WhatsApp.</p>
   </footer>
 
-  <!-- Dynamic Product Script -->
+  <!-- Script -->
   <script>
-    // ⚠️ IMPORTANT: Apna WhatsApp Number yahan Likhein (Saudi Code 966 ke sath, Bina + sign ke)
-    const WHATSAPP_NUMBER = "966535689775"; 
+    // ⚠️ APNA WHATSAPP NUMBER YAHAN DALEIN (Saudi Code 966 Ke Sath, Bina + Ke)
+    const WHATSAPP_NUMBER = "966500000000";
 
-    // Fetch Products from JSON
+    // Image Proxy helper function to fix CJ Image Loading issues
+    function getSafeImageUrl(url) {
+      if (!url) return 'https://via.placeholder.com/300x300?text=No+Image';
+      if (url.includes('cc-west-usa.oss-us-west-1.aliyuncs.com') || url.includes('cjdropshipping.com')) {
+        return 'https://images.weserv.nl/?url=' + encodeURIComponent(url);
+      }
+      return url;
+    }
+
     fetch('products.json')
       .then(response => {
-        if (!response.ok) {
-          throw new Error('Could not load products.json');
-        }
+        if (!response.ok) throw new Error('Could not load products.json');
         return response.json();
       })
       .then(products => {
         const container = document.getElementById('products-container');
-
         if (!products || products.length === 0) {
-          container.innerHTML = '<div class="state-message">لا توجد منتجات حالياً (No products found).</div>';
+          container.innerHTML = '<div class="loading-msg">لا توجد منتجات حالياً.</div>';
           return;
         }
 
-        let htmlContent = '';
-
-        products.forEach(product => {
-          // Custom WhatsApp Message Encoding
-          const msg = product.whatsapp_message || `السلام عليكم، أود طلب المنتج: ${product.title}`;
+        let html = '';
+        products.forEach(p => {
+          const safeImg = getSafeImageUrl(p.image);
+          const msg = p.whatsapp_message || `السلام عليكم، أود طلب المنتج: ${p.title}`;
           const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
 
-          htmlContent += `
+          html += `
             <div class="product-card">
-              <div class="image-container">
-                <img src="${product.image}" alt="${product.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x300?text=No+Image';">
+              <span class="badge">Hot Product</span>
+              <div class="img-box">
+                <img src="${safeImg}" alt="${p.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x300?text=Image+Unavailable';">
               </div>
-              <div class="card-content">
+              <div class="card-details">
                 <div>
-                  <h2 class="product-title">${product.title}</h2>
-                  <div class="price-tag">${product.price}</div>
-                  <div class="payment-info">
-                    💡 متوفر الدفع عبر الواتساب (تواصل لمعرفة تفاصيل الشحن)
+                  <h3 class="title">${p.title}</h3>
+                  <div class="rating">★★★★★ (4.9)</div>
+                  <div class="price-row">
+                    <span class="price">${p.price}</span>
                   </div>
+                  <div class="shipping-info">✓ شحن سريع - متوفر بالمخزن</div>
                 </div>
-                <a href="${waLink}" target="_blank" class="wa-button">
-                  <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12.031 2c-5.517 0-9.993 4.476-9.993 9.993 0 1.763.459 3.479 1.332 4.988l-1.417 5.176 5.299-1.39c1.455.795 3.102 1.218 4.779 1.218 5.517 0 9.993-4.476 9.993-9.993s-4.476-9.992-9.993-9.992zm0 16.5c-1.488 0-2.946-.399-4.218-1.155l-.302-.18-3.131.821.835-3.053-.198-.315c-.832-1.325-1.272-2.868-1.272-4.45 0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8zm4.386-5.992c-.241-.121-1.428-.705-1.649-.785-.221-.08-.382-.121-.543.121-.161.242-.624.785-.765.946-.141.161-.282.181-.523.061-.241-.121-1.02-.376-1.943-1.2-0.718-.641-1.203-1.433-1.344-1.674-.141-.241-.015-.371.106-.491.109-.108.241-.282.362-.423.121-.141.161-.241.241-.403.08-.161.04-.302-.02-.423-.061-.121-.543-1.309-.744-1.792-.196-.471-.397-.406-.543-.414l-.463-.008c-.161 0-.423.061-.644.302s-.846.826-.846 2.015c0 1.189.866 2.338.986 2.499.121.161 1.704 2.602 4.129 3.65.577.249 1.028.398 1.38.51.58.185 1.108.159 1.526.097.466-.07 1.428-.584 1.629-1.149.201-.565.201-1.048.141-1.149-.061-.101-.222-.162-.463-.283z"/>
-                  </svg>
+                <a href="${waLink}" target="_blank" class="wa-btn">
                   طلب عبر الواتساب
                 </a>
               </div>
             </div>
           `;
         });
-
-        container.innerHTML = htmlContent;
+        container.innerHTML = html;
       })
-      .catch(error => {
-        console.error(error);
+      .catch(err => {
+        console.error(err);
         document.getElementById('products-container').innerHTML = 
-          '<div class="state-message" style="color: #ef4444;">عذراً، حدث خطأ أثناء تحميل المنتجات. تأكد من وجود ملف products.json</div>';
+          '<div class="loading-msg" style="color: #e53e3e;">حدث خطأ في تحميل المنتجات. تأكد من صحة ملف products.json</div>';
       });
   </script>
 </body>
