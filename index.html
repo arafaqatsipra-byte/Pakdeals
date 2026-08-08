@@ -3,78 +3,282 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Store</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&display=swap" rel="stylesheet">
+  <title>CHINA DIRECT SUPPLY | المتجر الإلكتروني</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
-    body { background-color: #f7f9fc; color: #1e293b; direction: rtl; }
-    header { background-color: #1e2329; color: white; padding: 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-    header h1 { font-size: 1.5rem; }
-    header p { font-size: 0.85rem; color: #a0aec0; }
-    .container { max-width: 1200px; margin: 25px auto; padding: 0 15px; }
-    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
-    .product-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); display: flex; flex-direction: column; border: 1px solid #e2e8f0; }
-    .img-container { width: 100%; height: 230px; background-color: #edf2f7; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .img-container img { width: 100%; height: 100%; object-fit: cover; }
-    .card-content { padding: 18px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
-    .title { font-size: 1rem; font-weight: 700; color: #0f172a; margin-bottom: 8px; line-height: 1.4; }
-    .price-tag { font-size: 1.2rem; font-weight: 800; color: #27ae60; margin-bottom: 12px; }
-    .wa-button { display: flex; align-items: center; justify-content: center; gap: 8px; background-color: #25D366; color: white; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: 700; transition: background 0.2s ease; }
-    .wa-button:hover { background-color: #1ebc57; }
-    .loading-message { text-align: center; grid-column: 1 / -1; padding: 40px; color: #718096; }
-    footer { text-align: center; padding: 20px; margin-top: 40px; border-top: 1px solid #e2e8f0; color: #94a3b8; font-size: 0.8rem; }
+    body { background-color: #f4f4f4; color: #222; }
+
+    /* Top Announcement Bar - Chinese Red */
+    .top-bar {
+      background: linear-gradient(90deg, #e60012 0%, #ff4d4d 100%);
+      color: #fff;
+      text-align: center;
+      padding: 8px 12px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    /* Header Styling */
+    header {
+      background-color: #111827;
+      color: #fff;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #ff4500;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo span { color: #fff; }
+    .tagline-badge {
+      background: #e60012;
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 800;
+    }
+
+    /* Hero Banner - AliExpress Style */
+    .hero {
+      background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+      color: #fff;
+      text-align: center;
+      padding: 30px 15px;
+      border-bottom: 4px solid #e60012;
+    }
+    .hero h1 { font-size: 1.8rem; font-weight: 800; color: #fff; }
+    .hero p { color: #9ca3af; font-size: 0.95rem; margin-top: 5px; }
+
+    /* Container */
+    .container { max-width: 1200px; margin: 30px auto; padding: 0 15px; }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-right: 4px solid #e60012;
+      padding-right: 10px;
+    }
+
+    /* Product Grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    /* CJ / China Style Product Card */
+    .product-card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      transition: all 0.25s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+      border-color: #e60012;
+    }
+
+    .hot-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #e60012;
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 3px;
+      z-index: 2;
+    }
+
+    .img-box {
+      width: 100%;
+      height: 220px;
+      background-color: #f9fafb;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .product-card:hover .img-box img { transform: scale(1.06); }
+
+    .card-body {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+    .title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1f2937;
+      line-height: 1.4;
+      height: 2.8em;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      margin-bottom: 8px;
+    }
+    .rating { color: #f59e0b; font-size: 0.8rem; margin-bottom: 6px; }
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .price { font-size: 1.3rem; font-weight: 900; color: #e60012; }
+    .stock-tag {
+      font-size: 0.75rem;
+      color: #059669;
+      background: #ecfdf5;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: inline-block;
+      width: fit-content;
+    }
+
+    .wa-btn {
+      background: #25d366;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 6px;
+      font-weight: 800;
+      text-align: center;
+      display: block;
+      transition: background 0.2s;
+    }
+    .wa-btn:hover { background: #1ebc57; }
+
+    footer {
+      background: #111827;
+      color: #6b7280;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+      font-size: 0.85rem;
+      border-top: 3px solid #e60012;
+    }
+
+    .loading {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 50px;
+      color: #6b7280;
+      font-size: 1.1rem;
+    }
   </style>
 </head>
 <body>
 
+  <div class="top-bar">🔥 شحن مباشر إلى المملكة العربية السعودية | الطلب السريع عبر الواتساب</div>
+
   <header>
-    <h1>متجرنا الإلكتروني</h1>
-    <p>اطلب مباشرة عبر الواتساب</p>
+    <div class="nav-container">
+      <a href="#" class="logo">🇨🇳 CHINA<span>SUPPLY</span></a>
+      <span class="tagline-badge">Direct Factory</span>
+    </div>
   </header>
 
+  <section class="hero">
+    <h1>منتجات بجودة عالية بأسعار المصنع Direct</h1>
+    <p>اختر منتجك واطلبه فوراً عبر الواتساب</p>
+  </section>
+
   <div class="container">
+    <div class="section-title">📦 المنتجات المتاحة حالياً</div>
     <div id="products-container" class="products-grid">
-      <div class="loading-message">جاري تحميل المنتجات...</div>
+      <div class="loading">جاري تحميل المنتجات من المصنع...</div>
     </div>
   </div>
 
   <footer>
-    <p>&copy; 2026 All Rights Reserved.</p>
+    <p>&copy; 2026 China Direct Dropshipping Store. All Rights Reserved.</p>
   </footer>
 
   <script>
-    // ⚠️ Apna WhatsApp Number yahan daalein
+    // Apna WhatsApp Number Yahan Dalein (Bina + Ke)
     const WHATSAPP_NUMBER = "966500000000";
 
+    // CJ Images Proxy Helper (Fixes missing image issues)
+    function fixImageUrl(url) {
+      if (!url) return 'https://via.placeholder.com/300x300?text=No+Image';
+      if (url.includes('cc-west-usa.oss') || url.includes('cjdropshipping.com')) {
+        return 'https://images.weserv.nl/?url=' + encodeURIComponent(url);
+      }
+      return url;
+    }
+
     fetch('products.json')
-      .then(response => {
-        if (!response.ok) throw new Error('Network response was not ok');
-        return response.json();
-      })
+      .then(res => res.json())
       .then(products => {
         const container = document.getElementById('products-container');
-        if (!products || products.length === 0) {
-          container.innerHTML = '<div class="loading-message">لا توجد منتجات حالياً.</div>';
+        if(!products || products.length === 0) {
+          container.innerHTML = '<div class="loading">لا توجد منتجات حالياً.</div>';
           return;
         }
 
         let html = '';
-        products.forEach(product => {
-          const msg = product.whatsapp_message || `Hello, I want to order ${product.title}`;
-          const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+        products.forEach(p => {
+          const safeImg = fixImageUrl(p.image);
+          const msg = p.whatsapp_message || `السلام عليكم، أود طلب: ${p.title}`;
+          const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
 
           html += `
             <div class="product-card">
-              <div class="img-container">
-                <img src="${product.image}" alt="${product.title}" loading="lazy">
+              <span class="hot-badge">HOT SALE</span>
+              <div class="img-box">
+                <img src="${safeImg}" alt="${p.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x300?text=Product+Image';">
               </div>
-              <div class="card-content">
+              <div class="card-body">
                 <div>
-                  <h3 class="title">${product.title}</h3>
-                  <div class="price-tag">${product.price}</div>
+                  <h3 class="title">${p.title}</h3>
+                  <div class="rating">★★★★★ (4.9)</div>
+                  <div class="price-row">
+                    <span class="price">${p.price}</span>
+                  </div>
+                  <div class="stock-tag">✓ متوفر بالمخزن جاهز للشحن</div>
                 </div>
-                <a href="${waLink}" target="_blank" class="wa-button">
-                  طلب عبر الواتساب
+                <a href="${waUrl}" target="_blank" class="wa-btn">
+                  طلب مباشر عبر الواتساب
                 </a>
               </div>
             </div>
@@ -82,10 +286,10 @@
         });
         container.innerHTML = html;
       })
-      .catch(error => {
-        console.error(error);
+      .catch(err => {
+        console.error(err);
         document.getElementById('products-container').innerHTML = 
-          '<div class="loading-message" style="color: #e53e3e;">خطأ في تحميل المنتجات</div>';
+          '<div class="loading" style="color:#e60012;">حدث خطأ في تحميل المنتجات. تأكد من ملف products.json</div>';
       });
   </script>
 </body>
