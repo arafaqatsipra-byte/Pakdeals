@@ -1071,5 +1071,37 @@
       if (e.target === this) closeModal();
     });
   </script>
+  <script>
+  async function loadCJProducts() {
+    const container = document.getElementById('cj-products-container');
+    if (!container) return;
+
+    try {
+      const response = await fetch('/api/cj');
+      const result = await response.json();
+
+      if (result.data && result.data.list) {
+        container.innerHTML = result.data.list.map(product => `
+          <div class="bg-white rounded-lg shadow p-4 flex flex-col justify-between">
+            <img src="${product.productImage}" alt="${product.productNameEn}" class="w-full h-48 object-cover rounded-md mb-2">
+            <h3 class="font-bold text-sm text-gray-800 line-clamp-2">${product.productNameEn}</h3>
+            <p class="text-green-600 font-bold my-2">$${product.sellPrice}</p>
+            <a href="${product.productUrl || '#'}" target="_blank" class="bg-yellow-500 hover:bg-yellow-600 text-black text-center py-2 rounded-md font-semibold text-sm">
+              View Product
+            </a>
+          </div>
+        `).join('');
+      } else {
+        container.innerHTML = '<p class="text-gray-500 col-span-full text-center">No products found or error loading products.</p>';
+      }
+    } catch (error) {
+      console.error('Error fetching CJ products:', error);
+      container.innerHTML = '<p class="text-red-500 col-span-full text-center">Failed to load products.</p>';
+    }
+  }
+
+  // Load products on page load
+  document.addEventListener('DOMContentLoaded', loadCJProducts);
+</script>
 </body>
 </html>
