@@ -114,46 +114,50 @@
     }
 
     document.addEventListener('DOMContentLoaded', loadCJProducts);
-  </script>
-  <script>
-  async function loadCJProducts() {
-    const container = document.getElementById('cj-products-container');
-    if (!container) return;
+  </script>const CJ_API_KEY = "CJ5700762@api@8176941e3dad461889d2b4c091474740";
+const CJ_EMAIL = "apna_cj_email@example.com"; // Yahan apna CJ account email likhein
 
-    try {
-      const response = await fetch('/api/cj');
-      const result = await response.json();
+async function loadCJProducts() {
+  try {
+    // Step 1: Access Token Hasil Karein
+    const tokenResponse = await fetch('https://developers.cjdropshipping.com/api2.0/v1/authentication/getAccessToken', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: CJ_EMAIL,
+        apiKey: CJ_API_KEY
+      })
+    });
 
-      if (result && result.data && result.data.list && result.data.list.length > 0) {
-        container.innerHTML = result.data.list.map(product => `
-          <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-3 flex flex-col justify-between border border-gray-100">
-            <div class="overflow-hidden rounded-lg bg-gray-50 mb-3 h-44 flex items-center justify-center">
-              <img src="${product.productImage || 'https://via.placeholder.com/200'}" alt="${product.productNameEn}" class="h-full w-full object-cover">
-            </div>
-            <div class="flex-1 flex flex-col justify-between">
-              <div>
-                <h3 class="font-semibold text-xs text-gray-800 line-clamp-2 mb-1">${product.productNameEn}</h3>
-              </div>
-              <div class="mt-2">
-                <span class="text-sm font-bold text-emerald-600">$${product.sellPrice}</span>
-                <a href="${product.productUrl || '#'}" target="_blank" class="mt-2 block w-full bg-[#FF9900] hover:bg-[#F3A847] text-slate-900 text-center font-bold text-xs py-2 rounded-lg transition-colors">
-                  View Product
-                </a>
-              </div>
-            </div>
-          </div>
-        `).join('');
-      } else {
-        container.innerHTML = `<div class="col-span-full text-center py-8"><p class="text-gray-500 font-medium">No products found or CJ token issue.</p></div>`;
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      container.innerHTML = `<div class="col-span-full text-center py-8"><p class="text-red-500 font-medium">Failed to load products.</p></div>`;
+    const tokenData = await tokenResponse.json();
+    
+    if (!tokenData.data || !tokenData.data.accessToken) {
+      console.error("Token error:", tokenData);
+      document.getElementById('product-list').innerText = "Token generate nahi ho saka.";
+      return;
     }
-  }
 
-  document.addEventListener('DOMContentLoaded', loadCJProducts);
-</script>
-const CJ_API_KEY = "CJ5700762@api@8176941e3dad461889d2b4c091474740"
+    const accessToken = tokenData.data.accessToken;
+
+    // Step 2: Access Token Se Products List Mangwayein
+    const productResponse = await fetch('https://developers.cjdropshipping.com/api2.0/v1/product/list?pageSize=12&pageNum=1', {
+      method: 'GET',
+      headers: {
+        'CJ-Access-Token': accessToken
+      }
+    });
+
+    const productData = await productResponse.json();
+    console.log("Products Data:", productData);
+
+    // Yahan apni products HTML mein Render karein
+    
+  } catch (error) {
+    console.error("API Fetch Error:", error);
+  }
+}
+
+loadCJProducts();
+  
 </body>
 </html>
