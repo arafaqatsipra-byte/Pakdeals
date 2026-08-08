@@ -114,50 +114,49 @@
     }
 
     document.addEventListener('DOMContentLoaded', loadCJProducts);
-  </script>const CJ_API_KEY = "CJ5700762@api@8176941e3dad461889d2b4c091474740";
-const CJ_EMAIL = "apna_cj_email@example.com"; // Yahan apna CJ account email likhein
+  </script>
+  <script>
+  const CJ_API_KEY = "CJ5700762@api@8176941e3dad461889d2b4c091474740";
+  const CJ_EMAIL = "your-actual-cj-email@domain.com"; // Yahan apna asal CJ Dropshipping account ka email likhein
 
-async function loadCJProducts() {
-  try {
-    // Step 1: Access Token Hasil Karein
-    const tokenResponse = await fetch('https://developers.cjdropshipping.com/api2.0/v1/authentication/getAccessToken', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email: CJ_EMAIL,
-        apiKey: CJ_API_KEY
-      })
-    });
+  async function loadCJProducts() {
+    try {
+      // Step 1: Access Token Hasil Karein
+      const tokenResponse = await fetch('https://developers.cjdropshipping.com/api2.0/v1/authentication/getAccessToken', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: CJ_EMAIL,
+          apiKey: CJ_API_KEY
+        })
+      });
 
-    const tokenData = await tokenResponse.json();
-    
-    if (!tokenData.data || !tokenData.data.accessToken) {
-      console.error("Token error:", tokenData);
-      document.getElementById('product-list').innerText = "Token generate nahi ho saka.";
-      return;
-    }
+      const tokenData = await tokenResponse.json();
 
-    const accessToken = tokenData.data.accessToken;
-
-    // Step 2: Access Token Se Products List Mangwayein
-    const productResponse = await fetch('https://developers.cjdropshipping.com/api2.0/v1/product/list?pageSize=12&pageNum=1', {
-      method: 'GET',
-      headers: {
-        'CJ-Access-Token': accessToken
+      if (!tokenData.data || !tokenData.data.accessToken) {
+        console.error("Token error:", tokenData);
+        return;
       }
-    });
 
-    const productData = await productResponse.json();
-    console.log("Products Data:", productData);
+      const accessToken = tokenData.data.accessToken;
 
-    // Yahan apni products HTML mein Render karein
-    
-  } catch (error) {
-    console.error("API Fetch Error:", error);
+      // Step 2: Products List Fetch Karein
+      const productResponse = await fetch('https://developers.cjdropshipping.com/api2.0/v1/product/list?pageSize=12&pageNum=1', {
+        method: 'GET',
+        headers: {
+          'CJ-Access-Token': accessToken
+        }
+      });
+
+      const productData = await productResponse.json();
+      console.log("Products Data:", productData);
+
+    } catch (error) {
+      console.error("API Fetch Error:", error);
+    }
   }
-}
 
-loadCJProducts();
-  
+  loadCJProducts();
+</script>
 </body>
 </html>
