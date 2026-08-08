@@ -1,24 +1,7 @@
-
-[
-  {
-    "id": 1,
-    "title": "Polo Shirt",
-    "price": "13 SAR",
-    "image": "https://via.placeholder.com/300x300",
-    "whatsapp_message": "Hello, I want to order Polo Shirt"
-  },
-  {
-    "id": 2,
-    "title": "Abaya Modern",
-    "price": "150 SAR",
-    "image": "https://via.placeholder.com/300x300",
-    "whatsapp_message": "Hello, I want to order Abaya Modern"
-  },
-  {
-    "id": 3,
-    "title": "Phone Charm",
-    "price": "20 SAR",
-    "image": "https://via.placeholder.com/300x300",
-    "whatsapp_message": "Hello, I want to order Phone Charm"
+{
+    "id": 4,
+    "title": "MagSafe Magnetic Luxury Leather Card Holder Wallet Case",
+    "price": "35 SAR",
+    "image": "https://cc-west-usa.oss-us-west-1.aliyuncs.com/1580751289183645696/1580751289183645696.jpg",
+    "whatsapp_message": "Hello, I want to order MagSafe Magnetic Leather Card Holder Wallet (35 SAR)"
   }
-]
